@@ -1,0 +1,229 @@
+<h1>INTRODUCCIÓN ANGULAR</h1>
+<mat-grid-list cols="1" rowHeight="7:1">
+    <mat-grid-tile></mat-grid-tile>
+    <p>
+        Angular es una plataforma que permite desarrollar
+        aplicaciones web en la sección cliente utilizando
+        HTML y JavaScript para que el cliente asuma
+        la mayor parte de la lógica y descargue al servidor
+        con la finalidad de que las aplicaciones ejecutadas
+        a través de Internet sean más rápidas. El hecho de
+        estar mantenido por Google, así como una serie
+        de innumerables razones técnicas, ha favorecido
+        su rápida adopción por parte de la comunidad de
+        desarrolladores.
+        Permite la creación de aplicaciones web de una sola
+        página (SPA: single-page application) realizando la
+        carga de datos de forma asíncrona.
+        <br><br>
+        Parecería ser la continuación de AngularJS, pero, en realidad, más que una nueva
+        versión es realmente un framework o plataforma diferente. El hecho de utilizar
+        componentes como concepto único en lugar de controladores, directivas y servicios
+        de forma específica, como sucedía en AngularJS, simplifica mucho las cosas.
+        Angular está orientado a objetos, trabaja con clases y favorece el uso del patrón
+        MVC (Modelo-Vista-Controlador).
+        Permite el uso de TypeScript (lenguaje desarrollado por Microsoft) con las ventajas
+        que supone poder disponer de un tipado estático y objetos basados en clases. Todo
+        ello, gracias a la especificación ECMAScript 6, que es la base sobre la que se apoya
+        TypeScript. Gracias a un compilador (transpilador) de TypeScript, el código escrito
+        en este lenguaje se traducirá a JavaScript original.
+    </p>
+    <br>
+    <div class="contenedor">
+        <a class="material" mat-raised-button href="https://material.angular.io/components/categories" target="_blank">Angular Material</a>
+        <a class="material" mat-raised-button href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">Bootstrap 5</a>
+        <a class="docu" mat-raised-button href="https://docs.angular.lat/guide/architecture" target="_blank">Doc Angular</a>
+        <a class="docu" mat-raised-button href="https://docs.angular.lat/api" target="_blank">API Angular</a>
+        <a class="docu" mat-raised-button href="https://www.tutorialesprogramacionya.com/angularya/index.php?inicio=40" target="_blank">Angular Tutoriales</a>
+        <a class="docu" mat-raised-button href="https://desarrolloweb.com/manuales/manual-angular-2.html" target="_blank">Angular DesarrolloWeb</a>
+        <a class="docu" mat-raised-button href="https://highlight.hohli.com/index.php" target="_blank">Inserción código1</a>
+        <a class="docu" mat-raised-button href="https://pinetools.com/syntax-highlighter" target="_blank">Inserción código2</a>
+        <a class="docu" mat-raised-button href="https://www.youtube.com/watch?v=rryn1Hs6qHI&list=PLU8oAlHdN5Blq85GIxtKjIXdfHPksV_Hm&index=4&ab_channel=pildorasinformaticas" target="_blank">Curso Spring Boot</a>
+    </div>
+    <div class="contenedorImg">
+        <img src="assets/Imagenes/arquitectura.png" alt="">
+        <ul>
+            <li>Módulos</li>
+            <li>Componentes</li>
+            <li>Templates</li>
+            <li>Metadata</li>
+            <li>Data Binding</li>
+            <li>Directivas</li>
+            <li>Servicios</li>
+            <li>Inyección de Dependencias</li>
+        </ul>
+        <br>
+        <p>
+            A lo largo del libro, analizaremos cada uno de estos elementos y veremos, entre
+            otras muchas cosas, que los componentes son la suma de los templates, las clases y
+            los metadatos.
+            Veremos también que la inyección de dependencias favorece el testing y reduce el
+            acoplamiento entre clases. Con Lazy SPA no es necesario tener en memoria todos
+            los elementos que componen una aplicación, de forma que podemos cargarla por
+            partes a medida que los necesitemos.
+            Podemos ejecutar Angular en el servidor gracias a Angular Universal, con lo
+            que podremos reducir el tiempo de espera que se produce en la primera visita ya
+            que, en lugar de cargar todo lo necesario para ejecutar la aplicación, se pueden enviar
+            vistas “prefabricadas” directamente al cliente. <br>
+            Angular es un framework principalmente enfocado a la
+            creación de aplicaciones web de tipo single-page application
+            (SPA). En este capítulo haremos un breve repaso
+            a los distintos tipos de aplicación web y, a continuación,
+            analizaremos con más detalle en qué consisten
+            las aplicaciones single-page application (SPA).
+            Una aplicación web la podemos definir como toda
+            aquella aplicación proporcionada por un servidor web
+            y utilizada por los usuarios a través de un cliente web
+            (browsers o navegadores). En otras palabras, son aquellas
+            aplicaciones codificadas en un lenguaje soportado
+            por los navegadores web para que puedan ejecutarse desde allí.
+            Toda aplicación web tiene una arquitectura básica de
+            tipo cliente-servidor. Esto es así porque toda aplicación
+            web sigue un modelo de aplicación distribuida en la
+            que, por una parte, está el servidor que provee de recursos
+            y servicios y, por la otra, está el cliente que los
+            demanda. A partir de aquí, según lo estática o dinámica
+            que sea cada parte, tenemos distintos tipos de aplicaciones
+            web: 
+        </p>
+        <br>
+        <ul>
+            <li>Cliente y servidor estáticos: no hay ningún tipo de dinamismo y el servidor
+                siempre devuelve los mismos recursos sin ningún tipo de cambio. Más que
+                de aplicaciones web, aquí hablaríamos de páginas web.</li>
+            <li>Cliente estático y servidor dinámico: el servidor devuelve recursos
+                dinámicos, por ejemplo, páginas web con el resultado de consultas a base de
+                datos, etc.</li>
+            <li>Cliente/servidor dinámicos: el cliente es dinámico porque las páginas
+                web recibidas del servidor incluyen JavaScript, que se ejecuta en el propio
+                navegador dando todo tipo de funcionalidades diversas.</li>
+        </ul>
+    </div>
+    <br>
+    <mat-card class="Modulos-card">
+        <mat-card-header>
+          <mat-card-title>Módulos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Conjunto de códigos dedicados a resolver un objetivo que generalmente
+                exporta una clase. Cada aplicación posee al menos una
+                clase de módulo que denominamos “módulo raíz” y que, por
+                defecto, posee el nombre de AppModule. En el mismo podemos
+                apreciar una clase con un decorador (@NgModule) y una serie de
+                propiedades entre las que destacamos las siguientes:
+            </p>
+            <ul>
+                <li>Declarations: define las vistas que pertenecen a este módulo.</li>
+                <li>Exports: declaraciones que han ser visibles para componentes de otros módulos.</li>
+                <li>Imports: clases que otros módulos exportan para poderlas utilizar en el módulo actual.</li>
+                <li>Providers: servicios usados de forma global y accesibles desde cualquier parte de la aplicación.</li>
+                <li>Bootstrap: la vista principal o componente raíz, que aloja el resto de vistas de la aplicación. Propiedad establecida solo por el módulo raíz.</li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Componentes-card">
+        <mat-card-header>
+          <mat-card-title>Componentes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Elemento que controla una zona de espacio de la pantalla que representa
+                la “vista”. Define las propiedades y métodos que usa el
+                propio template y contiene la lógica y la funcionalidad que utiliza
+                la vista. Pueden tener atributos tanto de entrada (decorador @
+                Input) como de salida (decorador @Output). También podemos
+                denir al componente como:
+                Componente = template + metadatos + clase
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Templates-card">
+        <mat-card-header>
+          <mat-card-title>Templates</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Define la vista de un Componente mediante un fragmento de HTML.
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Metadata-card">
+        <mat-card-header>
+          <mat-card-title>Metadata</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Permiten decorar una clase y configurar así su comportamiento Extiende una función mediante otra sin tocar la original.
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="DataBinding-card">
+        <mat-card-header>
+          <mat-card-title>Data Binding</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Permite intercambiar datos entre el template y la clase del componente
+                que soporta la lógica del mismo. Existen 4 tipos de Data
+                binding (que analizaremos en profundidad más adelante) y que
+                son:
+            </p>
+            <ul>
+                <li>Interpolación: muestra el valor de una propiedad en el lugar donde se incluya ((propiedad)).</li>
+                <li>Property binding: traspaso del objeto del componente padre al componente hijo ([objHijo]=“objPadre”).</li>
+                <li>Event binding: permite invocar un método del componente pasándole un argumento al producirse un evento (p. ej.,(click)=“hazAlgo(obj)”).</li>
+                <li>Two-way binding: binding bidireccional que permite combinar event y Property binding (p. ej., input [(ngModel)]= “obj”).</li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Directiva-card">
+        <mat-card-header>
+          <mat-card-title>Directiva</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Permite añadir comportamiento dinámico a HTML mediante
+                una etiqueta o selector. Existen directivas estructurales (*ngFor o
+                *ngIf) o de atributos que modican el aspecto o comportamiento
+                de un elemento DOM (NgSwitch, NgStyle o NgClass).
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Servicio-card">
+        <mat-card-header>
+          <mat-card-title>Servicio</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Son clases que permiten realizar acciones concretas que ponen a
+                disposición de cualquier componente. Por ejemplo, permiten obtener
+                datos, resolver lógicas especiales o realizar peticiones a un
+                servidor.
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="Inyeccion-card">
+        <mat-card-header>
+          <mat-card-title>Inyección de Dependencias</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Permite suministrar funcionalidades, servicios, etc., a un componente
+                sin que sea el propio componente el encargado de crearlos. Utiliza
+                el decorador @Injectable(). Generalmente proporciona servicios y
+                facilita los test y la modularidad del código.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+</mat-grid-list>
+
+

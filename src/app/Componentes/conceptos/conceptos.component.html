@@ -1,0 +1,648 @@
+<h1>CONCEPTOS ANGULAR</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h3>MÓDULOS</h3>
+    <p>
+        Los módulos son clases que nos permiten organizar
+        nuestra aplicación encapsulando funcionalidades concretas
+        dentro de los mismos. Son agrupadores de componentes,
+        pipes, directivas, etc., relativos a una funcionalidad
+        que permiten crear bloques reutilizables.
+        Utilizan el decorador @NgModule que permite añadir
+        metadata.
+    </p>
+    <ul>
+        <li><b>declarations:</b> Los componentes, directivas, y pipes que pertenecen a este NgModule.</li>
+        <li><b>exports:</b> El subconjunto de declaraciones que deberían ser visibles y utilizables en las plantillas de componentes de otros NgModules.</li>
+        <li><b>imports:</b> Otros módulos cuyas clases exportadas son necesarias para las plantillas de componentes declaradas en este NgModule.</li>
+        <li><b>providers:</b> Creadores de servicios que este NgModule aporta a la colección global de servicios; se vuelven accesibles en todas las partes de la aplicación. 
+            (También puedes especificar proveedores a nivel de componente, que a menudo es preferido).</li>
+        <li><b>bootstrap:</b> La vista principal de la aplicación, llamado el componente raíz, que aloja todas las demás vistas de la aplicación. Sólo el NgModule raíz debe 
+            establecer la propiedad bootstrap.</li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#339933">@</font>NgModule<font color="#009900">&#40;</font><font color="#009900">&#123;</font><br/>
+                &nbsp;&nbsp;imports<font color="#339933">:</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&#91;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#93;</font><font color="#339933">,</font><br/>
+                &nbsp;&nbsp;providers<font color="#339933">:</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&#91;</font>&nbsp;Logger&nbsp;<font color="#009900">&#93;</font><font color="#339933">,</font><br/>
+                &nbsp;&nbsp;declarations<font color="#339933">:</font>&nbsp;<font color="#009900">&#91;</font>&nbsp;AppComponent&nbsp;<font color="#009900">&#93;</font><font color="#339933">,</font><br/>
+                &nbsp;&nbsp;exports<font color="#339933">:</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&#91;</font>&nbsp;AppComponent&nbsp;<font color="#009900">&#93;</font><font color="#339933">,</font><br/>
+                &nbsp;&nbsp;bootstrap<font color="#339933">:</font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&#91;</font>&nbsp;AppComponent&nbsp;<font color="#009900">&#93;</font><br/>
+                <font color="#009900">&#125;</font><font color="#009900">&#41;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <p>
+        Como mínimo, siempre existe un módulo ya que, al crear una aplicación, se crea el
+        módulo root, el cual permite que la aplicación se lance, pero este módulo lo analizaremos
+        en detalle en el próximo ejercicio.
+        Existen módulos que, a su vez, son librerías de módulos, como ocurre con el propio
+        Angular, que ofrece librerías asociadas a paquetes npm y que permiten realizar importaciones
+        selectivas según nuestras necesidades. Por ejemplo, Angular posee librerías
+        que son módulos como FormsModule, HttpModule o RouterModule.
+        Al igual que las clases, los módulos pueden exportar u ocultar componentes, servicios,
+        etc.
+        Podemos crear módulos a mano, pero, por facilidad, recomendamos hacerlo con
+        Angular CLI y, en este caso, los módulos se crean usando el comando generate
+        de la siguiente manera: <b>ng generate module [NombreModulo]</b>. <br>
+        Cuando creas un proyecto por primera vez lo primero que importa al app.module.ts son los siguientes:
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote>import&nbsp;<font color="#008000">&#123;</font>&nbsp;Component&nbsp;<font color="#008000">&#125;</font>&nbsp;from&nbsp;<font color="#FF0000">'@angular/core'</font><font color="#008080">;</font><br/>
+                import&nbsp;<font color="#008000">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#008000">&#125;</font>&nbsp;from&nbsp;<font color="#FF0000">'@angular/platform-browser'</font><font color="#008080">;</font><br/>
+                imports<font color="#008080">:</font>&nbsp;<font color="#008000">&#91;</font>&nbsp;BrowserModule&nbsp;<font color="#008000">&#93;</font>,</blockquote>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <p>
+        El primero marca una clase como componente de Angular y proporciona metadatos de configuración que determinan cómo debe procesarse, instanciarse 
+        y utilizarse el componente en tiempo de ejecución. El segundo Exporta la infraestructura necesaria para todas las aplicaciones Angular. Se incluye 
+        por defecto en todas las aplicaciones Angular creadas con el comando CLI new. Reexporta CommonModule y ApplicationModule, haciendo que sus exportaciones 
+        y proveedores estén disponibles para todas las aplicaciones. 
+    </p>
+    <br>
+    <h3>COMPONENTES</h3>
+    <p>
+        El componente es el elemento básico del desarrollo en Angular. Una aplicación suele constar de una especie de árbol
+        de componentes de varios niveles donde un componente puede llamar a sus componentes hijos y, a su vez, estos llamar a sus propios hijos (o
+        nietos del primero), y así sucesivamente. Un componente, básicamente, es una clase acompañada del decorador @ Component y se encarga de
+        controlar lo que podríamos llamar Vista o zona de pantalla. A grosso modo, un componente está formado por un template, una metadata y una clase.
+        Nada más crear un componente <b>ng generate component [NombreComponente]</b> obtenemos cuatro archivos HTML, .ts, test y CSS un componente totalmente virgen 
+        se ve de la siguiente manera: <br>
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;Component&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;‘<font color="#339933">@</font>angular<font color="#339933">/</font>core’<font color="#339933">;</font><br/>
+                <font color="#339933">@</font>Component<font color="#009900">&#40;</font><font color="#009900">&#123;</font><br/>
+                &nbsp;&nbsp;&nbsp;selector<font color="#339933">:</font>&nbsp;‘app<font color="#339933">-</font>root’<font color="#339933">,</font><br/>
+                &nbsp;&nbsp;&nbsp;templateUrl<font color="#339933">:</font>&nbsp;‘.<font color="#339933">/</font>app.<font color="#660066">component</font>.<font color="#660066">html</font>’<font color="#339933">,</font><br/>
+                &nbsp;&nbsp;&nbsp;styleUrls<font color="#339933">:</font>&nbsp;<font color="#009900">&#91;</font>‘.<font color="#339933">/</font>app.<font color="#660066">component</font>.<font color="#660066">css</font>’<font color="#009900">&#93;</font><br/>
+                <font color="#009900">&#125;</font><font color="#009900">&#41;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppComponent&nbsp;<font color="#009900">&#123;</font><br/>
+                &nbsp;&nbsp;&nbsp;title&nbsp;<font color="#339933">=</font>&nbsp;‘app&nbsp;works<font color="#339933">!</font>’<font color="#339933">;</font><br/>
+                <font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <ul>
+        <li><b>Import:</b> permite importar otros componentes a utilizarse dentro del componente que se está deniendo. Como mínimo, importamos Component de @angular/core.</li>
+        <li><b>Decorador:</b> función de tipo decorador que posee un objeto con los metadatos que indican a Angular cómo se crea, compila y ejecuta el componente.</li>
+        <li><b>Export class:</b> exporta la clase asociada al componente para hacerla visible a otros componentes, de forma que puedan usar sus propiedades y métodos
+            dependiendo a su vez de la visibilidad establecida a los mismos. Hace las veces de controlador en la clásica arquitectura MVC (Modelo-Vista-Controlador).</li>
+    </ul>
+    <br>
+    <p>
+        Dentro del decorador @Component podemos ver el selector el cual se usa para poder incrustar este componente dentro de otros componentes, ya sean hijos,
+        padres, nietos el componente raiz etc. El templateUrl es la dirección de la plantilla HTML que corresponde a este componente al igual que styleUrls (CSS).
+        En un componente, podemos definir propiedades que utilizaremos para mostrar información
+        en las vistas o para condicionar el aspecto de las mismas. Para indicar al
+        DOM que una de sus propiedades está ligada a una propiedad de nuestro componente,
+        usaremos los corchetes [ ], lo que denominaremos binding de propiedades
+        (property binding). En posteriores ejercicios se abordará el DataBinding
+        con más profundidad. Podemos también hacer un binding con las clases CSS para
+        condicionar un estilo al valor de una propiedad.
+        En el siguiente ejercicio, mostraremos unos cuantos ejemplos de cómo ligar algunas
+        propiedades del DOM a propiedades de nuestro componente permitiendo así
+        la visualización o no de un bloque, habilitar o deshabilitar un botón, definir un
+        link a partir de un valor o de aplicar una clase CSS dependiendo del valor de una
+        propiedad. A continuación veremos un ejemplo: 
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>{{title}}</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <table class="table table-bordered border-secondary">
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="ponFondo" [(ngModel)]="ponFondo">Fondo<br><br></td>
+                                <td><div [class.fondo]="ponFondo">Hola</div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><a [href]="referencia" target="_blank">{{referencia}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-primary btn-success tamB" (click)="mostrar=!mostrar"><span>{{ mostrar ? 'Mostrar' : 'Ocultar'}}</span></button></td>
+                                <td><div [hidden]="mostrar"><h2>Se ve</h2></div></td>
+                            </tr>
+                            <tr>
+                                <td><button class="btn btn-primary tamB" (click)="habilitar=!habilitar">{{ habilitar ? 'Habilitar' : 'Deshabilitar' }}</button></td>
+                                <td><button [disabled]="habilitar" class="btn btn-outlineprimary tamB">Prueba</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+&lt;table <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"table table-bordered border-secondary"</span>&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;input <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"checkbox"</span> name=<span class="hljs-string" style="color: rgb(0, 136, 0);">"ponFondo"</span> [(ngModel)]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"ponFondo"</span>&gt;Fondo&lt;br&gt;&lt;br&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+            &lt;td&gt;&lt;div [class.fondo]="ponFondo"&gt;Hola&lt;/</span>div&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+        &lt;/</span>tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan=<span class="hljs-string" style="color: rgb(0, 136, 0);">"2"</span>&gt;&lt;a [href]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"referencia"</span> target=<span class="hljs-string" style="color: rgb(0, 136, 0);">"_blank"</span>&gt;{{referencia}}&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/a&gt;&lt;/</span>td&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;button class="btn btn-primary btn-success tamB" (click)="mostrar=!mostrar"&gt;&lt;span&gt;{{ mostrar ? 'Mostrar' : 'Ocultar'}}&lt;/</span>span&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;/</span>td&gt;
+            &lt;td&gt;&lt;div [hidden]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"mostrar"</span>&gt;&lt;h2&gt;Se ve&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/h2&gt;&lt;/</span>div&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+        &lt;/</span>tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;button <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"btn btn-primary tamB"</span> (click)=<span class="hljs-string" style="color: rgb(0, 136, 0);">"habilitar=!habilitar"</span>&gt;{{ habilitar ? <span class="hljs-string" style="color: rgb(0, 136, 0);">'Habilitar'</span> : <span class="hljs-string" style="color: rgb(0, 136, 0);">'Deshabilitar'</span> }}&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;/</span>td&gt;
+            &lt;td&gt;&lt;button [disabled]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"habilitar"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"btn btn-outlineprimary tamB"</span>&gt;Prueba&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;/</span>td&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+    &lt;/</span>tbody&gt;
+&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/table&gt;</span>
+</pre>
+                        </mat-tab>
+                        <mat-tab label="TS">
+                            
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+    title = <span class="hljs-string" style="color: rgb(0, 136, 0);">'EJEMPLO 1'</span>;
+    ponFondo: <span class="hljs-built_in" style="color: rgb(102, 0, 102);">boolean</span> = <span class="hljs-literal" style="color: rgb(0, 102, 102);">true</span>;
+    mostrar = <span class="hljs-literal" style="color: rgb(0, 102, 102);">true</span>;
+    habilitar = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    referencia = <span class="hljs-string" style="color: rgb(0, 136, 0);">'http://www.google.com'</span>;
+</pre>
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<pre class="css" style="font-family:monospace; background: rgb(255, 255, 255);"><span style="color: #6666ff;">
+.fondo</span> <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">background</span><span style="color: #00AA00;">:</span> <span style="color: #dc143c;">yellow</span><span style="color: #00AA00;">;</span> 
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;
+td <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">text-align</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">center</span><span style="color: #00AA00;">;</span>
+    <span style="color: #000000; font-weight: bold;">vertical-align</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">middle</span><span style="color: #00AA00;">;</span> 
+&nbsp;
+<span style="color: #00AA00;">&#125;</span>
+<span style="color: #6666ff;">.tamB</span> <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">height</span><span style="color: #00AA00;">:</span><span style="color: #933;">40px</span><span style="color: #00AA00;">;</span> <span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span><span style="color: #933;">600px</span> 
+<span style="color: #00AA00;">&#125;</span></pre>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                        cambia de colo el fondo gracias a esto  [class.fondo].<br><br>
+                        Para el segundo (tr) simplemente se le pasa la URL  de Google para que aparezca en una página en blanco. Para el tercer (tr) se hace uso del 
+                        evento (click) el cual cada vez que se pulsa el boton cambia el valor de la variable mostrar de true a falso haciendo uso de [hidden] para habilitar 
+                        o deshabilitar la palabra prueba. <br><br>
+                        En el último (tr) se ve lo siguiente (habilitar ? 'Habilitar' : 'Deshabilitar') dependiendo de si es true o false colocará 'Habilitar' o 'Deshabilitar'
+                        en el botón y con [disabled] habilitara o no el botón prueba.
+
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+
+    </mat-card>
+    <br>
+    <p>
+        Comprender los tipos de enlace de datos de Angular es importante ya que gracias a est podremos pasar información de la vista al 
+        controlador, del controlador a la vista, bidireccionalmente. Al crear aplicaciones con Angular, se encuentra con un par de formas 
+        de mostrar datos en la vista. El enlace de propiedad y la interpolación son los tipos de enlace de datos en Angular, que se utilizan 
+        para mover datos del componente a la plantilla hay alrededor de cuatro tipos de enlace de datos disponibles en Angular:
+    </p>
+    <ul>
+        <li><b>Event binding (Enlace de eventos) (event)="handler" (click)="updateName()": </b>este tipo de enlace de datos es cuando la información fluye desde la vista al componente cuando se activa un evento La vista envía los datos de un evento como el clic de un botón que se utilizará para actualizar el componente.</li>
+        <li><b>Two-way data binding (Enlace de datos bidireccional) [(ngModel)]="property":</b> el enlace bidireccional es un mecanismo en el que los datos fluyen en ambos sentidos desde el componente hasta la vista y viceversa. El componente y la vista siempre están sincronizados, y los cambios realizados en cualquier extremo se actualizan inmediatamente en ambos sentidos. El enlace bidireccional se usa comúnmente cuando se trata de formularios donde la entrada del usuario se usa para actualizar el estado del componente y viceversa.</li>
+        <li><b>Interpolation (Interpolación):</b>En la técnica, el texto que representa las variables en los componentes se coloca entre llaves dobles en la plantilla</li>
+        <li><b>Property binding (Vinculación de propiedades) [disabled]="buttonDisabled":</b> la vinculación de propiedades es un mecanismo unidireccional que le permite establecer la propiedad de un elemento de vista. Implica actualizar el valor de una propiedad en el componente y vincularlo a un elemento en la plantilla de vista.
+            Por ejemplo para un etiqueta img tenemos las propiedades src y alt pues con property binding podemos asignarle a estas propiedads un valor procedente del .ts [src]= "urlDel .ts"
+            estas propiedades también pueden ser propiedades creadas por nosotros de nuestro propio .ts.
+        </li>
+    </ul>
+    <div class="imgDatos">
+        <img src="assets/Imagenes/EnlaceDatos.png" class="rounded mx-auto d-block border border-5" alt="...">
+    
+    </div>
+    <br><br>
+    <h3>DECORADORES</h3>
+    <p>
+        Un decorador define qué partes posee un elemento
+        (componente, directiva, etc.) y permite extender la
+        funcionalidad de una función empleando otra función.
+        Mediante los decoradores, los componentes quedan
+        registrados y pueden utilizarse en otras partes de
+        la aplicación gracias a la información añadida. En definitiva, el decorador es una implementación del patrón
+        de diseño decorator, el cual permite añadir funcionalidad
+        a un objeto dinámicamente evitando tener que
+        crear un conjunto de clases que hereden de la inicial
+        simplemente para añadir funcionalidad adicional.
+        Existen cuatro tipos principales de decoradores:
+    </p>
+    <ul>
+        <li>De clase (p.e. @Component and @NgModule).</li>
+        <li>De propiedades (en las clases, p. ej., @Input and @Output).</li>
+        <li>De métodos (p.e. @HostListener).</li>
+        <li>De parámetros (en el constructor, p. ej., @Inject).</li>
+    </ul>
+    <p>
+        Los nombres de los decoradores empiezan con el símbolo @ seguido de un nombre
+        que indica el elemento a decorar. Un ejemplo típico es el decorador @Component,
+        el cual se utiliza para decorar componentes y puede emplearse siempre que importemos
+        previamente la clase Component de @angular/core. Estos son algunos ejemplos pero para más informacón consultar 
+        la API <a href="https://docs.angular.lat/api" target="_blank">https://docs.angular.lat/api</a>
+    </p>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Decorador</th>
+            <th scope="col">Uso</th>
+            <th scope="col">Modulo a Importar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@Input</td>
+            <td>Permite que los componentes reciban datos de
+                un componente padre.
+            </td>
+            <td>Input</td>
+          </tr>
+          <tr>
+            <td>@Output</td>
+            <td>Permite que los componentes envíen datos a
+                su padre.
+            </td>
+            <td>Output</td>
+          </tr>
+          <tr>
+            <td>@Attribute</td>
+            <td>Recupera el valor de un atributo disponible en
+                el elemento host de este componente.
+            </td>
+            <td>Attribute</td>
+          </tr>
+          <tr>
+            <td>@Hostlistener</td>
+            <td>Escucha el evento emitido por el host e invoca
+                el método decorado.
+            </td>
+            <td>Hostlistener</td>
+          </tr>
+          <tr>
+            <td>@Directive</td>
+            <td>Añade comportamiento a los elementos del
+                DOM.
+            </td>
+            <td>Directive</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        A continuación, realizaremos un ejercicio con @Attribute y @Hostlistener para mostrar el uso de decoradores.
+      </p>
+      <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <!--Incrustamos el componente  hijoConceptos dentro de este (conceptos)-->
+                    <app-hijo-conceptos miAtributo="Valor de muestra para atributo"></app-hijo-conceptos>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#339933">&lt;!--</font>Incrustado&nbsp;en&nbsp;el&nbsp;padre<font color="#339933">--&gt;</font><br/>
+                                <font color="#339933">&lt;</font>app<font color="#339933">-</font>hijo<font color="#339933">-</font>conceptos&nbsp;miAtributo<font color="#339933">=</font><font color="#3366CC">&quot;Valor&nbsp;de&nbsp;muestra&nbsp;para&nbsp;atributo&quot;</font><font color="#339933">&gt;&lt;/</font>app<font color="#339933">-</font>hijo<font color="#339933">-</font>conceptos<font color="#339933">&gt;</font><br/>
+                                <font color="#339933">&lt;!--</font>HTML&nbsp;del&nbsp;hijo&nbsp;hijo<font color="#339933">-</font>conceptos.<font color="#660066">component</font><font color="#339933">--&gt;</font></blockquote>
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#339933">&lt;</font>div<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>p<font color="#339933">&gt;</font>hijo<font color="#339933">-</font>conceptos&nbsp;works<font color="#339933">!</font>&nbsp;Mensaje&nbsp;del&nbsp;componente&nbsp;hijo&nbsp;hasta&nbsp;aqui&nbsp;su&nbsp;padre.<font color="#339933">&lt;/</font>p<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Clicks&nbsp;<font color="#339933">:</font>&nbsp;<font color="#009900">&#123;</font><font color="#009900">&#123;</font>&nbsp;contaClick&nbsp;<font color="#009900">&#125;</font><font color="#009900">&#125;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>br<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;MouseOver<font color="#339933">:</font>&nbsp;<font color="#009900">&#123;</font><font color="#009900">&#123;</font>&nbsp;contaOver&nbsp;<font color="#009900">&#125;</font><font color="#009900">&#125;</font><br/>
+                                <font color="#339933">&lt;/</font>div<font color="#339933">&gt;</font></blockquote>
+                        </mat-tab>
+                        <mat-tab label="TS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;HijoConceptosComponent&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;contaClick<font color="#339933">:</font>&nbsp;number&nbsp;<font color="#339933">=</font>&nbsp;<font color="#CC0000">0</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;contaOver<font color="#339933">:</font>&nbsp;number&nbsp;<font color="#339933">=</font>&nbsp;<font color="#CC0000">0</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;constructor<font color="#009900">&#40;</font>&nbsp;<font color="#339933">@</font>Attribute<font color="#009900">&#40;</font><font color="#3366CC">'miAtributo'</font><font color="#009900">&#41;</font>&nbsp;atributo<font color="#339933">:</font>any<font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;console.<font color="#660066">log</font><font color="#009900">&#40;</font>atributo<font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#339933">@</font>HostListener<font color="#009900">&#40;</font><font color="#3366CC">'click'</font><font color="#339933">,</font>&nbsp;<font color="#009900">&#91;</font><font color="#3366CC">'$event'</font><font color="#009900">&#93;</font><font color="#009900">&#41;</font><br/>
+                                &nbsp;&nbsp;onHostClick<font color="#009900">&#40;</font>event<font color="#339933">:</font>&nbsp;Event<font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;console.<font color="#660066">log</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;click&nbsp;en&nbsp;app&nbsp;&quot;</font>&nbsp;<font color="#339933">+</font>&nbsp;event<font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">contaClick</font>&nbsp;<font color="#339933">+=</font>&nbsp;<font color="#CC0000">1</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#339933">@</font>HostListener<font color="#009900">&#40;</font><font color="#3366CC">'mouseover'</font><font color="#339933">,</font>&nbsp;<font color="#009900">&#91;</font><font color="#3366CC">'$event'</font><font color="#009900">&#93;</font><font color="#009900">&#41;</font><br/>
+                                &nbsp;&nbsp;onMouseOver<font color="#009900">&#40;</font>event<font color="#339933">:</font>&nbsp;Event<font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;console.<font color="#660066">log</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;mouseover&quot;</font>&nbsp;<font color="#339933">+</font>&nbsp;event<font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">contaOver</font>&nbsp;<font color="#339933">+=</font>&nbsp;<font color="#CC0000">1</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                <font color="#009900">&#125;</font></blockquote>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+                            <blockquote style="background: rgb(255, 255, 255);">div<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;margin<font color="#339933">-</font>top<font color="#339933">:</font>&nbsp;20px<font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;border<font color="#339933">:</font>&nbsp;1px&nbsp;solid&nbsp;gray<font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font></blockquote>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Lo que hace este ejemplo es contar el número de veces que haces click dentro del componente y el número de veces que 
+                        pasas el ratón dentro del componente. Hacemos uso de los decoradores  @HostListener y @Attribute este último se usa para 
+                        pasar una cadena estatica a un componente hijo como @Input pero más limitado en el console.log del constructor sacará por 
+                        pantalla el valor que se le ha pasado a la etiqueta app-hijo-conceptos en este caso el string es Valor de muestra para atributo. <br>
+                        @HostListener es un decorador que esta escuchando en el DOM hasta que sucede un evento en concreto, cuando ocurre dicho evento 
+                        un metodo controlador se ejecuta para gestionar dicho evento. Ahora veremos un ejemplo más completo del decorador  @HostListener
+                        <a href="https://www.youtube.com/watch?v=zGzmSoaQnsY&ab_channel=LeiferMendez" target="_blank">Ejemplo @HostListener</a>.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h3>COMUNICACIÓN ENTRE COMPONENTES</h3>
+    <p>
+        La comunicación entre componentes puede realizarse
+        de diversas maneras (servicios, observables, etc.), pero en
+        este ejercicio, utilizaremos los decoradores <b>@Input y @
+        Output</b> mencionados brevemente en ejercicios anteriores.
+        Habíamos comentado que, mediante @Input, podemos
+        pasar datos desde un componente padre hacia un
+        componente hijo. Con @Output, realizaremos lo contrario.
+        Pasaremos datos desde un hijo hacia su padre.
+        El siguiente ejercicio propone un proyecto muy simple
+        en el que un componente padre se encarga de recoger dos valores que le pasa al
+        hijo para realizar una operación sencilla (suma, resta, multiplicación y división)
+        y, una vez obtenido el resultado, el mismo se devuelve al padre para que este
+        se muestre en su vista.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 3</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <!--CODIGO DEL PADRE-->
+                    <div class="padre">
+                        <table class="table border border-dark">
+                            <th colspan="2" style="text-align: center;">PADRE</th>
+                            <tr>
+                                <td>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">1º Valor:</span>
+                                        <input [(ngModel)]="valor1" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">2º Valor:</span>
+                                        <input [(ngModel)]="valor2" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group mb-3">
+                                        <td><h3>RESULTADO: </h3> <b>{{ resultadoP }}</b></td>              
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--CODIGO DEL HIJO-->
+                    <app-comunicacion [valor1]="valor1" [valor2]="valor2" (envRes)="captaResultado($event)"></app-comunicacion>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);"> &lt;!--CODIGO DEL PADRE--&gt;
+    &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"padre"</span>&gt;
+        &lt;table <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"table border border-dark"</span>&gt;
+            &lt;th colspan=<span class="hljs-string" style="color: rgb(0, 136, 0);">"2"</span> style=<span class="hljs-string" style="color: rgb(0, 136, 0);">"text-align: center;"</span>&gt;PADRE&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/th&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;div class="input-group mb-3"&gt;
+                        &lt;span class="input-group-text" id="inputGroup-sizing-default"&gt;1º Valor:&lt;/</span>span&gt;
+                        &lt;input [(ngModel)]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"valor1"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"text"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"form-control"</span> aria-label=<span class="hljs-string" style="color: rgb(0, 136, 0);">"Sizing example input"</span> aria-describedby=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;
+                    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+                &lt;/</span>td&gt;
+            &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;div class="input-group mb-3"&gt;
+                        &lt;span class="input-group-text" id="inputGroup-sizing-default"&gt;2º Valor:&lt;/</span>span&gt;
+                        &lt;input [(ngModel)]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"valor2"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"text"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"form-control"</span> aria-label=<span class="hljs-string" style="color: rgb(0, 136, 0);">"Sizing example input"</span> aria-describedby=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;
+                    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+                &lt;/</span>td&gt;
+            &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;div class="input-group mb-3"&gt;
+                        &lt;td&gt;&lt;h3&gt;RESULTADO: &lt;/</span>h3&gt; &lt;b&gt;{{ resultadoP }}&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/b&gt;&lt;/</span>td&gt;              
+                    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+                &lt;/</span>td&gt;
+            &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+        &lt;/</span>table&gt;
+    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+    &lt;!--CODIGO DEL HIJO INCRUSTADO EN EL PADRE--&gt;
+    &lt;app-comunicacion [valor1]="valor1" [valor2]="valor2" (envRes)="captaResultado($event)"&gt;&lt;/</span>app-comunicacion&gt;</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);"> &lt;!--CODIGO DEL HIJO--&gt;
+    &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"hijo"</span>&gt;
+        &lt;table <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"table border border-dark"</span>&gt;
+            &lt;th colspan=<span class="hljs-string" style="color: rgb(0, 136, 0);">"4"</span> style=<span class="hljs-string" style="color: rgb(0, 136, 0);">"text-align: center;"</span>&gt;HIJO&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/th&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;button type="button" class="btn btn-primary" (click)="suma()"&gt;+&lt;/</span>button&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+                &lt;td&gt;&lt;button class="btn btn-primary" (click)="resta()"&gt;-&lt;/</span>button&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+                &lt;td&gt;&lt;button class="btn btn-primary" (click)="multiplica()"&gt;*&lt;/</span>button&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/td&gt;
+                &lt;td&gt;&lt;button class="btn btn-primary" (click)="divide()"&gt;/</span>&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;/</span>td&gt;
+            &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/tr&gt;
+        &lt;/</span>table&gt;
+    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+    </span></pre>
+                        </mat-tab>
+                        <mat-tab label="TS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#ff0000">/*CODIGO&nbsp;DEL&nbsp;PADRE*/</font><br/>
+                                valor1<font color="#008080">:</font>&nbsp;string&nbsp;<font color="#000080">=</font>&nbsp;<font color="#FF0000">'10'</font><font color="#008080">;</font><br/>
+                                valor2<font color="#008080">:</font>&nbsp;string&nbsp;<font color="#000080">=</font>&nbsp;<font color="#FF0000">'20'</font><font color="#008080">;</font><br/>
+                                resultadoP<font color="#008080">:</font>&nbsp;number&nbsp;<font color="#000080">=</font>&nbsp;<font color="#0000dd">0</font><font color="#008080">;</font><br/>
+                                &nbsp;<br/>
+                                captaResultado<font color="#008000">&#40;</font>event<font color="#008080">:</font>&nbsp;any<font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#0000dd">this</font>.<font color="#007788">resultadoP</font>&nbsp;<font color="#000080">=</font>&nbsp;event<font color="#008080">;</font>&nbsp;<br/>
+                                <font color="#008000">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#ff0000">/*CODIGO&nbsp;DEL&nbsp;HIJO*/</font><br/>
+                                <font color="#0000dd">export</font>&nbsp;<font color="#0000ff">class</font>&nbsp;ComunicacionComponent&nbsp;<font color="#008000">&#123;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;@Input<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;valor1<font color="#008080">:</font>&nbsp;string&nbsp;<font color="#000080">=</font>&nbsp;<font color="#FF0000">&quot;&quot;</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;@Input<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;valor2<font color="#008080">:</font>&nbsp;string&nbsp;<font color="#000080">=</font>&nbsp;<font color="#FF0000">&quot;&quot;</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;aux1<font color="#008080">:</font>&nbsp;number&nbsp;<font color="#000080">=</font>&nbsp;<font color="#0000dd">0</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;aux2<font color="#008080">:</font>&nbsp;number&nbsp;<font color="#000080">=</font>&nbsp;<font color="#0000dd">0</font><font color="#008080">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;@Output<font color="#008000">&#40;</font><font color="#008000">&#41;</font><br/>
+                                &nbsp;&nbsp;envRes<font color="#008080">:</font>&nbsp;EventEmitter<font color="#000080">&lt;</font>number<font color="#000080">&gt;</font>&nbsp;<font color="#000080">=</font>&nbsp;<font color="#0000dd">new</font>&nbsp;EventEmitter<font color="#000080">&lt;</font>number<font color="#000080">&gt;</font><font color="#008000">&#40;</font><font color="#008000">&#41;</font><font color="#008080">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngAfterContentChecked<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux1</font>&nbsp;<font color="#000080">=</font>&nbsp;parseFloat<font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">valor1</font><font color="#008000">&#41;</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux2</font>&nbsp;<font color="#000080">=</font>&nbsp;parseFloat<font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">valor2</font><font color="#008000">&#41;</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;<font color="#008000">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;suma<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">envRes</font>.<font color="#007788">emit</font><font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">aux1</font>&nbsp;<font color="#000040">+</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux2</font><font color="#008000">&#41;</font><font color="#008080">;</font>&nbsp;<font color="#008000">&#125;</font><br/>
+                                &nbsp;&nbsp;resta<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">envRes</font>.<font color="#007788">emit</font><font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">aux1</font>&nbsp;<font color="#000040">-</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux2</font><font color="#008000">&#41;</font><font color="#008080">;</font>&nbsp;<font color="#008000">&#125;</font><br/>
+                                &nbsp;&nbsp;multiplica<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">envRes</font>.<font color="#007788">emit</font><font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">aux1</font>&nbsp;<font color="#000040">*</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux2</font><font color="#008000">&#41;</font><font color="#008080">;</font>&nbsp;<font color="#008000">&#125;</font><br/>
+                                &nbsp;&nbsp;divide<font color="#008000">&#40;</font><font color="#008000">&#41;</font>&nbsp;<font color="#008000">&#123;</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">envRes</font>.<font color="#007788">emit</font><font color="#008000">&#40;</font><font color="#0000dd">this</font>.<font color="#007788">aux1</font>&nbsp;<font color="#000040">/</font>&nbsp;<font color="#0000dd">this</font>.<font color="#007788">aux2</font><font color="#008000">&#41;</font><font color="#008080">;</font>&nbsp;<font color="#008000">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#008000">&#125;</font><br/>
+                                &nbsp;</blockquote>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#ff0000">/*CODIGO&nbsp;DEL&nbsp;PADRE*/</font><br/>
+                                .<font color="#007788">input</font><font color="#000040">-</font>group<font color="#000040">-</font>text<font color="#008000">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;width<font color="#008080">:</font>&nbsp;<font color="#0000dd">100</font><font color="#000040">%</font><font color="#008080">;</font><br/>
+                                <font color="#008000">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#ff0000">/*CODIGO&nbsp;DEL&nbsp;HIJO*/</font><br/>
+                                button<font color="#008000">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;background<font color="#000040">-</font>color<font color="#008080">:</font>&nbsp;rgb<font color="#008000">&#40;</font><font color="#0000dd">94</font>,&nbsp;<font color="#0000dd">151</font>,&nbsp;<font color="#0000dd">236</font><font color="#008000">&#41;</font><font color="#008080">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;width<font color="#008080">:</font>&nbsp;<font color="#0000dd">100</font><font color="#000040">%</font><font color="#008080">;</font><br/>
+                                <font color="#008000">&#125;</font><br/>
+                                &nbsp;</blockquote>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        El padre envia dos valores al hijo atraves del @Input el hijo coge esos valores y realiza la operación pertinente despues de calcular el 
+                        resultado se lo envia al padre a través de @Output con EventEmitter y emit pasandole el resultado calculado, se emite cuando se realiza cualquier 
+                        tipo de operación.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 4</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    https://www.arquitecturajava.com/angular-input-vs-output-y-eventos/
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+</mat-grid-list>
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->

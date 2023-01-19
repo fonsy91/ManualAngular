@@ -1,0 +1,52 @@
+h1{
+    margin-top: -30px;
+}
+
+.codigoTS{
+    background-color: rgb(229, 239, 252);
+}
+
+.table{
+    margin-top: 20px;
+}
+
+pre{
+    margin-top: 20px;
+}
+
+.explicacion{
+    margin-top: 20px;
+}
+
+.imgDatos{
+    background-color: rgb(218, 214, 214);
+}
+
+td{
+    text-align: left;
+}
+
+/*EJEMPLO 1***********************/
+.fondo { 
+    background: yellow; 
+}
+
+td { 
+    text-align: center;
+    vertical-align: middle; 
+
+}
+.tamB { 
+    height:40px; width:600px 
+}
+/*********************************/
+
+
+
+/*EJEMPLO 3***********************/
+.input-group-text{
+    width: 100%;
+}
+
+
+/*********************************/

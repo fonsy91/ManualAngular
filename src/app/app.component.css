@@ -1,0 +1,34 @@
+.contenedor-padre {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.barra {
+    flex: 0 1 auto;
+}
+
+.contenido {
+    flex: 1 1 auto;
+}
+
+.padding-10 {
+    padding: 100px;
+}
+
+.docu{
+    margin-left: 10px;
+}
+
+p{
+    text-align: justify;
+}
+
+.tituloNav{
+    margin-left: 20px;
+}
+
+mat-nav-list a{
+    color: black;
+}
+
