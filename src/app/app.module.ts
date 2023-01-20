@@ -22,6 +22,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HijoConceptosComponent } from './Componentes/hijo-conceptos/hijo-conceptos.component';
 import { ComunicacionComponent } from './Componentes/comunicacion/comunicacion.component';
 import { InputOutputComponent } from './Componentes/input-output/input-output.component';
+import { CicloVidaComponent } from './Componentes/ciclo-vida/ciclo-vida.component';
+import { DirectivasComponent } from './ComponentesDirectivas/directivas/directivas.component';
 
 
 
@@ -33,6 +35,8 @@ import { InputOutputComponent } from './Componentes/input-output/input-output.co
     HijoConceptosComponent,
     ComunicacionComponent,
     InputOutputComponent,
+    CicloVidaComponent,
+    DirectivasComponent,
   
   ],
   imports: [

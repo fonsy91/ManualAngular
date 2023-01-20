@@ -1,1 +1,13 @@
-<p>input-output works!</p>
+<!--CODIGO DEL HIJO-->
+<div class="border border-dark border-1">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">COMPONENTE HIJO RECIBE</span>
+        <input placeholder={{texto}} type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">COMPONENTE HIJO ENVIA</span>
+        <input [(ngModel)]="InputHijo" placeholder="Enviar a padre" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <button (click)="enviarPadre()" type="button" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

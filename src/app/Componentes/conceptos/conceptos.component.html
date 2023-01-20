@@ -1,7 +1,7 @@
 <h1>CONCEPTOS ANGULAR</h1>
 <mat-grid-list cols="1" rowHeight="6:1">
     <mat-grid-tile></mat-grid-tile>
-    <h3>MÓDULOS</h3>
+    <h2>MÓDULOS</h2>
     <p>
         Los módulos son clases que nos permiten organizar
         nuestra aplicación encapsulando funcionalidades concretas
@@ -72,7 +72,7 @@
         y proveedores estén disponibles para todas las aplicaciones. 
     </p>
     <br>
-    <h3>COMPONENTES</h3>
+    <h2>COMPONENTES</h2>
     <p>
         El componente es el elemento básico del desarrollo en Angular. Una aplicación suele constar de una especie de árbol
         de componentes de varios niveles donde un componente puede llamar a sus componentes hijos y, a su vez, estos llamar a sus propios hijos (o
@@ -99,7 +99,7 @@
     </mat-card>
     <br>
     <ul>
-        <li><b>Import:</b> permite importar otros componentes a utilizarse dentro del componente que se está deniendo. Como mínimo, importamos Component de @angular/core.</li>
+        <li><b>Import:</b> permite importar otros componentes a utilizarse dentro del componente que se está definiendo. Como mínimo, importamos Component de @angular/core.</li>
         <li><b>Decorador:</b> función de tipo decorador que posee un objeto con los metadatos que indican a Angular cómo se crea, compila y ejecuta el componente.</li>
         <li><b>Export class:</b> exporta la clase asociada al componente para hacerla visible a otros componentes, de forma que puedan usar sus propiedades y métodos
             dependiendo a su vez de la visibilidad establecida a los mismos. Hace las veces de controlador en la clásica arquitectura MVC (Modelo-Vista-Controlador).</li>
@@ -392,7 +392,7 @@ td <span style="color: #00AA00;">&#123;</span>
     <h3>COMUNICACIÓN ENTRE COMPONENTES</h3>
     <p>
         La comunicación entre componentes puede realizarse
-        de diversas maneras (servicios, observables, etc.), pero en
+        de diversas maneras (servicios, observables, etc.) se verá más adelante, pero en
         este ejercicio, utilizaremos los decoradores <b>@Input y @
         Output</b> mencionados brevemente en ejercicios anteriores.
         Habíamos comentado que, mediante @Input, podemos
@@ -562,15 +562,220 @@ td <span style="color: #00AA00;">&#123;</span>
             <h4>EJEMPLO 4</h4>
               <mat-tab-group>
                 <mat-tab label="Programa">
-                    https://www.arquitecturajava.com/angular-input-vs-output-y-eventos/
+                    <!--CODIGO DEL PADRE-->
+                    <div class="border border-dark border-1">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">COMPONENTE PADRE ENVIA</span>
+                            <input [(ngModel)]="textoDeInput" placeholder="Enviar a hijo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <button (click)="colocaTexto()" type="button" class="btn btn-primary">Enviar</button>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">COMPONENTE PADRE RECIBE</span>
+                            <input placeholder={{textoHijo}} type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <!--CODIGO DEL HIJO INCRUSTADO EN EL PADRE-->
+                    <app-input-output [texto]="textoDeInputAaux" (eventoHijo)="onMensajeHijo($event)"></app-input-output>
                 </mat-tab>
                 <mat-tab label="Código" class="codigo">
                     <mat-tab-group>
                         <mat-tab label="HTML">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);"> &lt;!--CODIGO DEL PADRE--&gt;
+    &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"border border-dark border-1"</span>&gt;
+        &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group mb-3"</span>&gt;
+            &lt;span <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group-text"</span> id=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;COMPONENTE PADRE ENVIA&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/span&gt;
+            &lt;input [(ngModel)]="textoDeInput" placeholder="Enviar a hijo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"&gt;
+            &lt;button (click)="colocaTexto()" type="button" class="btn btn-primary"&gt;Enviar&lt;/</span>button&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+        &lt;div class="input-group mb-3"&gt;
+            &lt;span class="input-group-text" id="inputGroup-sizing-default"&gt;COMPONENTE PADRE RECIBE&lt;/</span>span&gt;
+            &lt;input placeholder={{textoHijo}} <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"text"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"form-control"</span> aria-label=<span class="hljs-string" style="color: rgb(0, 136, 0);">"Sizing example input"</span> aria-describedby=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+    &lt;/</span>div&gt;
+    &lt;!--CODIGO DEL HIJO INCRUSTADO EN EL PADRE--&gt;
+&lt;app-input-output [texto]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"textoDeInputAaux"</span> (eventoHijo)=<span class="hljs-string" style="color: rgb(0, 136, 0);">"onMensajeHijo($event)"</span>&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/app-input-output&gt;</span></pre>
+
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">&lt;!--CODIGO DEL HIJO--&gt;
+    &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"border border-dark border-1"</span>&gt;
+        &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group mb-3"</span>&gt;
+            &lt;span <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group-text"</span> id=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;COMPONENTE HIJO RECIBE&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/span&gt;
+            &lt;input placeholder=llave_texto_llave type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"&gt;
+        &lt;/</span>div&gt;
+        
+        &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group mb-3"</span>&gt;
+            &lt;span <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"input-group-text"</span> id=<span class="hljs-string" style="color: rgb(0, 136, 0);">"inputGroup-sizing-default"</span>&gt;COMPONENTE HIJO ENVIA&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/span&gt;
+            &lt;input [(ngModel)]="InputHijo" placeholder="Enviar a padre" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"&gt;
+            &lt;button (click)="enviarPadre()" type="button" class="btn btn-primary"&gt;Enviar&lt;/</span>button&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+    &lt;/</span>div&gt;</pre>
 
                         </mat-tab>
                         <mat-tab label="TS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#006600">/*&lt;!--CODIGO&nbsp;DEL&nbsp;PADRE--&gt;*/</font><br/>
+                                textoDeInput<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                textoDeInputAaux<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                textoHijo<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;<br/>
+                                colocaTexto<font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">textoDeInputAaux</font>&nbsp;<font color="#339933">=</font>&nbsp;<font color="#000066">this</font>.<font color="#660066">textoDeInput</font><font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                onMensajeHijo<font color="#009900">&#40;</font>mensaje<font color="#339933">:</font>&nbsp;any<font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">textoHijo</font><font color="#339933">=</font>mensaje<font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;<font color="#006600">/*CODIGO&nbsp;DEL&nbsp;HIJO*/</font><br/>
+                                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;InputOutputComponent&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;<font color="#339933">@</font>Input<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;texto<font color="#339933">:</font>string&nbsp;<font color="#339933">=</font><font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#339933">@</font>Output<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;eventoHijo&nbsp;<font color="#339933">=</font>&nbsp;<font color="#000066">new</font>&nbsp;EventEmitter<font color="#339933">&lt;</font>string<font color="#339933">&gt;</font><font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;InputHijo<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;enviarPadre<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">eventoHijo</font>.<font color="#660066">emit</font><font color="#009900">&#40;</font><font color="#000066">this</font>.<font color="#660066">InputHijo</font><font color="#009900">&#41;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;</blockquote>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+                            <blockquote style="background: rgb(255, 255, 255);">.<font color="#660066">border</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;padding<font color="#339933">:</font>&nbsp;10px<font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;margin<font color="#339933">-</font>top<font color="#339933">:</font>&nbsp;10px<font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;</blockquote>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Enviamos mensajes desde el padre al hijo a traves del decorador @Input y del hijo al padre con @Output y EventEmitter con .emit
+                        los decoradores siempre se declaran en el hijo junto con el EventEmitter, en la etiqueta selector del componente va el dato a transmitir 
+                        de padre a hijo y un evento emitter junto con la funcion en el padre que la trata como se ve en el codigo HTML hijo incrustado en el padre.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h3>COMPONENTES: CICLO DE VIDA</h3>
+    <p>
+        Las directivas y componentes poseen un ciclo de vida
+        de tal manera que se crean, se actualizan y finalmente
+        se destruyen. Angular ofrece los lifecycle hooks (o
+        “ganchos” del ciclo de vida) para que los desarrolladores
+        puedan aprovecharlos por mediación de interfaces
+        cuyo nombre es idéntico al evento producido, pero
+        anteponiéndole el prefijo ng. Las directivas poseen un
+        ciclo más corto. Los lifecycle hooks son los siguientes:
+    </p>
+    <ul>
+        <li><b>ngOnChanges:</b>Cuando se detectan cambios en las propiedades de entrada. El método recibe un objeto SimpleChanges de los valores de propiedad actuales y
+            anteriores. Es decir cada vez que Angular detecta un cambio en los inputs del componente (cuando tienes algún property binding).</li>
+        <li><b>ngOnInit:</b>Tras la primera ejecución de ngOnChanges. Se llama solo una vez e inicializa el componente o directiva. Usamos este método para realizar 
+            inicializaciones justo después de la construcción del componente. Es un buen lugar para cargar datos.</li>
+        <li><b>ngDoCheck:</b>Se usa para actuar sobre los cambios que Angular no captura y que pueden tener cierto interés más allá
+            de un simple cambio de estado.</li>
+        <li><b>ngAfterContentInit:</b> Se ejecuta una sola vez, justo después de que Angular proyecte contenido externo en la vista del componente </li>
+        <li><b>ngAfterContentChecked:</b>Se ejecuta después de que Angular compruebe el contenido proyectado en el componente. Se ejecuta también durante los 
+            ciclos de detección de cambios, después de</li>
+        <li><b>ngAfterViewInit:</b>Se llama una única vez, tras inicializar las vistas y sub-vistas del componente.</li>
+        <li><b>ngAfterViewChecked:</b>Se llama después de comprobar los cambios de las vistas y sub-vistas del componente. Se ejecuta también durante el ciclo de detección de cambios, 
+            después de ngAfterContentChecked().</li>
+        <li><b>ngOnDestroy:</b>Se llama solo una vez, justo antes de que Angular destruya el componente, y sirve para prevenir memory leaks, eliminando por ejemplo suscripciones a 
+            Observables e event handlers.</li>
+    </ul>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 5</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <!--CODIGO DEL PADRE-->
+                    <div class="container bg"><br>
+                        <b>Es necesario abrir la consola de Chrome para ver por donde pasa el componente en cada ciclo de su vida.</b><br>
+                        Componente padre <input class="form-control" [(ngModel)]="salidaPadre"><br>
+                    </div>
+                     <!--CODIGO DEL HIJO INCRUSTADO EN EL PADRE-->
+                    <br><hr><app-ciclo-vida [entradaHijo]="salidaPadre"></app-ciclo-vida>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">&lt;!--CODIGO DEL PADRE--&gt;
+                                &lt;div <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"container bg"</span>&gt;&lt;br&gt;
+                                    &lt;b&gt;Es necesario abrir la consola de Chrome para ver por donde pasa el componente en cada ciclo de su vida.&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/b&gt;&lt;br&gt;
+                                    Componente padre &lt;input class="form-control" [(ngModel)]="salidaPadre"&gt;&lt;br&gt;
+                                &lt;/</span>div&gt;
+                                 &lt;!--CODIGO DEL HIJO INCRUSTADO EN EL PADRE--&gt;
+&lt;br&gt;&lt;hr&gt;&lt;app-ciclo-vida [entradaHijo]=<span class="hljs-string" style="color: rgb(0, 136, 0);">"salidaPadre"</span>&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/app-ciclo-vida&gt;</span></pre>
+<blockquote style="background: rgb(255, 255, 255);"><font color="#339933">&lt;!--</font>CODIGO&nbsp;DEL&nbsp;HIJO<font color="#339933">--&gt;</font><br/>
+    <font color="#339933">&lt;</font>div&nbsp;<font color="#FF0000">class</font><font color="#339933">=</font><font color="#3366CC">&quot;container&nbsp;bg&quot;</font><font color="#339933">&gt;</font><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>br<font color="#339933">&gt;</font>Componente&nbsp;hijo<font color="#339933">&lt;</font>input&nbsp;<font color="#FF0000">class</font><font color="#339933">=</font><font color="#3366CC">&quot;form-control&quot;</font>&nbsp;<font color="#009900">&#91;</font><font color="#009900">&#40;</font>ngModel<font color="#009900">&#41;</font><font color="#009900">&#93;</font><font color="#339933">=</font><font color="#3366CC">&quot;entradaHijo&quot;</font><font color="#339933">&gt;&lt;</font>br<font color="#339933">&gt;&lt;</font>br<font color="#339933">&gt;</font><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>div&nbsp;<font color="#FF0000">class</font><font color="#339933">=</font><font color="#3366CC">&quot;container&quot;</font><font color="#339933">&gt;</font>Hola&nbsp;<font color="#009900">&#123;</font><font color="#009900">&#123;</font>&nbsp;entradaHijo&nbsp;<font color="#009900">&#125;</font><font color="#009900">&#125;</font><font color="#339933">&lt;/</font>div<font color="#339933">&gt;</font><br/>
+    <font color="#339933">&lt;/</font>div<font color="#339933">&gt;&lt;</font>br<font color="#339933">&gt;</font></blockquote>
 
+                        </mat-tab>
+                        <mat-tab label="TS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#006600">/*&lt;!--CODIGO&nbsp;DEL&nbsp;PADRE--&gt;*/</font><br/>
+                                salidaPadre<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#006600">/*&lt;!--CODIGO&nbsp;DEL&nbsp;HIJO--&gt;*/</font><br/>
+                                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;CicloVidaComponent&nbsp;<font color="#FF0000">implements</font>&nbsp;OnInit<font color="#009900">&#123;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#339933">@</font>Input<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;entradaHijo<font color="#339933">:</font>&nbsp;string&nbsp;<font color="#339933">=</font>&nbsp;<font color="#3366CC">''</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;contador<font color="#339933">:</font>&nbsp;number&nbsp;<font color="#339933">=</font>&nbsp;<font color="#CC0000">0</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;constructor<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngOnInit<font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;Pasamos&nbsp;por&nbsp;ngOnInit&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngOnChanges<font color="#009900">&#40;</font>cambios<font color="#339933">:</font>&nbsp;SimpleChanges<font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">for</font><font color="#009900">&#40;</font>let&nbsp;propiedad&nbsp;<font color="#000066">in</font>&nbsp;cambios<font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;cambio&nbsp;<font color="#339933">=</font>&nbsp;cambios<font color="#009900">&#91;</font>propiedad<font color="#009900">&#93;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;actual&nbsp;<font color="#339933">=</font>&nbsp;JSON.<font color="#660066">stringify</font><font color="#009900">&#40;</font>cambio.<font color="#660066">currentValue</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;anterior&nbsp;<font color="#339933">=</font>&nbsp;JSON.<font color="#660066">stringify</font><font color="#009900">&#40;</font>cambio.<font color="#660066">previousValue</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;Pasa&nbsp;por&nbsp;ngOnChanges.&nbsp;Propiedad&nbsp;(&quot;</font>&nbsp;<font color="#339933">+</font>&nbsp;propiedad&nbsp;<font color="#339933">+</font>&nbsp;<font color="#3366CC">&quot;)&nbsp;valor&nbsp;actual&nbsp;(&quot;</font>&nbsp;<font color="#339933">+</font>&nbsp;actual&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#339933">+</font>&nbsp;<font color="#3366CC">&quot;)&nbsp;valor&nbsp;anterior&nbsp;(&quot;</font>&nbsp;<font color="#339933">+</font>&nbsp;anterior&nbsp;<font color="#339933">+</font>&nbsp;<font color="#3366CC">&quot;)&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#009900">&#125;</font>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngDoCheck<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;pasa&nbsp;por&nbsp;ngDoCheck&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngAfterContentInit<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;pasa&nbsp;por&nbsp;ngAfterContentInit&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngAfterContentChecked<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;pasa&nbsp;por&nbsp;ngAfterContentChecked&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngAfterViewInit<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;pasa&nbsp;por&nbsp;ngAfterViewInit&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;ngAfterViewChecked<font color="#009900">&#40;</font><font color="#009900">&#41;</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">mostrar</font><font color="#009900">&#40;</font><font color="#3366CC">&quot;pasa&nbsp;porngAfterViewChecked&quot;</font><font color="#009900">&#41;</font><font color="#339933">;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#006600">//Metodos</font><br/>
+                                &nbsp;&nbsp;mostrar<font color="#009900">&#40;</font>texto<font color="#339933">:</font>&nbsp;string<font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">contador</font>&nbsp;<font color="#339933">+=</font>&nbsp;<font color="#CC0000">1</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;console.<font color="#660066">log</font><font color="#009900">&#40;</font><font color="#000066">this</font>.<font color="#660066">contador</font><font color="#339933">+</font><font color="#3366CC">&quot;&nbsp;-&nbsp;&quot;</font><font color="#339933">+</font>texto<font color="#009900">&#41;</font><font color="#339933">;</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#009900">&#125;</font></blockquote>
                         </mat-tab>
                         <mat-tab label="CSS">
 
@@ -580,9 +785,8 @@ td <span style="color: #00AA00;">&#123;</span>
                 </mat-tab>
                 <mat-tab label="Explicación">
                     <p class="explicacion">
-                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
-                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
-                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                        Vemos como se pasa una cadea del padre al hijo y vemos por que etapas pasa un componente desde que de inicia hasta que se destruye en este 
+                        caso no lo destruimos las etapas que hemos visto antes del ejemplo, se puede observar todo esto desde la consola de chrome. 
                     </p>
                 </mat-tab>
               </mat-tab-group>

@@ -28,5 +28,31 @@ captaResultado(event: any) {
 }
 /***************************************************/
 
+/*EJEMPLO 4 ****************************************/
+/*<!--CODIGO DEL PADRE-->*/
+textoDeInput: string = '';
+textoDeInputAaux: string = '';
+textoHijo: string = '';
+
+
+colocaTexto(){
+  this.textoDeInputAaux = this.textoDeInput;
+}
+
+onMensajeHijo(mensaje: any) {
+  this.textoHijo=mensaje;
+ }
+
+/***************************************************/
+
+/*EJEMPLO 5 ****************************************/
+/*<!--CODIGO DEL PADRE-->*/
+salidaPadre: string = '';
+
+
+/***************************************************/
+
+
+
 
 }
