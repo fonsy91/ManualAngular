@@ -1,0 +1,94 @@
+h1{
+    margin-top: -30px;
+}
+
+.codigoTS{
+    background-color: rgb(229, 239, 252);
+}
+
+.table{
+    margin-top: 20px;
+}
+
+pre{
+    margin-top: 20px;
+}
+
+.explicacion{
+    margin-top: 20px;
+}
+
+.programa{
+    margin-top: 20px;
+}
+
+
+/*EJEMPLO 1***********************/
+.fa { 
+    background-color: rgb(255,246,51); 
+}
+
+.lg { 
+    font-size: 150%; 
+}
+/*********************************/
+
+/*EJEMPLO 2***********************/
+.uno{
+    border: 3px solid rgb(95, 151, 255);
+    background-color: lightblue;
+}
+
+.dos{
+    border: medium double #369; 
+    background-color:yellow;
+}
+
+.tamB{ 
+    height:40px; 
+    width:300px; 
+}
+/*********************************/
+
+/*EJEMPLO 4 y 5***********************/
+.bg { background-color: #F9E79F; }
+.bg2 { background-color: #D5F5E3; }
+/*********************************/
+
+/*EJEMPLO 6***********************/
+.div1 {
+    border-top: 10px solid blue; 
+    border-bottom: 5px solid red;
+    height: 120px; 
+    width: 70%;
+    background-color: #A9E2F3;
+}
+
+.div2 {
+    border: 10px solid green; 
+    height: 50px; 
+    width: 50%;
+    background-color: #58FA58;
+    text-align: center;
+}
+/*********************************/
+
+/*EJERCICIO FINAL***********************/
+.divBg { 
+    border: 10px solid green; width: 70%; background-color:#F3F781; 
+}
+
+.tamB { 
+    height:40px; 
+    width:50%; 
+}
+
+.activo { 
+    color: blue; 
+}
+    
+.inactivo{ 
+    color:red; 
+}
+
+/*********************************/

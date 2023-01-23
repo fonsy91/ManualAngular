@@ -1,1 +1,746 @@
-<p>directivas works!</p>
+<h1>DIRECTIVAS</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h2>DESCRIPCIÓN</h2>
+    <p>
+        Las directivas permiten añadir a HTML un comportamiento
+        dinámico mediante una etiqueta o un selector.
+        Dependiendo del tipo de directiva, podemos cambiar
+        la apariencia o comportamiento de un elemento o
+        incluso añadir o eliminar elementos del DOM (document
+        object model o modelo de objetos del
+        documento).
+        Básicamente, existen dos tipos de directivas:
+    </p>
+    <ul>
+        <li><b>Directivas estructurales:</b>alteran la estructura del DOM añadiendo, sustituyendo o eliminando elementos. Empiezan por asterisco (*).
+            <ul>
+                <li><b>ngFor:</b>permite iterar sobre una lista de elementos y realizar diversas acciones en un HTML como, por ejemplo, fabricar listas.</li>
+                <li><b>ngIf:</b>en base a una evaluación, crea o elimina elementos en el DOM.</li>
+                <li><b>ngSwitch:</b>gestiona conjuntos de tags eliminando los que no cumplan una condición.</li>
+            </ul>
+        </li>
+        <li><b>Directivas de atributo:</b>modifican la apariencia de un elemento o modifican su comportamiento.
+            <ul>
+                <li><b>ngClass:</b>permite añadir o eliminar dinámicamente una o varias clases CSS en un elemento. Es decir activará o desactivará una o más 
+                clases de un CSS del tipo (.contenedor) haciendo que se vea en el DOM los cambio del CSS o que no se vean</li>
+                <li><b>ngModel:</b>habilita un mecanismo de binding bi-direccional.</li>
+                <li><b>ngStyle:</b>permite asignar varios estilos inline a un elemento.</li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 1 (ngClass)</h4>
+            <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <input type="checkbox" (change)="checkFondo()"> Fondo. (fondoAmarillo = {{fondoAmarillo}})<br>
+                        <input type="checkbox" (change)="checkLetra()"> Tam.letra. (letraGrande = {{letraGrande}})<hr>
+                        <div [ngClass]="asignaClases()">
+                            Este texto variará según el resultado del método.<br>
+                            Si fondoAmarillo=true -> el fondo será amarillo.<br>
+                            Si letraGrande=true -> las letras serán grandes.
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#339933">&lt;</font>div&nbsp;<font color="#FF0000">class</font><font color="#339933">=</font><font color="#3366CC">&quot;programa&quot;</font><font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>input&nbsp;type<font color="#339933">=</font><font color="#3366CC">&quot;checkbox&quot;</font>&nbsp;<font color="#009900">&#40;</font>change<font color="#009900">&#41;</font><font color="#339933">=</font><font color="#3366CC">&quot;checkFondo()&quot;</font><font color="#339933">&gt;</font>&nbsp;Fondo.&nbsp;<font color="#009900">&#40;</font>fondoAmarillo&nbsp;<font color="#339933">=</font>&nbsp;<font color="#009900">&#123;</font><font color="#009900">&#123;</font>fondoAmarillo<font color="#009900">&#125;</font><font color="#009900">&#125;</font><font color="#009900">&#41;</font><font color="#339933">&lt;</font>br<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>input&nbsp;type<font color="#339933">=</font><font color="#3366CC">&quot;checkbox&quot;</font>&nbsp;<font color="#009900">&#40;</font>change<font color="#009900">&#41;</font><font color="#339933">=</font><font color="#3366CC">&quot;checkLetra()&quot;</font><font color="#339933">&gt;</font>&nbsp;Tam.<font color="#660066">letra</font>.&nbsp;<font color="#009900">&#40;</font>letraGrande&nbsp;<font color="#339933">=</font>&nbsp;<font color="#009900">&#123;</font><font color="#009900">&#123;</font>letraGrande<font color="#009900">&#125;</font><font color="#009900">&#125;</font><font color="#009900">&#41;</font><font color="#339933">&lt;</font>hr<font color="#339933">&gt;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;<font color="#339933">&lt;</font>div&nbsp;<font color="#009900">&#91;</font>ngClass<font color="#009900">&#93;</font><font color="#339933">=</font><font color="#3366CC">&quot;asignaClases()&quot;</font><font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Este&nbsp;texto&nbsp;variará&nbsp;según&nbsp;el&nbsp;resultado&nbsp;del&nbsp;método.<font color="#339933">&lt;</font>br<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;fondoAmarillo<font color="#339933">=</font><font color="#003366">true</font>&nbsp;<font color="#339933">-&gt;</font>&nbsp;el&nbsp;fondo&nbsp;será&nbsp;amarillo.<font color="#339933">&lt;</font>br<font color="#339933">&gt;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;letraGrande<font color="#339933">=</font><font color="#003366">true</font>&nbsp;<font color="#339933">-&gt;</font>&nbsp;las&nbsp;letras&nbsp;serán&nbsp;grandes.<br/>
+                                &nbsp;&nbsp;&nbsp;<font color="#339933">&lt;/</font>div<font color="#339933">&gt;</font><br/>
+                                <font color="#339933">&lt;/</font>div<font color="#339933">&gt;</font></blockquote>
+                        </mat-tab>
+                        <mat-tab label="TS">
+                            <blockquote style="background: rgb(255, 255, 255);"><font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;DirectivasComponent&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#006600">/*EJEMPLO&nbsp;1***********************/</font><br/>
+                                fondoAmarillo<font color="#339933">:</font>&nbsp;<font color="#FF0000">boolean</font>&nbsp;<font color="#339933">=</font>&nbsp;<font color="#003366">false</font><font color="#339933">;</font><br/>
+                                letraGrande<font color="#339933">:</font>&nbsp;<font color="#FF0000">boolean</font>&nbsp;<font color="#339933">=</font>&nbsp;<font color="#003366">false</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                checkFondo<font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">fondoAmarillo</font><font color="#339933">=!</font><font color="#000066">this</font>.<font color="#660066">fondoAmarillo</font><font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                checkLetra<font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;<font color="#000066">this</font>.<font color="#660066">letraGrande</font><font color="#339933">=!</font><font color="#000066">this</font>.<font color="#660066">letraGrande</font><font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                asignaClases<font color="#009900">&#40;</font><font color="#009900">&#41;</font><font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;let&nbsp;classes&nbsp;<font color="#339933">=</font>&nbsp;<font color="#009900">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;fa<font color="#339933">:</font>&nbsp;<font color="#000066">this</font>.<font color="#660066">fondoAmarillo</font><font color="#339933">,</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;lg<font color="#339933">:</font>&nbsp;<font color="#000066">this</font>.<font color="#660066">letraGrande</font><br/>
+                                &nbsp;&nbsp;<font color="#009900">&#125;</font><font color="#339933">;</font><br/>
+                                &nbsp;<br/>
+                                &nbsp;&nbsp;<font color="#000066">return</font>&nbsp;classes<font color="#339933">;</font><br/>
+                                <font color="#009900">&#125;</font><br/>
+                                <font color="#006600">/*********************************/</font><br/>
+                                &nbsp;<br/>
+                                <font color="#009900">&#125;</font></blockquote>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+                            <blockquote style="background: rgb(255, 255, 255);">.<font color="#660066">fa</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;background<font color="#339933">-</font>color<font color="#339933">:</font>&nbsp;rgb<font color="#009900">&#40;</font><font color="#CC0000">255</font><font color="#339933">,</font><font color="#CC0000">246</font><font color="#339933">,</font><font color="#CC0000">51</font><font color="#009900">&#41;</font><font color="#339933">;</font>&nbsp;<br/>
+                                <font color="#009900">&#125;</font><br/>
+                                &nbsp;<br/>
+                                .<font color="#660066">lg</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;font<font color="#339933">-</font>size<font color="#339933">:</font>&nbsp;<font color="#CC0000">150</font><font color="#339933">%;</font>&nbsp;<br/>
+                                <font color="#009900">&#125;</font></blockquote>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        La clave de este ejemplo es que hacemos uso de [ngClass] al cual asignamos una función asignaClases() que contiene un objeto en el cual 
+                        las propiedades son los nombres de las clases que hay en el CSS y en funcion de esas propiedades si estan a true se decora el DOM y si 
+                        estan a false no se decora. La funcion devuelve al [ngClass] el valor de ese esas propiedades asi angular sabe si tiene que decorar o no.
+                    </p>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>ngIF</h2>
+    <p>
+        Tal y como habíamos comentado en el ejercicio anterior,
+        *ngIf permite añadir o eliminar un elemento
+        al DOM si se cumple una determinada condición. A
+        diferencia de la propiedad visibility de CSS donde
+        se puede ocultar un elemento, ngIf lo elimina físicamente
+        si la condición no se cumple, de forma que
+        no consume recursos.
+        En el siguiente ejercicio, mostramos unos elementos div basándonos en *ngIf y en
+        el valor asociado a unas variables de tipo Boolean. Dichos div se hallan anidados en
+        una sencilla jerarquía que hemos llamado grupos, los cuales contienen subgrupos.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2 (ngIf)</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <button type="button" class="btn btn-success tamB" (click)="grupo1=!grupo1"> Grupo1. (grupo1 = {{grupo1}})</button><br>
+                        <div *ngIf="grupo1" class="uno">Grupo1. <br>
+                            <button type="button" class="btn btn-primary tamB" (click)="subgrupo11=!subgrupo11">Subgrupo11. (subgrupo11 = {{subgrupo11}})</button><br>
+                            <div *ngIf="subgrupo11" class="dos">Subgrupo11<br></div> 
+                                <button type="button" class="btn btn-primary tamB" (click)="subgrupo12=!subgrupo12"> Subgrupo12. (subgrupo12 = {{subgrupo12}})</button><br>
+                                <div *ngIf="subgrupo12" class="dos">
+                                    Subgrupo12<br>
+                                </div>
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success tamB" (click)="grupo2=!grupo2"> Grupo2. (grupo2 = {{grupo2}})</button><br>
+                        <div *ngIf="grupo2" class="uno">Grupo2.<br>
+                            <button type="button" class="btn btn-primary tamB" (click)="subgrupo21=!subgrupo21"> Subgrupo21. (subgrupo21 = {{subgrupo21}})</button><br>
+                            <div *ngIf="subgrupo21" class="dos">
+                                Subgrupo21<br>
+                            </div>
+                            <button type="button" class="btn btn-primary tamB" (click)="subgrupo22=!subgrupo22"> Subgrupo22. (subgrupo22 = {{subgrupo22}})</button><br>
+                            <div *ngIf="subgrupo22" class="dos">
+                                Subgrupo22<br>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);"> &lt;button <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"button"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"btn btn-success tamB"</span> (click)=<span class="hljs-string" style="color: rgb(0, 136, 0);">"grupo1=!grupo1"</span>&gt; Grupo1. (grupo1 = {{grupo1}})&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;br&gt;
+&lt;div *ngIf="grupo1" class="uno"&gt;Grupo1. &lt;br&gt;
+    &lt;button type="button" class="btn btn-primary tamB" (click)="subgrupo11=!subgrupo11"&gt;Subgrupo11. (subgrupo11 = {{subgrupo11}})&lt;/</span>button&gt;&lt;br&gt;
+    &lt;div *ngIf=<span class="hljs-string" style="color: rgb(0, 136, 0);">"subgrupo11"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"dos"</span>&gt;Subgrupo11&lt;br&gt;&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt; 
+        &lt;button type="button" class="btn btn-primary tamB" (click)="subgrupo12=!subgrupo12"&gt; Subgrupo12. (subgrupo12 = {{subgrupo12}})&lt;/</span>button&gt;&lt;br&gt;
+        &lt;div *ngIf=<span class="hljs-string" style="color: rgb(0, 136, 0);">"subgrupo12"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"dos"</span>&gt;
+            Subgrupo12&lt;br&gt;
+        &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+&lt;/</span>div&gt;
+&lt;br&gt;
+&lt;button <span class="hljs-keyword" style="color: rgb(0, 0, 136);">type</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"button"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"btn btn-success tamB"</span> (click)=<span class="hljs-string" style="color: rgb(0, 136, 0);">"grupo2=!grupo2"</span>&gt; Grupo2. (grupo2 = {{grupo2}})&lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/button&gt;&lt;br&gt;
+&lt;div *ngIf="grupo2" class="uno"&gt;Grupo2.&lt;br&gt;
+    &lt;button type="button" class="btn btn-primary tamB" (click)="subgrupo21=!subgrupo21"&gt; Subgrupo21. (subgrupo21 = {{subgrupo21}})&lt;/</span>button&gt;&lt;br&gt;
+    &lt;div *ngIf=<span class="hljs-string" style="color: rgb(0, 136, 0);">"subgrupo21"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"dos"</span>&gt;
+        Subgrupo21&lt;br&gt;
+    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+    &lt;button type="button" class="btn btn-primary tamB" (click)="subgrupo22=!subgrupo22"&gt; Subgrupo22. (subgrupo22 = {{subgrupo22}})&lt;/</span>button&gt;&lt;br&gt;
+    &lt;div *ngIf=<span class="hljs-string" style="color: rgb(0, 136, 0);">"subgrupo22"</span> <span class="hljs-keyword" style="color: rgb(0, 0, 136);">class</span>=<span class="hljs-string" style="color: rgb(0, 136, 0);">"dos"</span>&gt;
+        Subgrupo22&lt;br&gt;
+    &lt;<span class="hljs-regexp" style="color: rgb(0, 136, 0);">/div&gt;
+&lt;/</span>div&gt;</pre>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(255, 255, 255); color: rgb(0, 0, 0);">
+    grupo1 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    grupo2 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    subgrupo11 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    subgrupo12 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    subgrupo21 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;
+    subgrupo22 = <span class="hljs-literal" style="color: rgb(0, 102, 102);">false</span>;</pre>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+                            <blockquote style="background: rgb(255, 255, 255);">.uno<font color="#00AA00">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">border</font><font color="#00AA00">:</font>&nbsp;<font>3px</font>&nbsp;<font color="#993333">solid</font>&nbsp;<font color="#9932cc">rgb</font><font color="#00AA00">&#40;</font><font color="#cc66cc">95</font><font color="#00AA00">,</font>&nbsp;<font color="#cc66cc">151</font><font color="#00AA00">,</font>&nbsp;<font color="#cc66cc">255</font><font color="#00AA00">&#41;</font><font color="#00AA00">;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">background-color</font><font color="#00AA00">:</font>&nbsp;<font color="#dc143c">lightblue</font><font color="#00AA00">;</font><br/>
+                                <font color="#00AA00">&#125;</font><br/>
+                                &nbsp;<br/>
+                                .dos<font color="#00AA00">&#123;</font><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">border</font><font color="#00AA00">:</font>&nbsp;<font color="#993333">medium</font>&nbsp;<font color="#993333">double</font>&nbsp;<font color="#cc00cc">#369</font><font color="#00AA00">;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">background-color</font><font color="#00AA00">:</font><font color="#dc143c">yellow</font><font color="#00AA00">;</font><br/>
+                                <font color="#00AA00">&#125;</font><br/>
+                                &nbsp;<br/>
+                                <font color="#6666ff">.tamB</font><font color="#00AA00">&#123;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">height</font><font color="#00AA00">:</font><font>40px</font><font color="#00AA00">;</font>&nbsp;<br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">width</font><font color="#00AA00">:</font><font>300px</font><font color="#00AA00">;</font>&nbsp;<br/>
+                                <font color="#00AA00">&#125;</font></blockquote>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        En funcion de las variables declaradas en el .ts con un valor de true o false hacemos que aparezcan o desaparezcan 
+                        en el DOM gracias a la directiva *ngIf. Al presionar los botones cambiamos el valor de true a false en las variables y 
+                        esto hará que aparezcan o no. 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>ngFor</h2>
+    <p>
+        La directiva permite insertar bloques de código de ngFor HTML forma dinámica,
+        basándose en una lista de elementos (en general, arrays). La sintaxis general es la
+        siguiente: *ngFor=”let elemento of elementos” Podemos averiguar el número del elemento que se está
+        tratando si añadimos let i=index, tal y como se muestra
+        a continuación: *ngFor=”let elemento of elementos ; let i=index“
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 3</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="container programa"><br>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-success" *ngFor="let nombre of nombres; let i=index">
+                                <p>{{i + 1}} - Nombre: <b>{{ nombre.nom }}</b>Edad: <b>{{ nombre.edad}}</b></p> 
+                            </li>
+                        </ul>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre  class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>ul <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item list-group-item-success&quot;</span> <span style="color: #339933;">*</span>ngFor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;let nombre of nombres; let i=index&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>p<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>i <span style="color: #339933;">+</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">-</span> Nombre<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span> nombre.<span style="color: #660066;">nom</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;</span>Edad<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span> nombre.<span style="color: #660066;">edad</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>p<span style="color: #339933;">&gt;</span> 
+    <span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>ul<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #006600; font-style: italic;">//Array de objetos </span>
+public nombres <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span>
+    <span style="color: #009900;">&#123;</span>nom<span style="color: #339933;">:</span><span style="color: #3366CC;">&quot;uno&quot;</span><span style="color: #339933;">,</span>edad<span style="color: #339933;">:</span><span style="color: #CC0000;">10</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#123;</span>nom<span style="color: #339933;">:</span><span style="color: #3366CC;">&quot;dos&quot;</span><span style="color: #339933;">,</span>edad<span style="color: #339933;">:</span><span style="color: #CC0000;">20</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#123;</span>nom<span style="color: #339933;">:</span><span style="color: #3366CC;">&quot;tres&quot;</span><span style="color: #339933;">,</span>edad<span style="color: #339933;">:</span><span style="color: #CC0000;">30</span><span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Recorremos un array de objetos con ngFor y mostramos por pantalla cada uno de los valores tanto el nombre como la edad.
+                        Se hace uso let i=index para ver el indice del array que estamos recorriendo.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>ngSwitch</h2>
+    <p>
+        La directiva ngSwitch funciona como el
+        clásico switch que podemos encontrar en
+        multitud de lenguajes (p. ej., JavaScript).
+        Es decir, evalúa una expresión y compara su
+        resultado con una serie de valores añadiendo
+        al DOM el bloque asociado en caso de
+        coincidencia. Funciona con los siguientes
+        elementos:
+    </p>
+    <ul>
+        <li><b>[ngSwitch]="variable": </b>Expresión que se define como un atributo y que evalúa el contenido de variable. Utiliza la propiedad binding. Como variable, también
+            puede usarse una interpolación.</li>
+        <li><b>*ngSwitchCase: </b>Define la comparación que se va a realizar. Si se cumple, se muestra el elemento HTML asociado (div, p, li, etc.).</li>
+        <li><b>*ngSwitchDefault: </b>Define el elemento por defecto que se va a mostrar cuando no hay ninguna coincidencia.</li>
+    </ul>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 4</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="container bg" [ngSwitch]="opcion">Valor seleccionado:
+                            <div class="container text-success" *ngSwitchCase="'A'">Ha elegido la opcion: <b>A</b></div>
+                            <div class="container text-success" *ngSwitchCase="'B'">Ha elegido la opcion: <b>B</b></div>
+                            <div class="container text-success" *ngSwitchCase="'C'">Ha elegido la opcion: <b>C</b></div>
+                            <div class="container text-danger" *ngSwitchDefault><b>Sin selección</b></div>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <button class="btn btn-primary btn-lg" (click)="opcion='A'">A</button>
+                            <button class="btn btn-primary btn-md" (click)="opcion='B'">B</button>
+                            <button class="btn btn-primary btn-sm" (click)="opcion='C'">C</button>
+                        </div>
+                        <br>
+                        <div class="container bg2"><h5>Boton pulsado: {{opcion}}</h5></div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+    <pre class="javascript" style="font-family:monospace;"> <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container bg&quot;</span> <span style="color: #009900;">&#91;</span>ngSwitch<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion&quot;</span><span style="color: #339933;">&gt;</span>Valor seleccionado<span style="color: #339933;">:</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container text-success&quot;</span> <span style="color: #339933;">*</span>ngSwitchCase<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'A'&quot;</span><span style="color: #339933;">&gt;</span>Ha elegido la opcion<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>A<span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container text-success&quot;</span> <span style="color: #339933;">*</span>ngSwitchCase<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'B'&quot;</span><span style="color: #339933;">&gt;</span>Ha elegido la opcion<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>B<span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container text-success&quot;</span> <span style="color: #339933;">*</span>ngSwitchCase<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'C'&quot;</span><span style="color: #339933;">&gt;</span>Ha elegido la opcion<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>C<span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container text-danger&quot;</span> <span style="color: #339933;">*</span>ngSwitchDefault<span style="color: #339933;">&gt;&lt;</span>b<span style="color: #339933;">&gt;</span>Sin selección<span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-primary btn-lg&quot;</span> <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion='A'&quot;</span><span style="color: #339933;">&gt;</span>A<span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-primary btn-md&quot;</span> <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion='B'&quot;</span><span style="color: #339933;">&gt;</span>B<span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-primary btn-sm&quot;</span> <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion='C'&quot;</span><span style="color: #339933;">&gt;</span>C<span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container bg2&quot;</span><span style="color: #339933;">&gt;&lt;</span>h5<span style="color: #339933;">&gt;</span>Boton pulsado<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>opcion<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h5<span style="color: #339933;">&gt;&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">opcion<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+    <pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.bg</span> <span style="color: #00AA00;">&#123;</span> <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#F9E79F</span><span style="color: #00AA00;">;</span> <span style="color: #00AA00;">&#125;</span>
+<span style="color: #6666ff;">.bg2</span> <span style="color: #00AA00;">&#123;</span> <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#D5F5E3</span><span style="color: #00AA00;">;</span> <span style="color: #00AA00;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                    
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>ngModel</h2>
+    <p>
+        ngModel es un mecanismo que permite actualizar
+        los valores de las variables usadas en el componente
+        y en el archivo HTML de forma bidireccional. Este
+        tema se ve con más detalle en los ejercicios dedicados
+        al DATABINDING (One Way y Two Way). Antes
+        de poder utilizar ngModel hemos de importar el FormsModule
+        y añadirlo en la lista de módulos importados
+        en app.module.ts, sintaxis general: input [(ngModel)]=”variable”.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 5</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <p>Escribe para ver en minusculas y en mayusculas a la vez.</p>
+                        <div class="container bg">
+                            <br>
+                            <input class="form-control" [(ngModel)]="nombre" (keyup)="cambiaNombre($event)"><br>
+                            <input class="form-control" [(ngModel)]="nombre2" (keyup)="cambiaNombre2($event)"><br>
+                        </div>
+                        <br>
+                        <div *ngIf="nombre" class="container bg2">
+                            <h3>Hola {{nombre}} / {{nombre2}}</h3>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container bg&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span> <span style="color: #009900;">&#40;</span>keyup<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cambiaNombre($event)&quot;</span><span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre2&quot;</span> <span style="color: #009900;">&#40;</span>keyup<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cambiaNombre2($event)&quot;</span><span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #339933;">*</span>ngIf<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container bg2&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>h3<span style="color: #339933;">&gt;</span>Hola <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>nombre<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">/</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>nombre2<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h3<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">nombre<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">;</span>
+nombre2<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">;</span>
+&nbsp;
+cambiaNombre<span style="color: #009900;">&#40;</span>evento<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre</span><span style="color: #339933;">=</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre</span>.<span style="color: #660066;">toLowerCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre2</span><span style="color: #339933;">=</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre</span>.<span style="color: #660066;">toUpperCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+cambiaNombre2<span style="color: #009900;">&#40;</span>evento<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre2</span><span style="color: #339933;">=</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre2</span>.<span style="color: #660066;">toUpperCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre</span><span style="color: #339933;">=</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre2</span>.<span style="color: #660066;">toLowerCase</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.bg</span> <span style="color: #00AA00;">&#123;</span> <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#F9E79F</span><span style="color: #00AA00;">;</span> <span style="color: #00AA00;">&#125;</span>
+<span style="color: #6666ff;">.bg2</span> <span style="color: #00AA00;">&#123;</span> <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#D5F5E3</span><span style="color: #00AA00;">;</span> <span style="color: #00AA00;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        A la notación [()] también se le conoce como banana in a box por la forma
+                        gráfica resultante al imaginar que los corchetes representan una caja y los paréntesis
+                        una banana. En el siguiente ejemplo, vamos a trabajar con dos elementos de tipo
+                        INPUT donde observaremos que, al escribir en cualquiera de ellos, se copiará el texto
+                        al otro convirtiendo a minúsculas todo el texto en uno de ellos y a mayúsculas
+                        en el otro. Al mismo tiempo, mostraremos mediante interpolación el contenido de
+                        ambos INPUT. Hemos incluido un *ngIF para que el texto resultante de la concatenación
+                        solo se muestre si hay algún carácter introducido en cualquier INPUT. <br>
+                        (keyup) es un enlace de evento Angular para responder a cualquier evento DOM. Es un evento síncrono que se activa cuando el usuario interactúa con los controles de entrada basados en texto. 
+                        Cuando un usuario presiona y suelta una tecla, ocurre el evento (keyup). Para usar en controles de entrada basados en texto, generalmente se usa para obtener valores después de cada pulsación de tecla.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>ngStyle</h2>
+    <p>
+        ngStyle permite asignar varios estilos inline a un elemento con la definición de
+        una serie de estilos o bien al asociar una función que devuelve uno o varios estilos
+        en función de una serie de condiciones. 
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 6</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="container div1">
+                            <input type="checkbox" name="hayLetraGrande" [(ngModel)]="hayLetraGrande">Tamaño<br>
+                            <input type="checkbox" name="hayColorFondo" [(ngModel)]="hayColorFondo">Fondo<br>
+                            <input type="checkbox" name="hayLetraColor" [(ngModel)]="hayLetraColor">Color<br>
+                            <input type="checkbox" name="hayLetraItalica" [(ngModel)]="hayLetraItalica">Italica<br>
+                        </div>
+                        <br>
+                        <div class="container div2" [ngStyle]="defineEstilos()">Frase de prueba para ngStyle</div>
+                        <br>
+                        <div class="container" [ngStyle]="{'color': color, 'font-weight': 'bold', 'font-size': '150%', 'text-align':'center'}">Otra forma de usar ngStyle mirar código</div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container div1&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraGrande&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraGrande&quot;</span><span style="color: #339933;">&gt;</span>Tamaño<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayColorFondo&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayColorFondo&quot;</span><span style="color: #339933;">&gt;</span>Fondo<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraColor&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraColor&quot;</span><span style="color: #339933;">&gt;</span>Color<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraItalica&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;hayLetraItalica&quot;</span><span style="color: #339933;">&gt;</span>Italica<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container div2&quot;</span> <span style="color: #009900;">&#91;</span>ngStyle<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;defineEstilos()&quot;</span><span style="color: #339933;">&gt;</span>Frase de prueba para ngStyle<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+&nbsp;
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">color <span style="color: #339933;">=</span> <span style="color: #3366CC;">'blue'</span><span style="color: #339933;">;</span>
+hayLetraGrande<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+hayColorFondo<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+hayLetraColor<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+hayLetraItalica<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+&nbsp;
+defineEstilos<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    let styles<span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #3366CC;">'font-size'</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">hayLetraGrande</span> <span style="color: #339933;">?</span> <span style="color: #3366CC;">'300%'</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">'initial'</span><span style="color: #339933;">,</span>
+    <span style="color: #3366CC;">'background-color'</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">hayColorFondo</span> <span style="color: #339933;">?</span> <span style="color: #3366CC;">'#58FA58'</span> <span style="color: #339933;">:</span>
+    <span style="color: #3366CC;">'#FFFFFF'</span><span style="color: #339933;">,</span>
+    <span style="color: #3366CC;">'color'</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">hayLetraColor</span> <span style="color: #339933;">?</span> <span style="color: #3366CC;">'red'</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">'black'</span><span style="color: #339933;">,</span>
+    <span style="color: #3366CC;">'font-style'</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">hayLetraItalica</span> <span style="color: #339933;">?</span> <span style="color: #3366CC;">'italic'</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">'normal'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> styles<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;">div1 <span style="color: #00AA00;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">border-top</span><span style="color: #00AA00;">:</span> <span style="color: #933;">10px</span> <span style="color: #993333;">solid</span> <span style="color: #dc143c;">blue</span><span style="color: #00AA00;">;</span> 
+    <span style="color: #000000; font-weight: bold;">border-bottom</span><span style="color: #00AA00;">:</span> <span style="color: #933;">5px</span> <span style="color: #993333;">solid</span> <span style="color: #dc143c;">red</span><span style="color: #00AA00;">;</span>
+    <span style="color: #000000; font-weight: bold;">height</span><span style="color: #00AA00;">:</span> <span style="color: #933;">120px</span><span style="color: #00AA00;">;</span> 
+    <span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span> <span style="color: #933;">70%</span><span style="color: #00AA00;">;</span>
+    <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#A9E2F3</span><span style="color: #00AA00;">;</span>
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;
+<span style="color: #6666ff;">.div2</span> <span style="color: #00AA00;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">border</span><span style="color: #00AA00;">:</span> <span style="color: #933;">10px</span> <span style="color: #993333;">solid</span> <span style="color: #dc143c;">green</span><span style="color: #00AA00;">;</span> 
+    <span style="color: #000000; font-weight: bold;">height</span><span style="color: #00AA00;">:</span> <span style="color: #933;">50px</span><span style="color: #00AA00;">;</span> 
+    <span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span> <span style="color: #933;">50%</span><span style="color: #00AA00;">;</span>
+    <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#58FA58</span><span style="color: #00AA00;">;</span>
+    <span style="color: #000000; font-weight: bold;">text-align</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">center</span><span style="color: #00AA00;">;</span>
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        En el siguiente ejercicio, mostraremos un div en el que
+                        usamos ngStyle aplicando unos estilos más o menos
+                        fijos que solo se apoyan en una variable para determinar
+                        el color del texto y, a continuación, mostraremos
+                        un div al que asociamos una función que evaluará varias
+                        condiciones y dará como resultado un conjunto de
+                        estilos que se aplicarán simultáneamente. Al igual que
+                        en el ejercicio anterior, tendremos que importar FormsModule
+                        para utilizar ngModel (como veremos a
+                        lo largo del ejercicio).
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>EJERCICIO FINAL DE DIRECTIVAS</h2>
+    <p>
+        En el siguiente ejercicio realizaremos una aplicación en
+        la que se combinan las directivas mostradas en los ejercicios
+        anteriores. Mostraremos una colección de números
+        y un par de checkbox para escoger la visualización
+        de números pares o impares, ambos o ninguno.
+        En primer lugar, se muestra un botón mediante el cual
+        podemos usar *ngIf visualizando (o no) el div principal
+        con los checkbox y números. Para los checkbox,
+        usaremos ngClass para llamar a la función
+        clActividad() que aplicará una clase cambiando el
+        color (activo o inactivo). A continuación, usaremos
+        el *ngFor para crear un div por cada uno de los números existentes en un array de
+        números definido en el componente. Luego, usaremos ngSwitch para determinar
+        el valor a comparar en *ngSwitchCase. Dicho valor será el resto de dividir el índice
+        de cada elemento dentro de la lista entre dos para saber si es par o impar. Según
+        sea par o impar, se aplicará un color con ngStyle.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="container" style="text-align:center;">
+                            <button type="button" class="btn btn-success tamB" (click)="mostrar=!mostrar; pares=true; impares=true"> Mostrar. (mostrar = {{mostrar}})</button><br><br>
+                        </div>
+                        <div *ngIf="mostrar" class="container divBg">
+                            <input type="checkbox" [(ngModel)]="pares" name="pares">
+                            <span [ngClass]="clActividad(pares)">pares</span><br>
+                            <input type="checkbox" [(ngModel)]="impares" name="impares">
+                            <span [ngClass]="clActividad(impares)">impares</span><br>
+                            <div class="list-group-item-info" *ngFor="let numero of numeros; let i=index">
+                                <div [ngSwitch]="i%2">
+                                    <div *ngSwitchCase="'1'">
+                                        <p *ngIf="pares"><span [ngStyle]="{'color':colorPar}">{{i+1}}</span> - Numero: <b>{{numero}}</b></p>
+                                    </div>
+                                    <div *ngSwitchCase="'0'">
+                                        <p *ngIf="impares"><span [ngStyle]="{'color':colorImpar}">{{i+1}}</span> - Numero: <b>{{numero}}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container&quot;</span> style<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text-align:center;&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;button&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-success tamB&quot;</span> <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrar=!mostrar; pares=true; impares=true&quot;</span><span style="color: #339933;">&gt;</span> Mostrar. <span style="color: #009900;">&#40;</span>mostrar <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>mostrar<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #339933;">*</span>ngIf<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrar&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container divBg&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;pares&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;pares&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>span <span style="color: #009900;">&#91;</span>ngClass<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;clActividad(pares)&quot;</span><span style="color: #339933;">&gt;</span>pares<span style="color: #339933;">&lt;/</span>span<span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;impares&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;impares&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>span <span style="color: #009900;">&#91;</span>ngClass<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;clActividad(impares)&quot;</span><span style="color: #339933;">&gt;</span>impares<span style="color: #339933;">&lt;/</span>span<span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item-info&quot;</span> <span style="color: #339933;">*</span>ngFor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;let numero of numeros; let i=index&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>div <span style="color: #009900;">&#91;</span>ngSwitch<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;i%2&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #339933;">*</span>ngSwitchCase<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'1'&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>p <span style="color: #339933;">*</span>ngIf<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;pares&quot;</span><span style="color: #339933;">&gt;&lt;</span>span <span style="color: #009900;">&#91;</span>ngStyle<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'color':colorPar&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>i<span style="color: #339933;">+</span><span style="color: #CC0000;">1</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>span<span style="color: #339933;">&gt;</span> <span style="color: #339933;">-</span> Numero<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>numero<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>p<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #339933;">*</span>ngSwitchCase<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'0'&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>p <span style="color: #339933;">*</span>ngIf<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;impares&quot;</span><span style="color: #339933;">&gt;&lt;</span>span <span style="color: #009900;">&#91;</span>ngStyle<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;'color':colorImpar&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>i<span style="color: #339933;">+</span><span style="color: #CC0000;">1</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>span<span style="color: #339933;">&gt;</span> <span style="color: #339933;">-</span> Numero<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>numero<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;&lt;/</span>p<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">mostrar <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+numeros<span style="color: #339933;">:</span>number <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #339933;">,</span><span style="color: #CC0000;">5</span><span style="color: #339933;">,</span><span style="color: #CC0000;">6</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+pares<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">;</span> impares<span style="color: #339933;">:</span><span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">;</span>
+colorPar<span style="color: #339933;">:</span>string<span style="color: #339933;">=</span> <span style="color: #3366CC;">'blue'</span><span style="color: #339933;">;</span> 
+colorImpar<span style="color: #339933;">:</span>string <span style="color: #339933;">=</span> <span style="color: #3366CC;">'red'</span><span style="color: #339933;">;</span>
+&nbsp;
+clActividad<span style="color: #009900;">&#40;</span>valor<span style="color: #339933;">:</span>any<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    let classes <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span> activo<span style="color: #339933;">:</span> valor<span style="color: #339933;">,</span> inactivo<span style="color: #339933;">:</span> <span style="color: #339933;">!</span>valor <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> classes<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.divBg</span> <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">border</span><span style="color: #00AA00;">:</span> <span style="color: #933;">10px</span> <span style="color: #993333;">solid</span> <span style="color: #dc143c;">green</span><span style="color: #00AA00;">;</span> <span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span> <span style="color: #933;">70%</span><span style="color: #00AA00;">;</span> <span style="color: #000000; font-weight: bold;">background-color</span><span style="color: #00AA00;">:</span><span style="color: #cc00cc;">#F3F781</span><span style="color: #00AA00;">;</span> 
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;
+<span style="color: #6666ff;">.tamB</span> <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">height</span><span style="color: #00AA00;">:</span><span style="color: #933;">40px</span><span style="color: #00AA00;">;</span> 
+    <span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span><span style="color: #933;">50%</span><span style="color: #00AA00;">;</span> 
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;
+<span style="color: #6666ff;">.activo</span> <span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">color</span><span style="color: #00AA00;">:</span> <span style="color: #dc143c;">blue</span><span style="color: #00AA00;">;</span> 
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;
+<span style="color: #6666ff;">.inactivo</span><span style="color: #00AA00;">&#123;</span> 
+    <span style="color: #000000; font-weight: bold;">color</span><span style="color: #00AA00;">:</span><span style="color: #dc143c;">red</span><span style="color: #00AA00;">;</span> 
+<span style="color: #00AA00;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+
+</mat-grid-list>
+
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->
