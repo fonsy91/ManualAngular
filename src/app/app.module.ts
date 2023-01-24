@@ -24,6 +24,8 @@ import { ComunicacionComponent } from './Componentes/comunicacion/comunicacion.c
 import { InputOutputComponent } from './Componentes/input-output/input-output.component';
 import { CicloVidaComponent } from './Componentes/ciclo-vida/ciclo-vida.component';
 import { DirectivasComponent } from './ComponentesDirectivas/directivas/directivas.component';
+import { BindingComponent } from './ComponentesBinding_y_Librerias/binding/binding.component';
+import { FormulariosComponent } from './ComponentesFormularios/formularios/formularios.component';
 
 
 
@@ -37,6 +39,8 @@ import { DirectivasComponent } from './ComponentesDirectivas/directivas/directiv
     InputOutputComponent,
     CicloVidaComponent,
     DirectivasComponent,
+    BindingComponent,
+    FormulariosComponent,
   
   ],
   imports: [

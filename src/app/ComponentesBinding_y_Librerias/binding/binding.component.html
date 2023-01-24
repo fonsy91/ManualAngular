@@ -1,0 +1,373 @@
+<h1>DATA BINDING</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h2>One Way Data Binding (hacia el DOM): Interpolación, Property Binding y Class Binding</h2>
+    <p>
+        Cuando un navegador web carga un documento (vista),
+        genera una estructura de objetos que llamamos
+        DOM. El DOM puede alterarse mediante JavaScript
+        para cambiar dinámicamente los contenidos y el aspecto
+        de la página.
+        El Data Binding es un concepto primordial en Angular.
+        Permite definir la comunicación entre un componente
+        y el DOM, lo que hace que sea muy fácil definir aplicaciones
+        interactivas sin preocuparnos de la actualización
+        de datos en DOM (push) o la obtención de datos
+        desde el DOM (pull). Hay tres tipos distintos de Data Binding que difieren
+        en la forma que uyen los datos. Y, para cada uno de ellos, Angular ofrece distintos
+        mecanismos:
+    </p>
+    <ul>
+        <li>One Way Data Binding (del componente al DOM): Interpolación, Property Binding y Class Binding.</li>
+        <li>One Way Data Binding (del DOM al componente): Event Binding y $event.</li>
+        <li>Two Way Data Binding (del componente al DOM y viceversa): FormsModule y [(ngModel)].</li>
+    </ul>
+    <p>
+        En este ejercicio y en los dos siguientes, veremos ejemplos de todos ellos. Crearemos
+        una aplicación que mostrará un artículo con una disponibilidad determinada de
+        stock, y una serie de opciones para añadir/quitar unidades del “carrito de compra”.
+        Esta aplicación se irá desarrollando a lo largo de estos tres ejercicios haciendo uso de
+        todos estos mecanismos.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>PARTE 1</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="container-fluid">
+                            <div class="card" style="width: 18rem; height: 27rem;">
+                                <img class="card-img-top img-fluid" [src]="Libro.imagen" (mousemove)="getCoord($event)" alt="Imagen no encontrada">
+                                <div class="card-block">
+                                    <h4 class="card-titule">{{Libro.titulo}}</h4>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{Libro.autor}}</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" [class.aviso]="Libro.stock==0">Unidades disponibles: {{Libro.stock}}</li>
+                                    <li class="list-group-item">Precio: {{Libro.precio | currency:'EUR':true}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container-fluid&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card&quot;</span> style<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;width: 18rem; height: 27rem;&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>img <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-img-top img-fluid&quot;</span> <span style="color: #009900;">&#91;</span>src<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.imagen&quot;</span> alt<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Imagen no encontrada&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-block&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>h4 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-titule&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">titulo</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h4<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>h6 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-subtitle mb-2 text-muted&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">autor</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h6<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>ul <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group list-group-flush&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #FF0000;">class</span>.<span style="color: #660066;">aviso</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.stock==0&quot;</span><span style="color: #339933;">&gt;</span>Unidades disponibles<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">stock</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span><span style="color: #339933;">&gt;</span>Precio<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">precio</span> <span style="color: #339933;">|</span> currency<span style="color: #339933;">:</span><span style="color: #3366CC;">'EUR'</span><span style="color: #339933;">:</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>ul<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">Libro <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span><span style="color: #3366CC;">&quot;titulo&quot;</span><span style="color: #339933;">:</span><span style="color: #3366CC;">&quot;Hamlet&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;autor&quot;</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">&quot;William Shakespeare&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;precio&quot;</span><span style="color: #339933;">:</span><span style="color: #CC0000;">21.30</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;stock&quot;</span><span style="color: #339933;">:</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;cantidad&quot;</span><span style="color: #339933;">:</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;imagen&quot;</span><span style="color: #339933;">:</span><span style="color: #3366CC;">&quot;assets/Imagenes/libros.jpg&quot;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">.<span style="color: #660066;">aviso</span><span style="color: #009900;">&#123;</span> color<span style="color: #339933;">:</span> red<span style="color: #339933;">;</span> <span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Con la interpolación mostraremos sus datos en el template. La imagen referenciada en el artículo, “assets/libros.jpg”, la
+                        encontrará en las fuentes del ejercicio. Debe dejarla en la carpeta assets del proyecto. <br>
+                        Cuando necesitemos enlazar propiedades de componente a propiedades de
+                        elementos del DOM podemos usar Property Binding como alternativa
+                        a la interpolación (que también podría usarse en estos casos). Para usarlo
+                        pondremos la propiedad del elemento del DOM entre “[…]” asignándole la
+                        propiedad del componente. <br>
+                        Class binding nos permite especificar una clase CSS para añadir a un
+                        elemento del DOM si una propiedad de un componente es true. Su sintaxis
+                        es similar a la de “Property binding”, con la diferencia que hay que añadir
+                        “class.” delante la clase CSS, y que la propiedad del componente debe ser
+                        tipo booleano. <br>
+                        Para terminar el ejercicio, haremos uso de Class Binding para añadir la clase
+                        CSS “aviso” (poner letras en rojo) al indicador de “unidades disponibles” en
+                        el caso de que no haya stock
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>One Way Data Binding (desde el DOM): Event Binding y $event</h2>
+    <p>
+        En este ejercicio analizaremos los mecanismos que
+        ofrece Angular para el envío de datos del DOM al componente:
+        Event Binding y $event. Son mecanismos de
+        comunicación de un solo sentido, de la vista al componente,
+        por eso los llamamos mecanismos de One Way
+        Data Binding. <br>
+        Event Binding nos permite capturar cualquier evento
+        estándar del DOM (hacer clic en un botón, pasar el
+        ratón por encima de determinado elemento, etc.) y
+        transmitirlo al componente para que realice las acciones
+        que convengan. Para hacer uso de Event Binding
+        simplemente pondremos el evento que queramos controlar
+        entre paréntesis y sin “on” de delante, y lo asignaremos
+        a una función del componente. <br>
+        Algunas veces necesitaremos información adicional en relación al evento que estamos
+        controlando, por lo que necesitaremos tener acceso al objeto event que se haya producido.
+        Este procedimiento lo haremos pasando el objeto event al método de nuestro
+        componente con $event. Un ejemplo es en el caso que quisiéramos
+        saber qué tecla se ha pulsado al producirse un evento de tecla pulsada evento (Keydown). <br>
+        Continuando la aplicación que habíamos empezado en el anterior ejercicio, le añadiremos
+        las opciones para añadir/quitar unidades del “carrito de compra” utilizando
+        los mecanismos Event Binding y $event.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>PARTE 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="card" style="width: 250px;">
+                            <img class="card-img-top img-fluid imagen" [src]="Libro.imagen" (mousemove)="getCoord($event)" alt="Imagen no encontrada">
+                            <div class="card-block">
+                                <h4 class="card-titule">{{Libro.titulo}}</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">{{Libro.autor}}</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" [class.aviso]="Libro.stock==0">Unidades disponibles: {{Libro.stock}}</li>
+                                <li class="list-group-item">Precio: {{Libro.precio | currency:'EUR':true}}</li>
+                            </ul>
+                            <button (click)="downCantidad(Libro)" [disabled]="Libro.cantidad<=0">-</button> {{Libro.cantidad}}
+                            <button (click)="upCantidad(Libro)" [disabled]="Libro.cantidad>=Libro.stock">+</button>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card&quot;</span> style<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;width: 250px;&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>img <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-img-top img-fluid imagen&quot;</span> <span style="color: #009900;">&#91;</span>src<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.imagen&quot;</span> <span style="color: #009900;">&#40;</span>mousemove<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;getCoord($event)&quot;</span> alt<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Imagen no encontrada&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-block&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>h4 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-titule&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">titulo</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h4<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>h6 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-subtitle mb-2 text-muted&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">autor</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h6<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>ul <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group list-group-flush&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #FF0000;">class</span>.<span style="color: #660066;">aviso</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.stock==0&quot;</span><span style="color: #339933;">&gt;</span>Unidades disponibles<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">stock</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span><span style="color: #339933;">&gt;</span>Precio<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">precio</span> <span style="color: #339933;">|</span> currency<span style="color: #339933;">:</span><span style="color: #3366CC;">'EUR'</span><span style="color: #339933;">:</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>ul<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;downCantidad(Libro)&quot;</span> <span style="color: #009900;">&#91;</span>disabled<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.cantidad&lt;=0&quot;</span><span style="color: #339933;">&gt;-&lt;/</span>button<span style="color: #339933;">&gt;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">cantidad</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;upCantidad(Libro)&quot;</span> <span style="color: #009900;">&#91;</span>disabled<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.cantidad&gt;=Libro.stock&quot;</span><span style="color: #339933;">&gt;+&lt;/</span>button<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">downCantidad<span style="color: #009900;">&#40;</span>libro<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+<span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>libro.<span style="color: #660066;">cantidad</span> <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">0</span> <span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    libro.<span style="color: #660066;">cantidad</span><span style="color: #339933;">--;</span>
+<span style="color: #009900;">&#125;</span> 
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+upCantidad<span style="color: #009900;">&#40;</span>libro<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+<span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>libro.<span style="color: #660066;">cantidad</span> <span style="color: #339933;">&lt;</span> libro.<span style="color: #660066;">stock</span> <span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    libro.<span style="color: #660066;">cantidad</span><span style="color: #339933;">++;</span>
+<span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+getCoord<span style="color: #009900;">&#40;</span>event<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> 
+console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>event.<span style="color: #660066;">clientX</span> <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;, &quot;</span> <span style="color: #339933;">+</span> event.<span style="color: #660066;">clientY</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> 
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.aviso</span><span style="color: #00AA00;">&#123;</span> <span style="color: #000000; font-weight: bold;">color</span><span style="color: #00AA00;">:</span> <span style="color: #dc143c;">red</span><span style="color: #00AA00;">;</span> <span style="color: #00AA00;">&#125;</span>
+.imagen<span style="color: #00AA00;">&#123;</span>
+<span style="color: #000000; font-weight: bold;">width</span><span style="color: #00AA00;">:</span> <span style="color: #933;">250px</span><span style="color: #00AA00;">;</span>
+<span style="color: #000000; font-weight: bold;">height</span><span style="color: #00AA00;">:</span> <span style="color: #933;">200px</span><span style="color: #00AA00;">;</span>
+<span style="color: #00AA00;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>Two Way Data Binding (hacia-desde el DOM): FormsModule y [(ngModel)]</h2>
+    <p>
+        Hay ciertas situaciones en las que necesitaremos comunicación
+        entre componente y DOM en los dos sentidos
+        al mismo tiempo. Por ejemplo, este sería el caso
+        de un elemento “input” del DOM. Por una parte, necesitaríamos
+        que se actualizara con el valor de una determinada
+        propiedad del componente y, por la otra,
+        necesitaríamos que escuchara eventos (introducción
+        de datos por parte del usuario) actualizando el valor de
+        esa propiedad. <br>
+        Combinando los mecanismos de One Way Data Binding
+        que hemos visto anteriormente podríamos conseguir
+        ese resultado. Veamos cómo podríamos conseguirlo
+        combinando Property Binding y Event Binding
+        en un elemento “input”. <br>
+        Sin embargo, Angular nos ofrece una mejor manera de hacerlo. Se trata de ngModel. Como vemos, su sintaxis es mucho más sencilla y clara. Únicamente hay que tener
+        en cuenta que deberemos importar a nuestro proyecto el módulo FormsModule para poder hacer uso de ngModel.
+        Por otra parte, hay que tener en cuenta que, a diferencia de los mecanismos de One
+        Way Data Binding, ngModel solo acepta propiedades de datos de componente. Si lo
+        inicializáramos con una función de componente (p. ej.: [(ngModel)]=”nombreCompleto()”)
+        se produciría un error. Para continuar la aplicación que habíamos empezado en los anteriores ejercicios,
+        vamos a ver cómo usaríamos ngModel al añadir un nuevo elemento “input”
+        para poder introducir directamente la cantidad de unidades del artículo que
+        deseemos.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>PARTE 3</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="card" style="width: 250px;">
+                            <img class="card-img-top img-fluid imagen" [src]="Libro.imagen" (mousemove)="getCoord($event)" alt="Imagen no encontrada">
+                            <div class="card-block">
+                                <h4 class="card-titule">{{Libro.titulo}}</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">{{Libro.autor}}</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" [class.aviso]="Libro.stock==0">Unidades disponibles: {{Libro.stock}}</li>
+                                <li class="list-group-item">Precio: {{Libro.precio | currency:'EUR':true}}</li>
+                            </ul>
+                            <button (click)="downCantidad(Libro)" [disabled]="Libro.cantidad<=0">-</button>
+                            <input type="text" [(ngModel)]="Libro.cantidad" size="2">
+                            <button (click)="upCantidad(Libro)" [disabled]="Libro.cantidad>=Libro.stock">+</button>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card&quot;</span> style<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;width: 250px;&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>img <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-img-top img-fluid imagen&quot;</span> <span style="color: #009900;">&#91;</span>src<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.imagen&quot;</span> <span style="color: #009900;">&#40;</span>mousemove<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;getCoord($event)&quot;</span> alt<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Imagen no encontrada&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-block&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>h4 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-titule&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">titulo</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h4<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>h6 <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;card-subtitle mb-2 text-muted&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">autor</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>h6<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>ul <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group list-group-flush&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #FF0000;">class</span>.<span style="color: #660066;">aviso</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.stock==0&quot;</span><span style="color: #339933;">&gt;</span>Unidades disponibles<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">stock</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>li <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;list-group-item&quot;</span><span style="color: #339933;">&gt;</span>Precio<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>Libro.<span style="color: #660066;">precio</span> <span style="color: #339933;">|</span> currency<span style="color: #339933;">:</span><span style="color: #3366CC;">'EUR'</span><span style="color: #339933;">:</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>li<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>ul<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;downCantidad(Libro)&quot;</span> <span style="color: #009900;">&#91;</span>disabled<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.cantidad&lt;=0&quot;</span><span style="color: #339933;">&gt;-&lt;/</span>button<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.cantidad&quot;</span> size<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;2&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>button <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;upCantidad(Libro)&quot;</span> <span style="color: #009900;">&#91;</span>disabled<span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Libro.cantidad&gt;=Libro.stock&quot;</span><span style="color: #339933;">&gt;+&lt;/</span>button<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Sustituiremos el visor de cantidad “Libro.cantidad” que
+                        teníamos en la vista por un elemento “input” que nos permita introducir la
+                        cantidad manualmente. Este elemento “input” lo vincularemos a la propiedad
+                        “Libro.cantidad” mediante [(ngModel)].
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</mat-grid-list>
+
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->
