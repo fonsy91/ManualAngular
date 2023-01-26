@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
+import { FiltrarCaracteres } from './ComponentesFormularios/formularios/validacaracteres.directive';
 
 //Importaciones de Angular material 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -41,6 +43,7 @@ import { FormulariosComponent } from './ComponentesFormularios/formularios/formu
     DirectivasComponent,
     BindingComponent,
     FormulariosComponent,
+    FiltrarCaracteres,
   
   ],
   imports: [
@@ -58,6 +61,7 @@ import { FormulariosComponent } from './ComponentesFormularios/formularios/formu
     MatCardModule,
     FormsModule,
     MatTabsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

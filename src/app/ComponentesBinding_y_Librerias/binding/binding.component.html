@@ -1,6 +1,7 @@
-<h1>DATA BINDING</h1>
+
 <mat-grid-list cols="1" rowHeight="6:1">
     <mat-grid-tile></mat-grid-tile>
+    <h1>DATA BINDING</h1>
     <h2>One Way Data Binding (hacia el DOM): Interpolación, Property Binding y Class Binding</h2>
     <p>
         Cuando un navegador web carga un documento (vista),
@@ -313,6 +314,138 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">&#
               </mat-tab-group>
         </mat-card-content>
     </mat-card>
+    <br>
+    <h2>LIBRERÍAS</h2>
+    <p>
+        Al igual que en otros lenguajes, las librerías, entre otras
+        muchas ventajas, nos permiten organizar el código y
+        reutilizarlo en otras aplicaciones. En este sentido, Angular
+        utiliza un conjunto de librerías “de serie” que
+        aportan funcionalidad en diferentes aspectos como veremos
+        a continuación, pero, además, facilita el uso de
+        otras librerías de terceros que pueden aportarnos soluciones
+        que simplemente hemos de importar y utilizar.
+        Las librerías más importantes de Angular y su cometido
+        son las siguientes:
+    </p>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Libreria</th>
+            <th scope="col">Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@angular/animations</td>
+            <td>
+                Permite realizar animaciones similares a las
+                realizadas con CSS (efectos, transiciones entre
+                páginas, etc.) integrando la lógica de animación
+                con el resto de códigos de la aplicación.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>@angular/cli</td>
+            <td>
+                Permite trabajar con Angular-CLI inicializando,
+                desarrollando y manteniendo aplicaciones
+                Angular a partir de la creación de componentes,
+                directivas, etc.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>@angular/common</td>
+            <td>
+                Proporciona directivas, pipes y servicios
+                comúnmente utilizados.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>@angular/compiler</td>
+            <td>
+                Librería del compilador que permite convertir
+                nuestro código y nuestras plantillas antes de
+                ejecutar y representar la aplicación.
+            </td>          
+          </tr>
+          <tr>
+            <td>@angular/compiler_cli</td>
+            <td>
+                Librería del compilador para Node.js invocada por
+                los comandos build y serve de Angular CLI.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/core</td>
+            <td>
+                Es el principal repositorio de fuentes de Angular.
+                Incluye todos los decoradores de metadatos,
+                componentes, directivas, inyección de
+                dependencia, etc. Imprescindibles para la
+                creación de aplicaciones.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/forms</td>
+            <td>
+                Proporciona directivas y servicios para crear
+                forms template tanto -driven como reactivedriven
+                (vistos más adelante).
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/http</td>
+            <td>
+                Permite usar http.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/language-service</td>
+            <td>
+                Permite analizar las plantillas de los
+                componentes proporcionando sugerencias,
+                chequeo de sintaxis, chequeo de errores, etc.,
+                detectando automáticamente el tipo de archivo
+                tratado.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/platformbrowser</td>
+            <td>
+                Librería usada para navegadores web que
+                ayuda a procesar el DOM e incluye el método
+                bootstrapStatic() para arranque de aplicaciones
+                precompiladas con AOT.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/platformbrowser-dynamic</td>
+            <td>
+                Librería usada para navegadores web que incluye
+                proveedores y métodos para compilar y ejecutar la
+                aplicación en el cliente utilizando el compilador
+                JIT y que contiene el código del lado del cliente
+                procesando las plantillas (enlaces, componentes,
+                etc.), además de la inyección de dependencia
+                reflexiva.
+            </td>
+          </tr>
+          <tr>
+            <td>@angular/router</td>
+            <td>
+                Librería que permite navegar entre páginas de
+la aplicación al cambiar el URL del navegador.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
 </mat-grid-list>
 
 

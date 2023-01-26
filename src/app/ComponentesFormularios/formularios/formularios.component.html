@@ -1,1 +1,902 @@
-<p>formularios works!</p>
+<h1>FORMULARIOS</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h2>INTRODUCCIÓN</h2>
+    <p>
+        Los formularios son uno de los elementos más importantes
+        en las aplicaciones de gestión ya que son, en
+        esencia, los que nos permiten obtener y mostrar información
+        para registrarla o realizar acciones a partir de la
+        misma.
+        En HTML disponemos de un buen conjunto de elementos
+        mediante los cuales podemos fabricar nuestros
+        formularios, entre los que destacamos los siguientes:
+        input select radio , , button, textarea, checkbox,
+        buttons, etc. <br>
+        Los inputs poseen una gran variedad de tipos donde, además de los clásicos text,
+        password y number, podemos enumerar los siguientes: color, date, datetime-
+        local, email, month, range, search, tel, time, url, week, etc. En función
+        del tipo de input indicado, se facilita el tratamiento del tipo de dato relacionado
+        con el mismo. Por ejemplo, si indicamos un tipo number, veremos que en el input
+        solo se pueden introducir números. <br>
+        Cada elemento puede llevar asociados una serie de eventos mediante los cuales podemos
+        realizar acciones, ya sea desde el propio template o desde su componente
+        asociado.
+        Los atributos más clásicos que pueden asociarse a muchos de los tipos son: value,
+        disabled, max, maxlength, min, pattern, readonly, required, size, step.
+        Una buena práctica es incluir cada campo en un div al que asociaremos la clase
+        form-group y en el que definamos una etiqueta y el propio control a utilizar. Al
+        control le asociaremos también la clase form-control.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>PARTE 1</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="container p-1 mx-3 marco">
+                            <form>
+                                <div class="form-group">
+                                    <label for="codigo">Código</label>
+                                    <input type="text" class="form-control" maxlength="6">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Por favor, introduzca nombre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="edad">Edad</label>
+                                    <input type="number" class="form-control" value="20" min="15" max="65">
+                                </div>
+                                <div class="form-group">
+                                    <label for="opcion">Opcion</label>
+                                    <select class="form-control">
+                                        <option>Uno</option>
+                                        <option>Dos</option>
+                                        <option>Tres</option>
+                                    </select>
+                                </div>
+                                <label>Sexo</label><br>
+                                <div class="form-group">
+                                    <label><input type="radio" class="mx-1" checked="true">Hombre</label>
+                                    <label><input type="radio" class="mx-1">Mujer</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comentarios">Comentarios</label>
+                                    <div class="textarea-btn-holder form-group form-group-replace">
+                                        <textarea class="form-control text-comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><input type="checkbox" class="mx-1" checked="true">Activar</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary m-x-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="html5" style="font-family:monospace;"> <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;container p-1 mx-3 marco&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;codigo&quot;</span>&gt;</span>Código<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">maxlength</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;6&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span>&gt;</span>Nombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Por favor, introduzca nombre&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;edad&quot;</span>&gt;</span>Edad<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;number&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;20&quot;</span> <span style="color: #000066;">min</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;15&quot;</span> <span style="color: #000066;">max</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;65&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;opcion&quot;</span>&gt;</span>Opcion<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">select</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span>&gt;</span>Uno<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span>&gt;</span>Dos<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span>&gt;</span>Tres<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">select</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span>&gt;</span>Sexo<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">br</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;radio&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mx-1&quot;</span> <span style="color: #000066;">checked</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;true&quot;</span>&gt;</span>Hombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;radio&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mx-1&quot;</span>&gt;</span>Mujer<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comentarios&quot;</span>&gt;</span>Comentarios<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;textarea-btn-holder form-group form-group-replace&quot;</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">textarea</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control text-comment&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">textarea</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-group&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkbox&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mx-1&quot;</span> <span style="color: #000066;">checked</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;true&quot;</span>&gt;</span>Activar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-primary m-x-2&quot;</span>&gt;</span>Submit<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.marco</span> <span style="color: #00AA00;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">border</span><span style="color: #00AA00;">:</span> <span style="color: #933;">1px</span> <span style="color: #993333;">solid</span> <span style="color: #9932cc;">rgb</span><span style="color: #00AA00;">&#40;</span><span style="color: #cc66cc;">166</span><span style="color: #00AA00;">,</span> <span style="color: #cc66cc;">166</span><span style="color: #00AA00;">,</span> <span style="color: #cc66cc;">182</span><span style="color: #00AA00;">&#41;</span><span style="color: #00AA00;">;</span>
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>FORMS: OBTENCIÓN DE VALORES</h2>
+    <p>
+        Para acceder a los valores introducidos en los controles
+        de un formulario, podemos utilizar diversos mecanismos.
+        Uno de los mecanismos es el uso de variables
+        locales que hagan referencia a los controles. Para poder
+        trabajar con las propiedades de un control añadimos
+        en su tag la definición #nomVar, la propiedad name
+        y ngModel. Por ejemplo, para un supuesto control denominado
+        nombre. <br>
+        Podemos comprobar que es posible utilizar nom en nuestro template mostrando
+        su valor mediante interpolación (nom nom.value). Otra posibilidad es realizar
+        un binding (two-way data binding) para poder modificar el valor de una
+        propiedad de forma bidireccional. Adaptando el ejemplo anterior, podríamos crear
+        una variable name en nuestro archivo component.ts asociado al template
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>PARTE 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <div class="row p-2">
+                            <div class="container p-1 marco col-5">
+                                <form (ngSubmit)="onSubmit()" #miForm="ngForm">
+                                    <div class="form-group">
+                                        <label for="codigo">Código</label>
+                                        <input type="text" class="form-control" maxlength="6" name="codigo" ngModel #cod [(ngModel)]="codigo" (change)="mostrarVar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Por favor, introduzca nombre" [(ngModel)]="nombre" name="nombre" (change)="mostrarVar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edad">Edad</label>
+                                        <input type="number" class="form-control" value="20" min="15" max="65" placeholder="Introduzca edad (15-65)" [(ngModel)]="edad" name="edad" (change)="mostrarVar()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="opcion">Opcion</label>
+                                        <select class="form-control" [(ngModel)]="opcion" name="opcion" (change)="mostrarVar()">
+                                            <option>Uno</option>
+                                            <option>Dos</option>
+                                            <option>Tres</option>
+                                        </select>
+                                    </div>
+                                    <label>Sexo</label><br>
+                                    <div class="form-group">
+                                        <label><input type="radio" class="mx-1" checked="true" [(ngModel)]="sexo" name="sexo" (change)="mostrarVar()">Hombre</label>
+                                        <label><input type="radio" class="mx-1" [(ngModel)]="sexo" name="sexo" (change)="mostrarVar()">Mujer</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comentarios">Comentarios</label>
+                                        <div class="textarea-btn-holder form-group form-group-replace">
+                                            <textarea class="form-control text-comment" [(ngModel)]="comentarios" name="comentarios" (change)="mostrarVar()"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" class="mx-1" checked="true" [(ngModel)]="activar" name="activar" (change)="mostrarVar()">Activar</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary m-x-2">Submit</button>
+                                </form>
+                            </div>
+                            <div class="container col-5">
+                                <!--Para mostrar contenido de las variables-->
+                                Cod: {{cod.value}} <br>
+                                Cod: {{codigo}}<br>
+                                Nombre: {{nombre}}<br>
+                                Edad: {{edad}}<br>
+                                Opcion: {{opcion}}<br>
+                                Sexo: {{sexo}}<br>
+                                Comentarios: {{comentarios}}<br>
+                                Activar: {{activar}}<br>
+                                miForm {{miForm.value | json}}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;row p-2&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container p-1 marco col-5&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>form <span style="color: #009900;">&#40;</span>ngSubmit<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;onSubmit()&quot;</span> #miForm<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;ngForm&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label <span style="color: #000066; font-weight: bold;">for</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;codigo&quot;</span><span style="color: #339933;">&gt;</span>Código<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> maxlength<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;6&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;codigo&quot;</span> ngModel #cod <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;codigo&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label <span style="color: #000066; font-weight: bold;">for</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span><span style="color: #339933;">&gt;</span>Nombre<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> placeholder<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Por favor, introduzca nombre&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label <span style="color: #000066; font-weight: bold;">for</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;edad&quot;</span><span style="color: #339933;">&gt;</span>Edad<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;number&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;20&quot;</span> min<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;15&quot;</span> max<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;65&quot;</span> placeholder<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;Introduzca edad (15-65)&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;edad&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;edad&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label <span style="color: #000066; font-weight: bold;">for</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion&quot;</span><span style="color: #339933;">&gt;</span>Opcion<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>select <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;opcion&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>
+                    <span style="color: #339933;">&lt;</span>option<span style="color: #339933;">&gt;</span>Uno<span style="color: #339933;">&lt;/</span>option<span style="color: #339933;">&gt;</span>
+                    <span style="color: #339933;">&lt;</span>option<span style="color: #339933;">&gt;</span>Dos<span style="color: #339933;">&lt;/</span>option<span style="color: #339933;">&gt;</span>
+                    <span style="color: #339933;">&lt;</span>option<span style="color: #339933;">&gt;</span>Tres<span style="color: #339933;">&lt;/</span>option<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;/</span>select<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>label<span style="color: #339933;">&gt;</span>Sexo<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;&lt;</span>br<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label<span style="color: #339933;">&gt;&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;radio&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mx-1&quot;</span> checked<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;true&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sexo&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sexo&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>Hombre<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label<span style="color: #339933;">&gt;&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;radio&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mx-1&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sexo&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;sexo&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>Mujer<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label <span style="color: #000066; font-weight: bold;">for</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;comentarios&quot;</span><span style="color: #339933;">&gt;</span>Comentarios<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;textarea-btn-holder form-group form-group-replace&quot;</span><span style="color: #339933;">&gt;</span>
+                    <span style="color: #339933;">&lt;</span>textarea <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control text-comment&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;comentarios&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;comentarios&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;&lt;/</span>textarea<span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-group&quot;</span><span style="color: #339933;">&gt;</span>
+                <span style="color: #339933;">&lt;</span>label<span style="color: #339933;">&gt;&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;checkbox&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mx-1&quot;</span> checked<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;true&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;activar&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;activar&quot;</span> <span style="color: #009900;">&#40;</span>change<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mostrarVar()&quot;</span><span style="color: #339933;">&gt;</span>Activar<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+            <span style="color: #339933;">&lt;</span>button type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;submit&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-primary m-x-2&quot;</span><span style="color: #339933;">&gt;</span>Submit<span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>form<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;container col-5&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;!--</span>Para mostrar contenido de las variables<span style="color: #339933;">--&gt;</span>
+        Cod<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>cod.<span style="color: #660066;">value</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Cod<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>codigo<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Nombre<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>nombre<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Edad<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>edad<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Opcion<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>opcion<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Sexo<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>sexo<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Comentarios<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>comentarios<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        Activar<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>activar<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;</span>br<span style="color: #339933;">&gt;</span>
+        miForm <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>miForm.<span style="color: #660066;">value</span> <span style="color: #339933;">|</span> json<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> FormulariosComponent <span style="color: #009900;">&#123;</span>
+&nbsp;
+    codigo<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">;</span>
+    nombre<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">;</span>
+    edad<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">;</span>
+    opcion<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">;</span>
+    sexo<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;Hombre&quot;</span><span style="color: #339933;">;</span>
+    comentarios<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">;</span>
+    activar<span style="color: #339933;">:</span> <span style="color: #FF0000;">boolean</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">;</span>
+&nbsp;
+    mostrarVar<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>
+        <span style="color: #3366CC;">&quot;Codigo (&quot;</span> <span style="color: #339933;">+</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">codigo</span> <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">nombre</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">edad</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">opcion</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">sexo</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">comentarios</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+        <span style="color: #339933;">+</span> <span style="color: #3366CC;">&quot;Nombre (&quot;</span><span style="color: #339933;">+</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">activar</span><span style="color: #339933;">+</span><span style="color: #3366CC;">&quot;)&quot;</span>
+    <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    onSubmit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;Submit&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="css" style="font-family:monospace;"><span style="color: #6666ff;">.marco</span> <span style="color: #00AA00;">&#123;</span>
+    <span style="color: #000000; font-weight: bold;">border</span><span style="color: #00AA00;">:</span> <span style="color: #933;">1px</span> <span style="color: #993333;">solid</span> <span style="color: #9932cc;">rgb</span><span style="color: #00AA00;">&#40;</span><span style="color: #cc66cc;">166</span><span style="color: #00AA00;">,</span> <span style="color: #cc66cc;">166</span><span style="color: #00AA00;">,</span> <span style="color: #cc66cc;">182</span><span style="color: #00AA00;">&#41;</span><span style="color: #00AA00;">;</span>
+<span style="color: #00AA00;">&#125;</span>
+&nbsp;</pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>FORMS: ESTADO DE LOS OBJETOS</h2>
+    <p>
+        El estado de los objetos viene determinado por un
+        conjunto de clases que nos permitirá averiguar si los
+        objetos de un formulario han sido tratados o modifi-
+        cados o sin son válidos o no respecto de sus posibles
+        restricciones.
+        En el ejercicio destinado a validaciones veremos algunos
+        de sus posibles usos, pero en este ejercicio, nos vamos
+        a dedicar a presentarlos y explicar cuál es la información
+        que nos aportan. Los estados más importantes
+        de un objeto están representados por alguna de las siguientes
+        clases:
+    </p>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Clases</th>
+            <th scope="col">Estado de control</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ng-touched</td>
+            <td>
+                Ya ha tenido el foco en algún momento.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>ng-untouched</td>
+            <td>
+                Aún no ha tenido el foco.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>ng-dirty</td>
+            <td>
+                Se ha hecho alguna modificación.
+            </td>
+            
+          </tr>
+          <tr>
+            <td>ng-pristine</td>
+            <td>
+                Aun no se ha modificado nada.
+            </td>          
+          </tr>
+          <tr>
+            <td>ng-valid</td>
+            <td>
+                Posee un contenido válido.
+            </td>
+          </tr>
+          <tr>
+            <td>ng-invalid</td>
+            <td>
+                Posee un contenido inválido.
+            </td>
+          </tr>
+          <tr>
+            <td>ng-pending</td>
+            <td>
+                Validaciones asíncronas pendientes.
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <br>
+    <h2>FORMULARIOS TEMPLATE</h2>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 1</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <!--Enviamos solo los valores pasando contactForm.value pero todo el formulario-->
+                        <form (ngSubmit)="botonEnviar(contactForm)" #contactForm="ngForm">
+                            <div class="mb-4">
+                                <label for="nombre2" class="form-label">Nombre</label>
+                                <!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional-->
+                                <input type="text" class="form-control" id="nombre2" name="nombre2" ngModel [(ngModel)]="modelo.nombre" required #nombre2="ngModel">
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                                <div class="alert alert-danger" [hidden]="nombre2.valid || nombre2.pristine">Este campo es requerido</div>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <label for="checkAdult" class="form-label">Eres mayor de edad?</label>
+                                <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" [(ngModel)]="modelo.checkAdult" required #checkAdult="ngModel">
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                                <div class="alert alert-danger"  [hidden]="checkAdult.valid || checkAdult.pristine">Este campo es requerido</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="departament" class="form-label">Departamento</label>
+                                <select name="departament" id="departament" class="form-select form-select-sm" [(ngModel)]="modelo.departament">
+                                    <option selected>Abre este selector</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="comment" class="form-label">Comentario</label>
+                                <textarea class="form-control" name="comment" id="comment" rows="4" placeholder="Deje un comentario..." [(ngModel)]="modelo.comment" required #comment="ngModel"></textarea>
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                                <div class="alert alert-danger" [hidden]="comment.valid || comment.pristine">Este campo es requerido</div>
+                            </div>
+                            <div class="d-grid gap-2 col-4 float-end">
+                                <button type="submit" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Enviar</button>
+                            </div>
+                        </form>
+                        <pre>
+                            {{contactForm.value | json}}
+                        </pre>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML sin Validaciones">
+<div style="background: rgb(255, 255, 255);">
+<pre class="html5" style="font-family:monospace;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;botonEnviar(contactForm.value)&quot;</span> #contactForm<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngForm&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Nombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> ngModel <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.nombre&quot;</span> required&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;invalid-feeback&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4 form-check&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Eres mayor de edad?<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkbox&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-check-input&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.checkAdult&quot;</span> required&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;invalid-feeback&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Departamento<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">select</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-select form-select-sm&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.departament&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> selected&gt;</span>Abre este selector<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;marketing&quot;</span>&gt;</span>Marketing<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;sales&quot;</span>&gt;</span>Sales<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;other&quot;</span>&gt;</span>Other<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">select</span>&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;invalid-feeback&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Comentario<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">textarea</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">rows</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;4&quot;</span> <span style="color: #000066;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Deje un comentario...&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.comment&quot;</span> required&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">textarea</span>&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;invalid-feeback&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;d-grid gap-2 col-4 float-end&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-info btn-lg&quot;</span>&gt;</span>Enviar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span>
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>pre<span style="color: #339933;">&gt;</span>
+    <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>contactForm.<span style="color: #660066;">value</span> <span style="color: #339933;">|</span> json<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span>
+ <span style="color: #339933;">&lt;/</span>pre<span style="color: #339933;">&gt;</span></pre>
+</pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="HTML con Validaciones">
+<div style="background: rgb(255, 255, 255);">
+<pre class="html5" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">&lt;!--Enviamos solo los valores pasando contactForm.value pero todo el formulario--&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;botonEnviar(contactForm)&quot;</span> #contactForm<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngForm&quot;</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Nombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+    <span style="color: #808080; font-style: italic;">&lt;!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> ngModel <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.nombre&quot;</span> <span style="color: #000066;">required</span> #nombre2<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngModel&quot;</span>&gt;</span>
+    <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">hidden</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2.valid || nombre2.pristine&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4 form-check&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Eres mayor de edad?<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkbox&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-check-input&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.checkAdult&quot;</span> <span style="color: #000066;">required</span> #checkAdult<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngModel&quot;</span>&gt;</span>
+    <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>  <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">hidden</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult.valid || checkAdult.pristine&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Departamento<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">select</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-select form-select-sm&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.departament&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> selected&gt;</span>Abre este selector<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;marketing&quot;</span>&gt;</span>Marketing<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;sales&quot;</span>&gt;</span>Sales<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;other&quot;</span>&gt;</span>Other<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">select</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Comentario<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">textarea</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">rows</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;4&quot;</span> <span style="color: #000066;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Deje un comentario...&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.comment&quot;</span> <span style="color: #000066;">required</span> #comment<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngModel&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">textarea</span>&gt;</span>
+    <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">hidden</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment.valid || comment.pristine&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;d-grid gap-2 col-4 float-end&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-info btn-lg&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">disabled</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;contactForm.invalid&quot;</span>&gt;</span>Enviar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">modelo <span style="color: #339933;">=</span> <span style="color: #009900;">&#123;</span>
+    nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">&quot;Juanito&quot;</span><span style="color: #339933;">,</span>
+    checkAdult<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">,</span>
+    departament<span style="color: #339933;">:</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #339933;">,</span>
+    comment<span style="color: #339933;">:</span> <span style="color: #3366CC;">&quot;&quot;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+botonEnviar<span style="color: #009900;">&#40;</span>ValoresForm<span style="color: #339933;">:</span> any<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;Valores del formualrio: &quot;</span><span style="color: #339933;">+</span>ValoresForm<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Para este tipo de formularios hay que saber todo sobre ngForm un enlace aquí <a href="https://angular.io/api/forms/NgForm" target="_blank">ngForm</a>.
+                        Tambien creamos una variable de referencia ngForm #variableTemplate = "ngForm" entonces tendras acceso a todas las propiedades de
+                        la directiva, en ese momento angular hace un segimineto de los campos del formulario entonces si tomas ese valor de la variable 
+                        creado por ti variavleTemplate para asociar nuestros campos usamos la directiva ngModel entonces con esto en un input
+                        name="nombre" ngModel tendremos asociado a un campo una variable en este caso nombre y con el metodo value en el etiqueta 
+                        pre y el ngModel bidireccional podremos ver en tiempo real el valor que se va introduciendo en el input nombre. <br>
+                        Una vez se ha hecho el seguimiento se necesita procesar al dar al boton enviar y desde la etiqueta form llamamos a un evento 
+                        ngSubmit junto con un metodo que nosotros creamos. <br>
+                        Hasta ahora es solo en una direccion con el [(ngModel)] tenemos doble direccion si en el .ts pusieramos un nombre en el modelo 
+                        este apareceria en el input nada mas cargar la pagina.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+<pre class="html5" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">&lt;!--Formulario de ejemplo --&gt;</span>
+<span style="color: #808080; font-style: italic;">&lt;!--</span>
+<span style="color: #808080; font-style: italic;">ngSubmit: funcion que sirve cuando pulsas boton enviar </span>
+<span style="color: #808080; font-style: italic;">#contactForm=&quot;ngForm&quot;: variable para acceso a las propiedades (input etc) y acceso a metodos de ngForm</span>
+<span style="color: #808080; font-style: italic;">name=&quot;nombre&quot; ngModel: variable nombre y con ngModel poder almacenar el valor en esa variable </span>
+<span style="color: #808080; font-style: italic;">--&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;botonEnviar(contactForm.value)&quot;</span> #contactForm<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngForm&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Nombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre&quot;</span> ngModel <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo.nombre&quot;</span> required&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;invalid-feeback&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;d-grid gap-2 col-4 float-end&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-info btn-lg&quot;</span>&gt;</span>Enviar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <p>
+        Para las validaciones usamos las AbstractControlDirective donde existen propiedades para hacer 
+        validaciones como prstine, dirty entre otras muchas mas que podemos usar para validar nuestro formulario 
+        en general y cada uno de los inputs. Para las validaciones personalizadas como es el caso de que una password solo
+        tenga letras en mayusculas lo que haremos será crear una directiva así: <b>ng g directive [nombre-directiva]</b> y despues
+        hay que inmportarlo en el modulo app.module.ts, en este ejemplo crearemos una directiva y realizaremos una validacion personalizada. <br> 
+    </p>
+    <div class="container border">
+        <form (ngSubmit)="botonSend(ejemploForm)" #ejemploForm="ngForm">
+            <div class="mb-4">
+                <label for="pass" class="form-label">DNI:</label>
+                <!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional-->
+                <input type="text" class="form-control" id="pass" name="pass" ngModel [(ngModel)]="modelo2.pass" required #pass="ngModel" filtrar-caracteres>
+                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                <div class="alert alert-danger" [hidden]="pass.valid || pass.pristine">Este campo es requerido y debe ser en mayusculas</div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+<pre class="html5" style="font-family:monospace;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;botonSend(ejemploForm)&quot;</span> #ejemploForm<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngForm&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;pass&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>CONTRASEÑA:<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;pass&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;pass&quot;</span> ngModel <span style="color: #66cc66;">&#91;</span><span style="color: #66cc66;">&#40;</span>ngModel<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;modelo2.pass&quot;</span> <span style="color: #000066;">required</span> #pass<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;ngModel&quot;</span> filtrar-caracteres&gt;</span>
+        <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">hidden</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;pass.valid || pass.pristine&quot;</span>&gt;</span>Este campo es requerido y debe ser en mayusculas<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span></pre>
+
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> Directive <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/core'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> AbstractControl<span style="color: #339933;">,</span> NG_VALIDATORS<span style="color: #339933;">,</span> ValidationErrors<span style="color: #339933;">,</span> Validator <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">&quot;@angular/forms&quot;</span><span style="color: #339933;">;</span>
+&nbsp;
+&nbsp;
+<span style="color: #339933;">@</span>Directive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    selector<span style="color: #339933;">:</span> <span style="color: #3366CC;">'[filtrar-caracteres]'</span><span style="color: #339933;">,</span>
+    providers<span style="color: #339933;">:</span><span style="color: #009900;">&#91;</span>
+        <span style="color: #009900;">&#123;</span>provide<span style="color: #339933;">:</span> NG_VALIDATORS<span style="color: #339933;">,</span> multi<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span> useExisting<span style="color: #339933;">:</span> FiltrarCaracteres<span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#93;</span>
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+&nbsp;
+<span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> FiltrarCaracteres <span style="color: #FF0000;">implements</span> Validator<span style="color: #009900;">&#123;</span>
+    validate<span style="color: #009900;">&#40;</span>caracter<span style="color: #339933;">:</span> AbstractControl<span style="color: #339933;">&lt;</span>any<span style="color: #339933;">,</span> any<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> ValidationErrors <span style="color: #339933;">|</span> <span style="color: #003366; font-weight: bold;">null</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>caracter.<span style="color: #660066;">value</span> <span style="color: #339933;">==</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+            <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span> 
+        <span style="color: #000066; font-weight: bold;">var</span> contenido <span style="color: #339933;">=</span> caracter.<span style="color: #660066;">value</span><span style="color: #339933;">;</span>
+        <span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">var</span> i <span style="color: #339933;">=</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> contenido.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+            <span style="color: #000066; font-weight: bold;">var</span> letra <span style="color: #339933;">=</span> contenido.<span style="color: #660066;">substr</span><span style="color: #009900;">&#40;</span>i<span style="color: #339933;">,</span><span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+            <span style="color: #000066; font-weight: bold;">var</span> valor <span style="color: #339933;">=</span> letra.<span style="color: #660066;">charCodeAt</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+            <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #009900;">&#40;</span>valor <span style="color: #339933;">&gt;=</span><span style="color: #CC0000;">65</span> <span style="color: #339933;">&amp;&amp;</span> valor <span style="color: #339933;">&lt;=</span> <span style="color: #CC0000;">90</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+                <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">&#123;</span>filtrarCaracteres<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+            <span style="color: #009900;">&#125;</span>
+        <span style="color: #009900;">&#125;</span>
+        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>FORMS: FORMULARIOS REACTIVOS</h2>
+    <p>
+        Los reactive forms o model-driven se diferencian
+        de los en que template-driven la creación de los
+        controles se hace en la clase del componente. Otra diferencia
+        importante es que los reactive forms son
+        síncronos mientras que los template-driven son
+        asíncronos. Por otra parte, los reactive forms permiten
+        añadir controles dinámicamente y facilitan los test
+        unitarios.
+        En la plantilla, simplemente definiremos los tags
+        HTML correspondientes a los inputs, pero estos quedarán
+        relacionados con la clase del componente gracias
+        a formControlName y formGroupName para
+        los controles y grupos de controles, respectivamente. Video de formularios 
+        reactivos <a href="https://www.youtube.com/watch?v=jJuE7-9T6Ss&ab_channel=DominiCode">Reactivos</a>
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <p>El ejemplo es el mismo que el anterior pero reactivo</p>
+                        <!--Solo necesitamos el metodo aal presionar enviar y el formGroup con una propiedad-->
+                        <form (ngSubmit)="EnviarReactivo()" [formGroup]="formularioReactivo">
+                            <div class="mb-4">
+                                <label for="nombre2" class="form-label">Nombre</label>
+                                <!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional-->
+                                <input type="text" class="form-control" id="nombre2" name="nombre2" required formControlName="nombre2">
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->            
+                                <div *ngIf="formularioReactivo.get('nombre2')?.touched && formularioReactivo.get('nombre2')?.errors?.['required']" class="alert alert-danger">Este campo es requerido</div>
+                                <div *ngIf="formularioReactivo.get('nombre2')?.touched && formularioReactivo.get('nombre2')?.errors?.['minlength']" class="alert alert-danger">El nombre debe ser mayor de {{formularioReactivo.get('nombre2')?.errors?.['minlength'].requiredLength}} caracteres</div>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <label for="checkAdult" class="form-label">Eres mayor de edad?</label>
+                                <input type="checkbox" class="form-check-input" id="checkAdult" name="checkAdult" required formControlName="checkAdult">
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                                <div *ngIf="formularioReactivo.get('checkAdult')?.touched && formularioReactivo.get('checkAdult')?.errors?.['required']" class="alert alert-danger">Este campo es requerido</div>                               
+                            </div>
+                            <div class="mb-4">
+                                <label for="departament" class="form-label">Departamento</label>
+                                <select name="departament" id="departament" class="form-select form-select-sm" formControlName="departament">
+                                    <option selected>Abre este selector</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="comment" class="form-label">Comentario</label>
+                                <textarea class="form-control" name="comment" id="comment" rows="4" placeholder="Deje un comentario..." required formControlName="comment"></textarea>
+                                <!--Div para mostrar si el input es invalido con clase de bootstrap-->
+                                <div *ngIf="formularioReactivo.get('comment')?.touched && formularioReactivo.get('comment')?.errors?.['required']" class="alert alert-danger">Este campo es requerido</div>              
+                            </div>
+                            <div class="d-grid gap-2 col-4 float-end">
+                                <button type="submit" class="btn btn-info btn-lg" [disabled]="formularioReactivo.invalid">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="html5" style="font-family:monospace;"> <span style="color: #808080; font-style: italic;">&lt;!--Solo necesitamos el metodo aal presionar enviar y el formGroup con una propiedad--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;EnviarReactivo()&quot;</span> <span style="color: #66cc66;">&#91;</span>formGroup<span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Nombre<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional--&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span> <span style="color: #000066;">required</span> formControlName<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;nombre2&quot;</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>            
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo.get('nombre2')?.touched &amp;&amp; formularioReactivo.get('nombre2')?.errors?.['required']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo.get('nombre2')?.touched &amp;&amp; formularioReactivo.get('nombre2')?.errors?.['minlength']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>El nombre debe ser mayor de {{formularioReactivo.get('nombre2')?.errors?.['minlength'].requiredLength}} caracteres<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4 form-check&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Eres mayor de edad?<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkbox&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-check-input&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span> <span style="color: #000066;">required</span> formControlName<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;checkAdult&quot;</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo.get('checkAdult')?.touched &amp;&amp; formularioReactivo.get('checkAdult')?.errors?.['required']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>                               
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Departamento<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">select</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-select form-select-sm&quot;</span> formControlName<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;departament&quot;</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> selected&gt;</span>Abre este selector<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;marketing&quot;</span>&gt;</span>Marketing<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;sales&quot;</span>&gt;</span>Sales<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+                <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">option</span> <span style="color: #000066;">value</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;other&quot;</span>&gt;</span>Other<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">option</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">select</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>Comentario<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">textarea</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span> <span style="color: #000066;">rows</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;4&quot;</span> <span style="color: #000066;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Deje un comentario...&quot;</span> <span style="color: #000066;">required</span> formControlName<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;comment&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">textarea</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo.get('comment')?.touched &amp;&amp; formularioReactivo.get('comment')?.errors?.['required']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>              
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;d-grid gap-2 col-4 float-end&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-info btn-lg&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">disabled</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;formularioReactivo.invalid&quot;</span>&gt;</span>Enviar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span></pre>
+</div>
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> FormulariosComponent <span style="color: #FF0000;">implements</span> OnInit<span style="color: #009900;">&#123;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">//Constructor de la clase </span>
+    constructor<span style="color: #009900;">&#40;</span>private readonly fb<span style="color: #339933;">:</span> FormBuilder<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">//Metodo de inicio de componente </span>
+    ngOnInit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">formularioReactivo</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">initForm</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">onPathValue</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #006600; font-style: italic;">//this.onSetValue();</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+&nbsp;
+<span style="color: #006600; font-style: italic;">//Formularios reactivos ******************************</span>
+    <span style="color: #006600; font-style: italic;">//propiedad del formulario como no la inicializamos colocamos signode exclamacion </span>
+    formularioReactivo<span style="color: #339933;">!:</span> FormGroup<span style="color: #339933;">;</span>
+&nbsp;
+    EnviarReactivo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;Formulario reactivo enviado&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">//Metodo que devuelve un formGroup</span>
+    initForm<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> FormGroup<span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">//group es un metodo que espera un objeto y ese objeto sera la definicion de nuestros campos </span>
+    <span style="color: #006600; font-style: italic;">//y un array de una validacion o mas de una. El fb viene de formBuilder en el constructor.</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">fb</span>.<span style="color: #660066;">group</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+        nombre2<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">''</span><span style="color: #339933;">,</span><span style="color: #009900;">&#91;</span>Validators.<span style="color: #660066;">required</span><span style="color: #339933;">,</span> Validators.<span style="color: #660066;">minLength</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">3</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+        checkAdult<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">''</span><span style="color: #339933;">,</span><span style="color: #009900;">&#91;</span>Validators.<span style="color: #660066;">required</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+        departament<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">''</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+        comment<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">''</span><span style="color: #339933;">,</span><span style="color: #009900;">&#91;</span>Validators.<span style="color: #660066;">required</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">//Metodo path de angular respecto a formularios. Al inicializar el componente </span>
+    <span style="color: #006600; font-style: italic;">//esto coloca en el campo elegido el nombre Alfonso. </span>
+    onPathValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span><span style="color: #000066; font-weight: bold;">void</span><span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">formularioReactivo</span>.<span style="color: #660066;">patchValue</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>nombre2<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Alfonso'</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">//Esto lo que hace es hacer un set en el formulario lo que pasa que debe hacerse </span>
+    <span style="color: #006600; font-style: italic;">//para todos los campos del formulario. Es mejor usar el patch.</span>
+    onSetValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span><span style="color: #000066; font-weight: bold;">void</span><span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">formularioReactivo</span>.<span style="color: #660066;">setValue</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>comment<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Hola mundo'</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+&nbsp;
+    <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Para los formularios reactivos no necesitamos el [(ngModel)] al igual que en formularios de plantillas se declara una variable 
+                        para el formulario ([formGroup]= [nombreVariable]) este nombre de variable sera una propiedad en el .ts del tipo formularioReactivo!: FormGroup;
+                        con esta variable podremos hacer todas las validacines. Lo comun es crear una funcion (initForm(): FormGroup) como la que hay en el .ts indicando 
+                        todas las validaciones a tener en cuenta en cada uno de los campos. En el campo nombre ya esta relleno pero es por la utilizacion del metodo 
+                        onPathValue():void se puede ver en el archivo .ts.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+
+</mat-grid-list>
+
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->
