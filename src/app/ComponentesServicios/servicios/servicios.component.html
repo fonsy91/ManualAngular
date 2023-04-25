@@ -1,0 +1,520 @@
+<h1>SERVICIOS</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h2>SERVICIO Y INYECCIÓN DE DEPENDENCIAS</h2>
+    <p>
+        La inyección de dependencias es un patrón de
+        diseño muy usado en Angular. Se basa en que las clases
+        no crean sus dependencias por sí mismas, sino
+        que las reciben de fuentes extremas. Un servicio Angular es una clase que encapsula algún
+        tipo de funcionalidad común entre los diferentes
+        componentes de la aplicación, como podría ser, por
+        ejemplo, el acceso a datos, creación de un servicio ng generate service [nombreServicio]. La extracción de funcionalidades
+        comunes de los componentes para crear servicios
+        supone toda una serie de ventajas:
+
+    </p>
+    <ul>
+        <li>Evitamos la repetición innecesaria de código en
+            los componentes, por lo que su código acaba
+            siendo más ligero y centrado en el soporte a la
+            vista.
+        </li>
+        <li>Podemos crear servicios mock (de prueba) que
+            faciliten el análisis de los componentes que los
+            usan.
+        </li>
+        <li>
+            Mejoramos el control y mantenimiento de esas funcionalidades comunes.
+        </li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 1</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Precio</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let art of articulos">
+                                <td>{{art.codigo}}</td>
+                                <td>{{art.descripcion}}</td>
+                                <td>{{art.precio}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>table <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;table table-bordered&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>thead<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>tr<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>th scope<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;col&quot;</span><span style="color: #339933;">&gt;</span>Código<span style="color: #339933;">&lt;/</span>th<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>th scope<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;col&quot;</span><span style="color: #339933;">&gt;</span>Descripción<span style="color: #339933;">&lt;/</span>th<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>th scope<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;col&quot;</span><span style="color: #339933;">&gt;</span>Precio<span style="color: #339933;">&lt;/</span>th<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>tr<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>thead<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>tbody<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>tr <span style="color: #339933;">*</span>ngFor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;let art of articulos&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>td<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>art.<span style="color: #660066;">codigo</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>td<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>td<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>art.<span style="color: #660066;">descripcion</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>td<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>td<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>art.<span style="color: #660066;">precio</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>td<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>tr<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>tbody<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>table<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> ServiciosComponent <span style="color: #FF0000;">implements</span> OnInit<span style="color: #009900;">&#123;</span>
+    &nbsp;
+        articulos<span style="color: #339933;">:</span> any<span style="color: #339933;">;</span>
+    &nbsp;
+        <span style="color: #006600; font-style: italic;">//Inyeccion de dependencias, el servicio articulosService</span>
+        constructor<span style="color: #009900;">&#40;</span>private articulosService<span style="color: #339933;">:</span> ArticulosService<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+    &nbsp;
+        <span style="color: #006600; font-style: italic;">//Metodo de inicializador del componente</span>
+        ngOnInit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">articulosService</span>.<span style="color: #660066;">retornar</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span> result <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span>
+            <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">articulos</span> <span style="color: #339933;">=</span> result
+        <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span>
+    &nbsp;
+    &nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="Servicio">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;">
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> HttpClient <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/common/http'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> Injectable <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/core'</span><span style="color: #339933;">;</span>
+    &nbsp;
+    <span style="color: #339933;">@</span>Injectable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+        providedIn<span style="color: #339933;">:</span> <span style="color: #3366CC;">'root'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> ArticulosService <span style="color: #009900;">&#123;</span>
+    &nbsp;
+        constructor<span style="color: #009900;">&#40;</span>private http<span style="color: #339933;">:</span> HttpClient<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> <span style="color: #009900;">&#125;</span>
+    &nbsp;
+        retornar<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">http</span>.<span style="color: #000066; font-weight: bold;">get</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;https://scratchya.com.ar/vue/datos.php&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span>  
+    &nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Hemos creado un servicio, en el cual hace una peticion http con un metodo get para recibir la informacion de la pagina web dentro
+                        de un metodo retornar, despues en el .ts del componente inyectamos en el servicio en el constructor y hacemos uso del metodo del servicio 
+                        en el componente en el OnInit suscribiendonos a esa peticion y obteniendo los resultados. Despues mostramos esos resultados en la plantilla 
+                        HTML mediante la interpolacion y recorriendo el array con la directiva ngFor donde estan almacenados los datos.
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>PRACTICA CON MODULOS, COMPONENTES Y SERVICIOS</h2>
+    <p>
+        En el presente ejercicio vamos a construir un sistema de alta de clientes y un listado de clientes que irá incrementando ítems, a medida que los demos de alta
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    <div class="programa">
+                        <!--Selector de un componente de un modulo hijo -> clientes.module.ts del modulo padre -> app.module.ts-->
+                        <app-alta-cliente></app-alta-cliente>
+                        <app-listado-clientes></app-listado-clientes>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="Modulo de Clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> NgModule <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/core'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> CommonModule <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/common'</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> ClientesService <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'../../Servicios/clientes.service'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> FormsModule <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'@angular/forms'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> AltaClienteComponent <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'src/app/ComponentesServicios/alta-cliente/alta-cliente.component'</span><span style="color: #339933;">;</span>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">&#123;</span> ListadoClientesComponent <span style="color: #009900;">&#125;</span> from <span style="color: #3366CC;">'src/app/ComponentesServicios/listado-clientes/listado-clientes.component'</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #339933;">@</span>NgModule<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    declarations<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span>
+    AltaClienteComponent<span style="color: #339933;">,</span>
+    ListadoClientesComponent<span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+    imports<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span>
+    CommonModule<span style="color: #339933;">,</span>
+    FormsModule
+    <span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+    providers<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span>ClientesService<span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+    <span style="color: #006600; font-style: italic;">//El export se usa para poder usar el componente que va dentro </span>
+    <span style="color: #006600; font-style: italic;">//en otros componentes </span>
+    exports<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span>
+    AltaClienteComponent<span style="color: #339933;">,</span>
+    ListadoClientesComponent<span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+<span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> ClientesModule <span style="color: #009900;">&#123;</span> <span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="HTML Alta Clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>h2<span style="color: #339933;">&gt;</span>Alta cliente<span style="color: #339933;">&lt;/</span>h2<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>form<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mb-4&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>label <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-label&quot;</span><span style="color: #339933;">&gt;</span>Nombre<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;nombre&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cliente.nombre&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mb-4&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>label <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-label&quot;</span><span style="color: #339933;">&gt;</span>CIF<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cif&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cliente.cif&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mb-4&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>label <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-label&quot;</span><span style="color: #339933;">&gt;</span>Dirección<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>input type<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;text&quot;</span> <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-control&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;direccion&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cliente.direccion&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;mb-4&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>label <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-label&quot;</span><span style="color: #339933;">&gt;</span>Departamento<span style="color: #339933;">&lt;/</span>label<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>select  <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;form-select form-select-sm&quot;</span> name<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;grupo&quot;</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#40;</span>ngModel<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;cliente.grupo&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>option <span style="color: #339933;">*</span>ngFor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;let grupo of grupos&quot;</span> value<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;grupo.id&quot;</span><span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>grupo.<span style="color: #660066;">nombre</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>option<span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;/</span>select<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>div <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;d-grid gap-2 col-4 float-end&quot;</span><span style="color: #339933;">&gt;</span>
+        <span style="color: #339933;">&lt;</span>button <span style="color: #FF0000;">class</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;btn btn-info btn-lg&quot;</span> <span style="color: #009900;">&#40;</span>click<span style="color: #009900;">&#41;</span><span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;this.nuevoCliente()&quot;</span><span style="color: #339933;">&gt;</span>Guardar<span style="color: #339933;">&lt;/</span>button<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;/</span>form<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="HTML Listado de Clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;</span>h2<span style="color: #339933;">&gt;</span>
+Listado clientes
+<span style="color: #339933;">&lt;/</span>h2<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div <span style="color: #339933;">*</span>ngIf<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;! clientes.length&quot;</span><span style="color: #339933;">&gt;</span>No hay clientes por el momento<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>div<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>article <span style="color: #339933;">*</span>ngFor<span style="color: #339933;">=</span><span style="color: #3366CC;">&quot;let cliente of clientes&quot;</span><span style="color: #339933;">&gt;</span>
+    <span style="color: #339933;">&lt;</span>p<span style="color: #339933;">&gt;&lt;</span>b<span style="color: #339933;">&gt;</span>Nombre<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>cliente.<span style="color: #660066;">nombre</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>CIF<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>cliente.<span style="color: #660066;">cif</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>Dirección<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>cliente.<span style="color: #660066;">direccion</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span> <span style="color: #339933;">&lt;</span>b<span style="color: #339933;">&gt;</span>Grupo<span style="color: #339933;">:</span> <span style="color: #339933;">&lt;/</span>b<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#123;</span>cliente.<span style="color: #660066;">grupo</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">&lt;/</span>p<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>article<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;/</span>div<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS Alta Clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> AltaClienteComponent <span style="color: #FF0000;">implements</span> OnInit<span style="color: #009900;">&#123;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">/*
+    1.El componente declara un par de propiedades, el cliente y el array de grupos.
+    2.En el constructor, que se ejecuta lo primero, conseguimos una instancia del servicio de clientes, mediante la inyección de dependencias.
+    3.Posteriormente se ejecuta ngOnInit(). En este punto ya se ha recibido el servicio de clientes, por lo que lo puedo usar para generar los valores que 
+        necesito en las propiedades del componente.
+    4.El método nuevoCliente() es el que se ejecutará cuando, desde el formulario de alta, se produzca el envío de datos. En este código usamos el 
+        servicio clientesService, para agregar el cliente y generar un cliente nuevo, para que el usuario pueda seguir dando de alta clientes sin machacar los clientes anteriormente creados.
+    */</span>
+&nbsp;
+    cliente<span style="color: #339933;">!:</span> Cliente<span style="color: #339933;">;</span>
+    grupos<span style="color: #339933;">!:</span> Grupo<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+&nbsp;
+    constructor<span style="color: #009900;">&#40;</span>private clientesService<span style="color: #339933;">:</span> ClientesService<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+&nbsp;
+&nbsp;
+    ngOnInit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">cliente</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientesService</span>.<span style="color: #660066;">nuevoCliente</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">grupos</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientesService</span>.<span style="color: #660066;">getGrupos</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    nuevoCliente<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientesService</span>.<span style="color: #660066;">agregarCliente</span><span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">cliente</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">cliente</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientesService</span>.<span style="color: #660066;">nuevoCliente</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="TS Listado de Clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> ListadoClientesComponent <span style="color: #FF0000;">implements</span> OnInit<span style="color: #009900;">&#123;</span>
+&nbsp;
+    clientes<span style="color: #339933;">!:</span> Cliente<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+&nbsp;
+    constructor<span style="color: #009900;">&#40;</span>private clientesService<span style="color: #339933;">:</span> ClientesService<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> <span style="color: #009900;">&#125;</span>
+&nbsp;
+    ngOnInit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientes</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientesService</span>.<span style="color: #660066;">getClientes</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="Servicio clientes">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">@</span>Injectable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+providedIn<span style="color: #339933;">:</span> <span style="color: #3366CC;">'root'</span>
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+<span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> ClientesService <span style="color: #009900;">&#123;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">/*
+    1.Las dos propiedades del servicio contienen los datos que va a mantener. Sin embargo, las hemos definido como privadas, de modo que no se puedan tocar 
+    directamente y tengamos que usar los métodos del servicio creados para su acceso.
+    2.Los grupos los construyes con un literal en el constructor. Generalmente los traerías de algún servicio REST o algo parecido, pero de momento está bien para empezar.
+    3.Agregar un cliente es un simple &quot;push&quot; al array de clientes, de un cliente recibido por parámetro.
+    4.Crear un nuevo cliente es simplemente devolver un nuevo objeto, que tiene que respetar la interfaz, ya que en la función nuevoCliente() 
+    se está especificando que el valor de devolución será un objeto del tipo Cliente.
+    5. Fíjate que en general está todo tipado, tarea opcional pero siempre útil.
+*/</span>
+&nbsp;
+private clientes<span style="color: #339933;">!:</span> Cliente<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+private grupos<span style="color: #339933;">!:</span> Grupo<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+&nbsp;
+constructor<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span> 
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">grupos</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span>
+    <span style="color: #009900;">&#123;</span>
+        id<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span>
+        nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Sin definir'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#123;</span>
+        id<span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">,</span>
+        nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Activos'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#123;</span>
+        id<span style="color: #339933;">:</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">,</span>
+        nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Inactivos'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#123;</span>
+        id<span style="color: #339933;">:</span> <span style="color: #CC0000;">3</span><span style="color: #339933;">,</span>
+        nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Deudores'</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientes</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+getGrupos<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">grupos</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+getClientes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientes</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+agregarCliente<span style="color: #009900;">&#40;</span>cliente<span style="color: #339933;">:</span> Cliente<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientes</span>.<span style="color: #660066;">push</span><span style="color: #009900;">&#40;</span>cliente<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+nuevoCliente<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> Cliente <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">&#123;</span>
+    id<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">clientes</span>.<span style="color: #660066;">length</span><span style="color: #339933;">,</span>
+    nombre<span style="color: #339933;">:</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">,</span>
+    cif<span style="color: #339933;">:</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">,</span>
+    direccion<span style="color: #339933;">:</span> <span style="color: #3366CC;">''</span><span style="color: #339933;">,</span>
+    grupo<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="Modelo de Datos">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #FF0000;">export</span> <span style="color: #FF0000;">interface</span> Cliente <span style="color: #009900;">&#123;</span>
+    id<span style="color: #339933;">:</span> number<span style="color: #339933;">;</span>
+    nombre<span style="color: #339933;">:</span> string<span style="color: #339933;">;</span>
+    cif<span style="color: #339933;">:</span> string<span style="color: #339933;">;</span>
+    direccion<span style="color: #339933;">:</span> string<span style="color: #339933;">;</span>
+    grupo<span style="color: #339933;">:</span> number<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #FF0000;">export</span> <span style="color: #FF0000;">interface</span> Grupo <span style="color: #009900;">&#123;</span>
+    id<span style="color: #339933;">:</span> number<span style="color: #339933;">;</span>
+    nombre<span style="color: #339933;">:</span> string<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+</div>
+                        </mat-tab>
+                        <mat-tab label="Selectores en Padre">
+<div style="background: rgb(255, 255, 255);">
+<pre class="javascript" style="font-family:monospace;"><span style="color: #339933;">&lt;!--</span>Selector de un componente de un modulo hijo <span style="color: #339933;">-&gt;</span> clientes.<span style="color: #660066;">module</span>.<span style="color: #660066;">ts</span> del modulo padre <span style="color: #339933;">-&gt;</span> app.<span style="color: #660066;">module</span>.<span style="color: #660066;">ts</span><span style="color: #339933;">--&gt;</span>
+<span style="color: #339933;">&lt;</span>app<span style="color: #339933;">-</span>alta<span style="color: #339933;">-</span>cliente<span style="color: #339933;">&gt;&lt;/</span>app<span style="color: #339933;">-</span>alta<span style="color: #339933;">-</span>cliente<span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>app<span style="color: #339933;">-</span>listado<span style="color: #339933;">-</span>clientes<span style="color: #339933;">&gt;&lt;/</span>app<span style="color: #339933;">-</span>listado<span style="color: #339933;">-</span>clientes<span style="color: #339933;">&gt;</span></pre>
+</div>
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Para entender esta practica primero hay que hacerse un esquema mental de la misma. Del modulo padre parten todos los componentes,
+                        servicios, bibliotecas material, bootstrap y modulos creados por uno mismo (clientes.module.ts), del modulo creado por nosotros cuelgan 
+                        los componentes alta-cliente y listado-cliente ademas del servicio clientes.service.ts este a su vez cuelga del modulo padre (app.module.ts). <br>
+                        1.  Alta-cliente: para la parte del HTML tenemos un formulario donde se introducen datos y para la parte de la lógica tenemos la creacion de 
+                        dos propiedades de tipo Cliente y Grupo y la inyeccion del servicio aqui se agregara un nuevo cliente en un array que despues será mostrado. 
+                        2.  Listado-cliente: muestra los clientes que se van almacenando en el array de Clientes que los obtiene con la funcion getClientes del servicio                       
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <h2>PROGRAMACIÓN REACTIVA Y LIBRERIA RxJs</h2>
+    <p>
+        Para empezar a hablar de promesas y observables primero hay que saber que es la programacion reactiva más adelante veremos en mas profundidad que es
+        pero en concreto se refiere a una programacion orientada al manejo de streams de datos asincronos y la propagacion de los cambios. RxJs es una libreria 
+        para componer programas asincronos y basados en eventos usando secuencias observables se puede usar esta tecnologia no solo en angular. Algunos terminos
+        como Observables, Operators, Suscription, Subjects. Pero la que mas utilizarmeos sera Observables y los oepradores (operators) que nos permiten el manejo 
+        de eventos asincronos. En los siguientes temarios Veremos todo esto y mucho más para este apartado de Servicios veremos una pequeña parte de la programacion 
+        reactiva junto con los servicios.
+    </p>
+    <br>
+    <h2>SERVICIOS: Gestión asíncrona con observables (Libreria RxJs)</h2>
+    <p>
+        Los observables de las librerías RxJS (reactive extensions
+        for JavaScript) son otra herramienta que nos
+        permitirá programación asíncrona. Veamos cuáles son
+        las principales diferencias respecto a las promesas: 
+    </p>
+    <ul>
+        <li>
+            Una promesa siempre devolverá un valor o
+            un error, mientras que un observable puede
+            emitir múltiples valores en el tiempo. Por este
+            motivo, a veces se le dene como un ujo de
+            datos o “stream”.
+        </li>
+        <li>
+            Una promesa no puede cancelarse, en cambio
+            un observable sí. Si el valor esperado por una
+            promesa (p. ej., el resultado de una llamada a
+            un servicio) ya no es necesario, no hay manera
+            de cancelar esa promesa. Siempre acabará
+            llamándose a su “callback” de éxito o rechazo.
+            En un observable no ocurre lo mismo, ya que
+            siempre podemos anularlo cancelando la
+            suscripción previa que se habría realizado.
+            La sintaxis de una observable sería la siguiente:
+        </li>
+    </ul>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">vObs <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Observable<span style="color: #009900;">&#40;</span>
+    <span style="color: #006600; font-style: italic;">//ejecutor o lo que es lo mismo: function(observer)</span>
+    observer <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span> ... <span style="color: #009900;">&#125;</span> 
+<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+vObsSubs <span style="color: #339933;">=</span> vObs.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span>
+    value <span style="color: #339933;">=&gt;</span> ...<span style="color: #339933;">,</span>
+    error <span style="color: #339933;">=&gt;</span> ...<span style="color: #339933;">,</span>
+    <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> ...
+<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <p>
+        La función ejecutor empieza a ejecutarse de forma asíncrona cuando un observador
+        (u “observer”) realiza una suscripción en el observable. Esta suscripción se traduce
+        en una ejecución al método “subscribe(observer)” del observable. En el caso que se
+        realizara otra suscripción al mismo observable, se pondría en marcha otro hilo de
+        ejecución asíncrona distinta. <br>
+        Una vez realizada la suscripción, el observador (u “observer”) recibirá cualquier
+        dato emitido por el observable. En la suscripción al observable, es posible pasar
+        una instancia del objeto observador que previamente haya creado, o puede
+        pasar directamente las tres funciones de retorno o “callback” que lo
+        definen: la primera es ejecutada al recibir nuevos valores, la segunda al recibir
+        un error, y la última al recibir la notificación de finalización. Toda esa información
+        será emitida por el observable usando los siguientes métodos del observador:
+        next(), error() o complete(). Para cancelar una suscripción ejecutaremos
+        “unsuscribe()” sobre la suscripción. Esta cancelación siempre debe realizarse
+        en suscripciones de observables que emitan valores de forma indefinida sin terminar
+        nunca. En caso contrario, podrían producirse memory leaks (problemas de
+        memoria).
+        Los observables aquí explicados son los llamados cold observables, no emiten valores
+        hasta que un observador se suscribe a ellos. Sin embargo, también existen los hot
+        observables, que emiten valores aunque no haya suscriptores.
+    </p>
+
+</mat-grid-list>
+
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->

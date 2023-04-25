@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 
@@ -17,6 +17,7 @@ export class FormulariosComponent implements OnInit{
   //Metodo de inicio de componente 
   ngOnInit(): void {
       this.formularioReactivo = this.initForm();
+      this.reactivo = this.initForm2();
       this.onPathValue();
       //this.onSetValue();
   }
@@ -102,5 +103,37 @@ export class FormulariosComponent implements OnInit{
     this.formularioReactivo.setValue({comment: 'Hola mundo'})
 
   }
+
+  /************************************ */
+  reactivo!: FormGroup;
+
+  Reactivo(){
+    console.log("Formulario reactivo enviado");
+  }
+
+  filtraCaracteres(caracter: AbstractControl){
+    if (caracter.value == null) {
+      return null;
+    }
+    var contenido = caracter.value;
+    for (let i = 0; i < contenido.length; i++) {
+      var letra = contenido.substr(i, 1);
+      var valor = letra.charCodeAt(0);
+      if (!(valor >= 65 && valor <= 90)) {
+        return { filtraCaracteres: true };
+      }
+      
+    } 
+    return null;
+  }
+
+  initForm2(): FormGroup{
+    //group es un metodo que espera un objeto y ese objeto sera la definicion de nuestros campos 
+    //y un array de una validacion o mas de una. El fb viene de formBuilder en el constructor.
+    return this.fb.group({
+      cod: ['',[Validators.required, Validators.minLength(3), this.filtraCaracteres]],
+    })
+  }
+
 
 }

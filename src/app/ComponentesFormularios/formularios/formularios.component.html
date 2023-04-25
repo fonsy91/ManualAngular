@@ -841,6 +841,78 @@ botonEnviar<span style="color: #009900;">&#40;</span>ValoresForm<span style="col
               </mat-tab-group>
         </mat-card-content>
     </mat-card>
+    <br>
+    <!--Validaciones: campo obligatorio, mas de 3 caracteres, y letras mayusculas-->
+    <form (ngSubmit)="Reactivo()" [formGroup]="reactivo">
+        <div class="mb-4">
+            <label for="cod" class="form-label">CÓDIGO</label>
+            <!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional-->
+            <input type="text" class="form-control" id="cod" name="cod" required formControlName="cod">
+            <!--Div para mostrar si el input es invalido con clase de bootstrap-->            
+            <div *ngIf="reactivo.get('cod')?.touched && reactivo.get('cod')?.errors?.['required']" class="alert alert-danger">Este campo es requerido</div>
+            <div *ngIf="reactivo.get('cod')?.touched && reactivo.get('cod')?.errors?.['minlength']" class="alert alert-danger">El nombre debe ser mayor de {{formularioReactivo.get('nombre2')?.errors?.['minlength'].requiredLength}} caracteres</div>
+            <div *ngIf="reactivo.get('cod')?.touched && reactivo.get('cod')?.errors?.['filtraCaracteres']" class="alert alert-danger">Letras entre A y Z mayusculas</div>
+        </div>      
+        <div class="d-grid gap-2 col-4 float-end">
+            <button type="submit" class="btn btn-info btn-lg" [disabled]="reactivo.invalid">Enviar</button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+<pre class="html5" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">&lt;!--Validaciones: campo obligatorio, mas de 3 caracteres, y letras mayusculas--&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">form</span> <span style="color: #66cc66;">&#40;</span>ngSubmit<span style="color: #66cc66;">&#41;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Reactivo()&quot;</span> <span style="color: #66cc66;">&#91;</span>formGroup<span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;reactivo&quot;</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;mb-4&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">label</span> <span style="color: #000066;">for</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;cod&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-label&quot;</span>&gt;</span>CÓDIGO<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">label</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--En este caso dejo las dos direcciones ngModel y [(ngModel)] pero para que se entienda pero con el segundo ya es bidireccional--&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">input</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form-control&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;cod&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;cod&quot;</span> <span style="color: #000066;">required</span> formControlName<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;cod&quot;</span>&gt;</span>
+            <span style="color: #808080; font-style: italic;">&lt;!--Div para mostrar si el input es invalido con clase de bootstrap--&gt;</span>            
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;reactivo.get('cod')?.touched &amp;&amp; reactivo.get('cod')?.errors?.['required']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>Este campo es requerido<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;reactivo.get('cod')?.touched &amp;&amp; reactivo.get('cod')?.errors?.['minlength']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>El nombre debe ser mayor de {{formularioReactivo.get('nombre2')?.errors?.['minlength'].requiredLength}} caracteres<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> *ngIf<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;reactivo.get('cod')?.touched &amp;&amp; reactivo.get('cod')?.errors?.['filtraCaracteres']&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;alert alert-danger&quot;</span>&gt;</span>Letras entre A y Z mayusculas<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>      
+        <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;d-grid gap-2 col-4 float-end&quot;</span>&gt;</span>
+            <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">button</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;btn btn-info btn-lg&quot;</span> <span style="color: #66cc66;">&#91;</span><span style="color: #000066;">disabled</span><span style="color: #66cc66;">&#93;</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;reactivo.invalid&quot;</span>&gt;</span>Enviar<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">button</span>&gt;</span>
+        <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">form</span>&gt;</span></pre>
+
+<pre class="javascript" style="font-family:monospace;">reactivo<span style="color: #339933;">!:</span> FormGroup<span style="color: #339933;">;</span>
+&nbsp;
+Reactivo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;Formulario reactivo enviado&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+filtraCaracteres<span style="color: #009900;">&#40;</span>caracter<span style="color: #339933;">:</span> AbstractControl<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+<span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>caracter.<span style="color: #660066;">value</span> <span style="color: #339933;">==</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+<span style="color: #000066; font-weight: bold;">var</span> contenido <span style="color: #339933;">=</span> caracter.<span style="color: #660066;">value</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">&#40;</span>let i <span style="color: #339933;">=</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> contenido.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">var</span> letra <span style="color: #339933;">=</span> contenido.<span style="color: #660066;">substr</span><span style="color: #009900;">&#40;</span>i<span style="color: #339933;">,</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">var</span> valor <span style="color: #339933;">=</span> letra.<span style="color: #660066;">charCodeAt</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #009900;">&#40;</span>valor <span style="color: #339933;">&gt;=</span> <span style="color: #CC0000;">65</span> <span style="color: #339933;">&amp;&amp;</span> valor <span style="color: #339933;">&lt;=</span> <span style="color: #CC0000;">90</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">&#123;</span> filtraCaracteres<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span> <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #009900;">&#125;</span> 
+<span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+initForm2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> FormGroup<span style="color: #009900;">&#123;</span>
+<span style="color: #006600; font-style: italic;">//group es un metodo que espera un objeto y ese objeto sera la definicion de nuestros campos </span>
+<span style="color: #006600; font-style: italic;">//y un array de una validacion o mas de una. El fb viene de formBuilder en el constructor.</span>
+<span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">fb</span>.<span style="color: #660066;">group</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    cod<span style="color: #339933;">:</span> <span style="color: #009900;">&#91;</span><span style="color: #3366CC;">''</span><span style="color: #339933;">,</span><span style="color: #009900;">&#91;</span>Validators.<span style="color: #660066;">required</span><span style="color: #339933;">,</span> Validators.<span style="color: #660066;">minLength</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">3</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">filtraCaracteres</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+
 
 </mat-grid-list>
 

@@ -1,0 +1,112 @@
+<h1>LIBRERÍA RxJs</h1>
+<mat-grid-list cols="1" rowHeight="6:1">
+    <mat-grid-tile></mat-grid-tile>
+    <h2>INTRODUCCIÓN</h2>
+    <p>
+        Antes de comenzar a estudiar la libreria RxJs es necesario saber una serie de conceptos basicos de programación y un 
+        par de patrones de sofware el patrón Observador (Observer pattern), Iterador y la programación funcional. Links de interes 
+        <a href="http://blog.enriqueoriol.com/2019/04/aprende-rxjs-3.html">Rxjs</a>, <a href="https://www.youtube.com/watch?v=zV0NywULR_4&list=PLHgpVrCyLWAoSkzNPYt9nhmtSlpXjtnju&ab_channel=MoldeoInteractive">Curso RxJs</a>
+        
+    </p>
+    <br>
+    <h4>Patrón Observador</h4>
+    <p>
+        Es un patrón de comportamiento que define una dependencia de uno a muchos entre objetos, es decir hay un objeto (Sujeto -Subject)
+        que mantiene una lista de objetos que dependen de el (los Observadores) a los que notifica automaticamente cualquier cambio de 
+        su estado. Se suele utilizar cuando un elemento quiere estar pendiente de otro, sin tener que comprobar continuamente si ha cambiado 
+        o no. Los actores principales de RxJs son:  
+    </p>
+    <ul>
+        <li><b>Observable: </b>El observable representa un flujo de datos, una colección de eventos que se pueden emitir en algún momento futuro.</li>
+        <li><b>Observer: </b>Los observers son objetos que están escuchando el flujo de datos y actúan sobre los valores que éste emite.</li>
+        <li><b>Subscription: </b>Una suscripción representa la ejecución de un observable y también sirve para cancelar la ejecución en un momento dado.</li>
+        <li><b>Operador: </b>Los operadores son funciones puras que te permiten trabajar con el flujo de eventos mediante programación funcional.</li>
+        <li><b>Subject: </b>Similar al Subject del patrón Observer. En RxJS sirven para distribuir un Observable hacia varios Observers simultáneamente.</li>
+        <li><b>Schedulers: </b>Los schedulers sirven para controlar el orden de las suscripciones y el orden y velocidad de emisión de eventos. </li>
+    </ul>
+    <br>
+    <div *ngIf="activaAlerta" class="alert alert-primary" role="alert" >
+        Alerta por click en pantalla
+    </div>
+    <br>
+    <p>Numero de Cliks variable count: {{contador}}</p>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">  
+<span style="color: #006600; font-style: italic;">//Nos suscribimos a un futuro evento que en este caso es un click del raton </span>
+<span style="color: #006600; font-style: italic;">//y en el momento que suceda informaremos por consola.</span>
+Clicks<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    fromEvent<span style="color: #009900;">&#40;</span>document<span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">activaAlerta</span><span style="color: #339933;">=</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">//Contamos el numero de clicks hechos en pantalla </span>
+<span style="color: #006600; font-style: italic;">//scan es una funcion a la que le pasamos un contador y el estado inicial 0.</span>
+numClicks<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+    fromEvent<span style="color: #009900;">&#40;</span>document<span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span>
+    .<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>scan<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>count<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> count<span style="color: #339933;">+</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
+    .<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>count<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">contador</span> <span style="color: #339933;">=</span> count<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+</pre>
+        </mat-card-content>
+    </mat-card>
+
+
+</mat-grid-list>
+
+
+
+
+
+<!--PLANTILLA EJEMPLOS DE PROGRAMA 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <h4>EJEMPLO 2</h4>
+              <mat-tab-group>
+                <mat-tab label="Programa">
+                    
+                </mat-tab>
+                <mat-tab label="Código" class="codigo">
+                    <mat-tab-group>
+                        <mat-tab label="HTML">
+
+                        </mat-tab>
+                        <mat-tab label="TS">
+
+                        </mat-tab>
+                        <mat-tab label="CSS">
+
+                        </mat-tab>
+                    </mat-tab-group>
+                    
+                </mat-tab>
+                <mat-tab label="Explicación">
+                    <p class="explicacion">
+                        Primero explicaremos lo que hace el código y después definiremos una serie de conceptos importantes a tener en cuenta y que 
+                        explicaremos más adelante. en el primer (tr) tenemos un [(ngModel)] con esto los datos viajan bidireccionalmente de la plantilla al DOM  
+                        y viceversa, en este caso se esta cambiando el valor de la propiedad ponFondo de true a false cada vez que se marca o desmarca el checkbox, 
+                    </p>
+                </mat-tab>
+              </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+-->
+
+
+<!--PLANTILLA DE CODIGO A MOSTRAR 
+
+    <mat-card class="codigoTS">
+        <mat-card-header>
+            <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <blockquote><font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;NgModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/core'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">import</font>&nbsp;<font color="#009900">&#123;</font>&nbsp;BrowserModule&nbsp;<font color="#009900">&#125;</font>&nbsp;from&nbsp;<font color="#3366CC">'@angular/platform-browser'</font><font color="#339933">;</font><br/>
+                <font color="#FF0000">export</font>&nbsp;<font color="#FF0000">class</font>&nbsp;AppModule&nbsp;<font color="#009900">&#123;</font>&nbsp;<font color="#009900">&#125;</font></blockquote>
+        </mat-card-content>
+    </mat-card>
+-->

@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { FiltrarCaracteres } from './ComponentesFormularios/formularios/validacaracteres.directive';
+import {HttpClientModule} from '@angular/common/http';
+
+//Modulos creados por mi 
+import { ClientesModule } from './Modulos/clientes/clientes.module';
 
 //Importaciones de Angular material 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -28,6 +32,9 @@ import { CicloVidaComponent } from './Componentes/ciclo-vida/ciclo-vida.componen
 import { DirectivasComponent } from './ComponentesDirectivas/directivas/directivas.component';
 import { BindingComponent } from './ComponentesBinding_y_Librerias/binding/binding.component';
 import { FormulariosComponent } from './ComponentesFormularios/formularios/formularios.component';
+import { ServiciosComponent } from './ComponentesServicios/servicios/servicios.component';
+import { LibRxjsComponent } from './ComponentesRxjs/lib-rxjs/lib-rxjs.component';
+
 
 
 
@@ -44,6 +51,9 @@ import { FormulariosComponent } from './ComponentesFormularios/formularios/formu
     BindingComponent,
     FormulariosComponent,
     FiltrarCaracteres,
+    ServiciosComponent,
+    LibRxjsComponent,
+    
   
   ],
   imports: [
@@ -62,6 +72,9 @@ import { FormulariosComponent } from './ComponentesFormularios/formularios/formu
     FormsModule,
     MatTabsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    //Modulo creado por mi e importado aqui el padre
+    ClientesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
