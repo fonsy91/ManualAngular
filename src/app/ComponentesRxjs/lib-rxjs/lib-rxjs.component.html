@@ -4,9 +4,7 @@
     <h2>INTRODUCCIÓN</h2>
     <p>
         Antes de comenzar a estudiar la libreria RxJs es necesario saber una serie de conceptos basicos de programación y un 
-        par de patrones de sofware el patrón Observador (Observer pattern), Iterador y la programación funcional. Links de interes 
-        <a href="http://blog.enriqueoriol.com/2019/04/aprende-rxjs-3.html">Rxjs</a>, <a href="https://www.youtube.com/watch?v=zV0NywULR_4&list=PLHgpVrCyLWAoSkzNPYt9nhmtSlpXjtnju&ab_channel=MoldeoInteractive">Curso RxJs</a>
-        
+        par de patrones de sofware el patrón Observador (Observer pattern), Iterador y la programación funcional.
     </p>
     <br>
     <h4>Patrón Observador</h4>
@@ -19,37 +17,133 @@
     <ul>
         <li><b>Observable: </b>El observable representa un flujo de datos, una colección de eventos que se pueden emitir en algún momento futuro.</li>
         <li><b>Observer: </b>Los observers son objetos que están escuchando el flujo de datos y actúan sobre los valores que éste emite.</li>
-        <li><b>Subscription: </b>Una suscripción representa la ejecución de un observable y también sirve para cancelar la ejecución en un momento dado.</li>
+        <li><b>Subscription: </b>Una suscripción representa engancharse o conectarse a un Observable y también sirve para cancelar la ejecución en un momento dado.</li>
         <li><b>Operador: </b>Los operadores son funciones puras que te permiten trabajar con el flujo de eventos mediante programación funcional.</li>
         <li><b>Subject: </b>Similar al Subject del patrón Observer. En RxJS sirven para distribuir un Observable hacia varios Observers simultáneamente.</li>
         <li><b>Schedulers: </b>Los schedulers sirven para controlar el orden de las suscripciones y el orden y velocidad de emisión de eventos. </li>
     </ul>
     <br>
-    <div *ngIf="activaAlerta" class="alert alert-primary" role="alert" >
-        Alerta por click en pantalla
-    </div>
-    <br>
-    <p>Numero de Cliks variable count: {{contador}}</p>
+    <h3>OBSERVABLE</h3>
+    <p>El siguiente es un Observable que inserta valores inmediatamente (sincrónicamente) cuando se suscribe y cuando haya pasado un segundo
+        se completa con un cuarto valor.
+    </p>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemPrimero<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> observable <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Observable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>subscriber<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span>
+        subscriber.<span style="color: #660066;">next</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        subscriber.<span style="color: #660066;">next</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">2</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        subscriber.<span style="color: #660066;">next</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">3</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        setTimeout<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span>
+        subscriber.<span style="color: #660066;">next</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">4</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        subscriber.<span style="color: #660066;">complete</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">1000</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Justo antes de subscribe'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #006600; font-style: italic;">// Escucha al observable hasta que emite sus valores y los muestra por consola</span>
+    observable.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+        next<span style="color: #009900;">&#40;</span>x<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+        console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Obtiene valor '</span><span style="color: #339933;">,</span>x<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+        error<span style="color: #009900;">&#40;</span>err<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+        console.<span style="color: #660066;">error</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Hubo un error al subscribirse: '</span><span style="color: #339933;">+</span> err<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+        complete<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
+        console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'La subscripcion se ha realizado con exito'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">&#125;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Justo despues de subscribe'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+
     <br>
     <mat-card class="codigoTS">
         <mat-card-content>
-<pre class="javascript" style="font-family:monospace;">  
-<span style="color: #006600; font-style: italic;">//Nos suscribimos a un futuro evento que en este caso es un click del raton </span>
-<span style="color: #006600; font-style: italic;">//y en el momento que suceda informaremos por consola.</span>
-Clicks<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
-    fromEvent<span style="color: #009900;">&#40;</span>document<span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">activaAlerta</span><span style="color: #339933;">=</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span>
-&nbsp;
-<span style="color: #006600; font-style: italic;">//Contamos el numero de clicks hechos en pantalla </span>
-<span style="color: #006600; font-style: italic;">//scan es una funcion a la que le pasamos un contador y el estado inicial 0.</span>
-numClicks<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#123;</span>
-    fromEvent<span style="color: #009900;">&#40;</span>document<span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span>
-    .<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>scan<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>count<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> count<span style="color: #339933;">+</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>
-    .<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>count<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">contador</span> <span style="color: #339933;">=</span> count<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="color: #009900;">&#125;</span>
-</pre>
+<pre class="javascript" style="font-family:monospace;">ejemSegundo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> observable <span style="color: #339933;">=</span> from<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">10</span><span style="color: #339933;">,</span><span style="color: #CC0000;">20</span><span style="color: #339933;">,</span><span style="color: #CC0000;">30</span><span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> subscription <span style="color: #339933;">=</span> observable.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>x<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>x<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #006600; font-style: italic;">// Nos dessuscribimos</span>
+    subscription.<span style="color: #660066;">unsubscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
         </mat-card-content>
     </mat-card>
+
+    <br>
+    <h3>OBSERVER</h3>
+    <p>
+        Un observador es un consumidor de valores entregados por un Observable que devuelve notificaciones como: next, error y complete. En el ejemplo de arriba el Observable
+        emite valores (stream de datos) con el next y mas abajo con el subscribe nos enganchamos nos ponemos a escuchar al observable el cual devuelve como hemos dicho un next,
+        error y complete. Entonces que es una subscription o suscribirse a un Observable?.
+    </p>
+    <br>
+    <h3>SUSCRIPCION</h3>
+    <p>
+        Una Suscripcion es un objeto, normalmente la ejeucion de un Observable. Una suscripcion tiene un metodo importante (unsubscribe) que simplemente deshecha el recuros 
+        que tiene la suscripcion
+    </p>
+    <br>
+    <h3>OPERATORS (operadores)</h3>
+    <p>
+        Los operadores son las piezas esenciales que permiten que el código asincrono complejo se componga facilmente de manera declarativa. Los oepradores son funciones existen
+        dos tipos de operadores:
+    </p>
+    <ul>
+        <li>Los Operadores Canalizables (Pipeable Operators): es una funcion que toma un Observable como su entrada y devuelve otro Observable</li>
+        <li>Los Operadores de Creacion: se pueden llamar como funciones independientes para crear un nuevo Observable. Por ejemplo of(1,2,3) crea un Observable
+            que emitira 1,2,3. Un ejemplo de operador de cracion es el map: 
+        </li>
+        <li>Los Operadores de Transformacion</li>
+        <li>Los Operadores de Filtrado</li>
+        <li>Los Operadores de Combinacion</li>
+        <li>Los Operadores de Agrupacion</li>
+        <li>Los Opradores para manejar errores</li>
+        <li>Los Operadores de Terminal para marcar el final del Obserbale</li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemTercero<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Creamos un Observable con el metod of</span>
+    of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>map<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>x<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> x<span style="color: #339933;">*</span>x<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>v<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #006600; font-style: italic;">//map aplica una funcion x*x a cada valor emitido por el Observable of</span>
+        <span style="color: #006600; font-style: italic;">// y emite los valores resultantes como un Observable</span>
+        console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'value: '</span><span style="color: #339933;">,</span>v<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemCuarto<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Filtramos los valores pares del stream de datos que me devuelve el Observable</span>
+    of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #339933;">,</span><span style="color: #CC0000;">5</span><span style="color: #339933;">,</span><span style="color: #CC0000;">6</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>filter<span style="color: #009900;">&#40;</span>x <span style="color: #339933;">=&gt;</span> x <span style="color: #339933;">%</span> <span style="color: #CC0000;">2</span> <span style="color: #339933;">===</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span>v <span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span>
+        console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Valores pares: '</span><span style="color: #339933;">,</span>v<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemQuinto<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Con merge unes dos tremas de datos de diferentes Observables</span>
+    <span style="color: #000066; font-weight: bold;">const</span> numeros1 <span style="color: #339933;">=</span> of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> numeros2 <span style="color: #339933;">=</span> of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">5</span><span style="color: #339933;">,</span><span style="color: #CC0000;">6</span><span style="color: #339933;">,</span><span style="color: #CC0000;">7</span><span style="color: #339933;">,</span><span style="color: #CC0000;">8</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> unionNumeros <span style="color: #339933;">=</span> merge<span style="color: #009900;">&#40;</span>numeros1<span style="color: #339933;">,</span>numeros2<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #006600; font-style: italic;">// Me suscriboi al observable y muestro todos los numeros</span>
+    unionNumeros.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;</pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <p>Existe otro operador para unir dos streams de datos de dos Observables diferentes llamado concat() la diferencia estriba en que concat se ejecuta secuencialmente y espera a que el 
+        primer observable se complete antes de comenzar con la emision del siguiente observable.
+    </p>
+
 
 
 </mat-grid-list>
