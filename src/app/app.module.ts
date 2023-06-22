@@ -34,9 +34,7 @@ import { BindingComponent } from './ComponentesBinding_y_Librerias/binding/bindi
 import { FormulariosComponent } from './ComponentesFormularios/formularios/formularios.component';
 import { ServiciosComponent } from './ComponentesServicios/servicios/servicios.component';
 import { LibRxjsComponent } from './ComponentesRxjs/lib-rxjs/lib-rxjs.component';
-
-
-
+import { AplicacionComponent } from './Aplicacion/aplicacion.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +51,8 @@ import { LibRxjsComponent } from './ComponentesRxjs/lib-rxjs/lib-rxjs.component'
     FiltrarCaracteres,
     ServiciosComponent,
     LibRxjsComponent,
+    AplicacionComponent,
     
-  
   ],
   imports: [
     BrowserModule,

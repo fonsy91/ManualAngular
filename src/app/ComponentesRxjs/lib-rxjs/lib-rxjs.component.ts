@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, filter, from, map, merge, of } from 'rxjs';
+import { Observable, delay, filter, from, map, merge, of, tap, timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-lib-rxjs',
@@ -79,6 +79,20 @@ export class LibRxjsComponent implements OnInit, OnDestroy{
     unionNumeros.subscribe(res => console.log(res));
   }
 
+  ejemSexto(): void {
+    of(1,2,3,4).pipe(map((number:number) => number*number), tap((result:number) => console.log(result))).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  ejemSeptimo(): void {
+    // Pasara un segundo y medio y despues apareceran los datos por consola
+    of(1,2,3,4).pipe(delay(1500), tap(res => console.log(res))).subscribe();
+  }
+
+  ejemploOctavo(): void {
+    of(1,2,3,4).pipe(timestamp(), tap(res => console.log(res))).subscribe();
+  }
 
   ngOnDestroy(): void {
     

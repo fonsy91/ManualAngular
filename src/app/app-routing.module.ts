@@ -7,6 +7,7 @@ import { DirectivasComponent } from './ComponentesDirectivas/directivas/directiv
 import { FormulariosComponent } from './ComponentesFormularios/formularios/formularios.component';
 import { LibRxjsComponent } from './ComponentesRxjs/lib-rxjs/lib-rxjs.component';
 import { ServiciosComponent } from './ComponentesServicios/servicios/servicios.component';
+import { AplicacionComponent } from './Aplicacion/aplicacion.component';
 
 const routes: Routes = [
   { path: '', component: IntroComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'formularios', component: FormulariosComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: 'libRxjs', component: LibRxjsComponent },
+  { path: 'aplicacion', component: AplicacionComponent },
 ];
 
 @NgModule({

@@ -140,10 +140,36 @@
         </mat-card-content>
     </mat-card>
     <br>
-    <p>Existe otro operador para unir dos streams de datos de dos Observables diferentes llamado concat() la diferencia estriba en que concat se ejecuta secuencialmente y espera a que el 
+    <p>
+        Existe otro operador para unir dos streams de datos de dos Observables diferentes llamado concat() la diferencia estriba en que concat se ejecuta secuencialmente y espera a que el 
         primer observable se complete antes de comenzar con la emision del siguiente observable.
     </p>
-
+    <ul>
+        <li> El operador tap(): nos permite ejecutar una accion cada vez que se emite un valor desde un observable se suele usar para debuggear es muy util.</li>
+        <li>El operador delay(): retrasa los datos del Observable por un tiempo de espera determinado o hasta una fecha determinada.</li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemSeptimo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Pasara un segundo y medio y despues apareceran los datos por consola</span>
+    of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>delay<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1500</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> tap<span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <ul>
+        <li>
+            El operador timestamp(): permite añadir marcas temporales en cada uno de los valores emitidos por un observable, util cuando queremos saber si se ha emitido un valor,
+            emitir el tiempo transucrrido entre dos emisiones. Ver el ejemplo en el archivo lib-rxjs.component.ts metodo ejemOctavo().
+        </li>
+        <li>
+            El operador switchMap(): es un operador que permite cambiar a un nuevo observable cada vez que se emite un valor de un observable. Es util 
+            para cancelar operaciones en curso y comenzar una nueva operacion basada en el valor emitido mas recientemente.
+        </li>
+    </ul>
+    <h3>VAMOS POR EL VIDEO 14 DE RXJS</h3>
+    <!--https://jsonplaceholder.typicode.com/-->
 
 
 </mat-grid-list>
