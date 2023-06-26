@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, delay, filter, from, map, merge, of, tap, timestamp } from 'rxjs';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, Subscription, delay, filter, from, fromEvent, interval, map, merge, of, single, takeUntil, tap, timestamp } from 'rxjs';
 
 @Component({
   selector: 'app-lib-rxjs',
@@ -13,11 +13,12 @@ export class LibRxjsComponent implements OnInit, OnDestroy{
   constructor(){}
 
   ngOnInit(): void {
-    this.ejemPrimero();
-    this.ejemSegundo();
-    this.ejemTercero();
-    this.ejemCuarto();
-    this.ejemQuinto();
+    // this.ejemPrimero();
+    // this.ejemSegundo();
+    // this.ejemTercero();
+    // this.ejemCuarto();
+    // this.ejemQuinto();
+    // this.ejemploOnce();
   }
 
   ejemPrimero(): void {
@@ -94,8 +95,61 @@ export class LibRxjsComponent implements OnInit, OnDestroy{
     of(1,2,3,4).pipe(timestamp(), tap(res => console.log(res))).subscribe();
   }
 
+  // Metodo para la prueba de takeUnitl
+  private stop$ = new Subject<number>();
+  counter!: number;
+
+  start(){
+    interval(1000).pipe(
+      // Va ha emitir hasta que 
+      takeUntil(this.stop$),
+      tap((val:number) => this.counter= val)
+    ).subscribe(val => console.log(val));
+  }
+
+  stop(){
+    // Detenemos el observable
+    this.stop$.next(0);
+  }
+  // -------------------------------
+
+  ejemploNoveno() {
+    // Uso de single()
+    of(1,2,3,4,5,6).pipe(single((num: number) => num === 3), tap(res => console.log(res))).subscribe();
+  }
+
+  ejemploDecimo() {
+    // Uso de fromEvent
+    const document$ = fromEvent(document, 'click');
+    document$.pipe(tap(res => console.log(res))).subscribe();
+  }
+
+  // Seleccionamos un elemento del DOM
+  @ViewChild('myButton', {static: true}) myButton!: ElementRef;
+  ejemploOnce() {
+    const document$ = fromEvent(this.myButton.nativeElement, 'click');
+    document$.pipe(tap(res => console.log(res))).subscribe();
+  }
+
+  // Observables de tipos Subject
+  mySubject = new Subject<string>();
+  
+  // Subject de tipo BehaviorSubject
+  myBehaviorSubject = new BehaviorSubject<string>('Valor inicial');
+
+  // Si en tenemos mas de un observable corriendo lo normal es crearse un 
+  // array de Suscripciones e ir haciendo push aqui y en el metodo Destroy te desuscribes
+  private suscription: Subscription[] = [];
+  datos$ = interval(1000);
+
+  ejemploDoce() {
+    this.suscription.push(
+      this.datos$.pipe(tap(res => console.log(res))).subscribe()
+    );
+  }
+
   ngOnDestroy(): void {
-    
+    this.suscription.forEach(subs => subs.unsubscribe());
   }
 
 

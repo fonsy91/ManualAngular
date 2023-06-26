@@ -167,8 +167,119 @@
             El operador switchMap(): es un operador que permite cambiar a un nuevo observable cada vez que se emite un valor de un observable. Es util 
             para cancelar operaciones en curso y comenzar una nueva operacion basada en el valor emitido mas recientemente.
         </li>
+        <li>
+            El operador takeUntil(): permite tomar solo un numero especifico de valores emitidos por un obervable, o tomar valores hasta que se emita 
+            un valor especifico de otro observable. Util para cancelar una suscripcion a un observable cuando ocurre un evento especifico, o para 
+            limitar la cantida de valores que se procesan.
+        </li>
     </ul>
-    <h3>VAMOS POR EL VIDEO 14 DE RXJS</h3>
+    <div class="flex items-center justify-center w-10/12 ms-2 mt-2">
+        <span class="sm:ml-3">
+            <button type="button" class="btn btn-primary" (click)="start()">Start</button>
+        </span>
+        <span class="sm:ml-3">
+            <button type="button" class="btn btn-danger ms-2" (click)="stop()">Stop</button>
+        </span>
+        <span class="sm:ml-3 ms-2">
+            Counter: {{counter}}
+        </span>
+    </div>
+    <br>
+    <ul>
+        <li>
+            El operador single(): permite tomar solo un valor que cumpla con una condicion especifica, y luego completar el observable,
+            es util para recuperar un solo valor o para detectar un valor especifico en un flujo de datos. 
+        </li>
+        <li>
+            El operador startWith(): nos permite emitir un valor o un conjunto de valores al principio de un observable antes de que 
+            comiencen a emitir los valores originales, es util para establecer un valor inicial o para proporcionar un contexto para 
+            los valores emitidos posteriormente.
+        </li>
+        <li>
+            El operador fromEvent(): permite crear un observable a partir de un evento de un elemento del DOM, es util para escuchar eventos
+            en elementos del DOM como botones, inputs etc. Y transformarlos en un flujo de datos observable.
+        </li>
+    </ul>
+    <br>
+    <button type="button" class="btn btn-primary sm:ml-3" #myButton>fromEvent</button>
+    <br><br>
+    <ul>
+        <li>
+            El operador withLatestFrom(): es un operador que combina el valor mas recientemente emitido de un observable principal con 
+            el valor mas reciente emitido de uno o varios observables secundarios. 
+        </li>
+        <li>
+            El operador concatWith(): se utiliza para concatenar dos o mas observables, toma uno o mas observables como argumentos y 
+            devuelve un nuevo observable que emite los valores de los observables de manera secuencial, es decir, espera a que el 
+            observable anterior se complete antes de empezar a emitir los valores del siguiente observable. 
+        </li>
+        <li>
+            Subject: es un tipo especial de observable en RxJS que permite tanto suscribirse a el como emitir valores
+        </li>
+        <li>
+            BehaviorSubjects: es una clase especifica de Subject a diferencia de un Subject normal este siempre tiene un valor inicial y 
+            cuando un nuevo suscriptor se suscribe, inmediatamente recibe el valor mas reciente
+        </li>
+    </ul>
+    <br>
+    <button type="button" class="btn btn-primary sm:ml-3" (click)="mySubject.next('Hola')">Subject</button>
+    <!--Aqui no estamos suscribiendo y ademas emitimos valores-->
+    {{mySubject | async}}
+    <br><br>
+    <button type="button" class="btn btn-primary sm:ml-3" (click)="myBehaviorSubject.next('Hola')">BehaviorSubject</button>
+    {{myBehaviorSubject | async}}
+    <br><br>
+    <ul>
+        <li>
+            El operador pipe async: es un operador que nos permite subscribirnos a un observable y cuando ese observable cambia 
+            automaticamente el HTML de nuestro componente se actualiza y ademas cuando dejamos el componente el observable 
+            termina la consexion.
+        </li>
+    </ul>
+    <br>
+    <mat-card class="codigoTS">
+        <mat-card-content>
+<pre class="javascript" style="font-family:monospace;">ejemploNoveno<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Uso de single()</span>
+    of<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><span style="color: #CC0000;">3</span><span style="color: #339933;">,</span><span style="color: #CC0000;">4</span><span style="color: #339933;">,</span><span style="color: #CC0000;">5</span><span style="color: #339933;">,</span><span style="color: #CC0000;">6</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>single<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>num<span style="color: #339933;">:</span> number<span style="color: #009900;">&#41;</span> <span style="color: #339933;">=&gt;</span> num <span style="color: #339933;">===</span> <span style="color: #CC0000;">3</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span> tap<span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> 
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+ejemploDecimo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #006600; font-style: italic;">// Uso de fromEvent</span>
+    <span style="color: #000066; font-weight: bold;">const</span> document$ <span style="color: #339933;">=</span> fromEvent<span style="color: #009900;">&#40;</span>document<span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    document$.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>tap<span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">// Seleccionamos un elemento del DOM</span>
+<span style="color: #339933;">@</span>ViewChild<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'myButton'</span><span style="color: #339933;">,</span> <span style="color: #009900;">&#123;</span><span style="color: #000066; font-weight: bold;">static</span><span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span> myButton<span style="color: #339933;">!:</span> ElementRef<span style="color: #339933;">;</span>
+ejemploOnce<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">const</span> document$ <span style="color: #339933;">=</span> fromEvent<span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">myButton</span>.<span style="color: #660066;">nativeElement</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'click'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    document$.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>tap<span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">// Observables de tipos Subject</span>
+mySubject <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Subject<span style="color: #339933;">&lt;</span>string<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">// Subject de tipo BehaviorSubject</span>
+myBehaviorSubject <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> BehaviorSubject<span style="color: #339933;">&lt;</span>string<span style="color: #339933;">&gt;</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Valor inicial'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">// Si en tenemos mas de un observable corriendo lo normal es crearse un </span>
+<span style="color: #006600; font-style: italic;">// array de Suscripciones e ir haciendo push aqui y en el metodo Destroy te desuscribes</span>
+private suscription<span style="color: #339933;">:</span> Subscription<span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#91;</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+datos$ <span style="color: #339933;">=</span> interval<span style="color: #009900;">&#40;</span><span style="color: #CC0000;">1000</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+ejemploDoce<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">suscription</span>.<span style="color: #660066;">push</span><span style="color: #009900;">&#40;</span>
+        <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">datos</span>$.<span style="color: #660066;">pipe</span><span style="color: #009900;">&#40;</span>tap<span style="color: #009900;">&#40;</span>res <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>res<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">subscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+    <span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+ngOnDestroy<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">&#123;</span>
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">suscription</span>.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span>subs <span style="color: #339933;">=&gt;</span> subs.<span style="color: #660066;">unsubscribe</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+        </mat-card-content>
+    </mat-card>
     <!--https://jsonplaceholder.typicode.com/-->
 
 
